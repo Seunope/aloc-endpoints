@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Account;
+use App\Models\QLoader;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+
 
 class QuestionController extends Controller
 {
@@ -14,8 +17,29 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        $input =request()->all();
+        if($input['subject'] != ""){
+            $subjectTable = ucfirst($input['subject']);
+            try{
+                $question = new QLoader;
+                $question->setTable($subjectTable);
+                $data = $question->inRandomOrder()->first();
+
+//                $question->requestCount=1;
+//                $question->update(['requestCount' =>1]);
+
+                return response()->json($data, 200, [], JSON_PRETTY_PRINT);
+            }catch (\Exception $e){
+                $subject = (object) ['english','mathematics','commerce', 'account','biology','physics','chemistry'];
+                $data ['error'] = "Something strange just happened";
+                $data ['hint'] = ['message'=>'This is the list of supported subjects.', 'subject'=> $subject];
+
+                return response()->json($data, 406, [], JSON_PRETTY_PRINT);
+            }
+
+        }
     }
+
 
     /**
      * Show the form for creating a new resource.
