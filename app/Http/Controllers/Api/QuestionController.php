@@ -19,7 +19,7 @@ class QuestionController extends Controller
     {
         $input =request()->all();
         if($input['subject'] != ""){
-            $subjectTable = ucfirst($input['subject']);
+            $subjectTable = $input['subject'];
             try{
                 $question = new QLoader;
                 $question->setTable($subjectTable);
