@@ -26,11 +26,11 @@ Focus on building great apps for students with unlimited access to api calls for
 
 - `php artisan composer update`
 
-- Create another copy of .env.example and rename it .env
+- In the project root directory create another copy of .env.example and rename it to .env
 
 - Generate application key `php artisan key:generate`
 
-- In .env file, add corresponding DB_DATABASE, DB_USERNAME, DB_PASSWORD
+- In .env file, supply values to DB_DATABASE, DB_USERNAME, DB_PASSWORD
 
 - `php artisan migrate`
 
