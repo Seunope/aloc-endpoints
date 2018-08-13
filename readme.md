@@ -22,6 +22,23 @@ Make api calls to have access to over 7,000 Major Nigeria past questions. 100% F
 
 Focus on building great apps for students with unlimited access to api calls for trivial questions of major exams in Nigeria
 
+## Setup
+
+- `php artisan composer update`
+
+- Create another copy of .env.example and rename it .env
+
+- Generate application key `php artisan key:generate`
+
+- In .env file, add corresponding DB_DATABASE, DB_USERNAME, DB_PASSWORD
+
+- `php artisan migrate`
+
+- You can load some dummy data into database for testing `php artisan db:seed --class=LoadDummyQuestions`
+
+- `php artisan server` to load app. You Got it!
+
+
 ## ALOC Sponsors
 
 We would like to extend our thanks to the following sponsors for helping fund on-going ALOC development. If you are interested in becoming a sponsor, please visit send a mail to Admin [info@aloc.ng]:
