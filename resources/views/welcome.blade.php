@@ -4,20 +4,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Make APIs Call to 6,000 JAMB Past Questions. Get free APIs end points access to Past Questions of Major exam in Nigeria UTME, Post-UTME, WAEC, NECO Questions."/>
+    <meta name="keywords" content="JAMB questions Api, WAEC questions Api, Free JAMB, WAEC, NECO questions, ALOC questions API, JAMB Past Question API, Question WAEC NECO, Jamb UTME, Jamb practice test api, Jamb result, ALOC CBT Games, Post UTME"/>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
 
-    <title>ALOC APIs</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    <title>ALOC Past Questions APIs</title>
 
     <!-- Styles -->
     <style>
         html, body {
             background-color: #fff;
             color: #636b6f;
-            /*font-family: 'Raleway', sans-serif;*/
             font-family: system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
             color: #22292F;
             line-height: 1.5;
@@ -103,18 +101,17 @@
 
         <div class="content">
             <div class="title m-b-md">
-                7,000 past questions
+                6,000 Past Questions
             </div>
 
             <div class="links">
                 <a href="">JAMB</a>
                 <a href="">WAEC</a>
                 <a href="">NECO</a>
-                <a href="">POST-UTME</a>
                 <a href="https://aloc.ng">ALOC Games</a>
             </div>
 
-            <p>Make api calls to get major Nigeria exams past questions. 100% FREE</p>
+            <p>Make API calls to get major Nigeria exams past questions. 100% FREE</p>
 
             <h3>Focus on building great apps for students with unlimited access to trivial questions of major exams in Nigeria</h3>
 
@@ -130,7 +127,7 @@
     </div>
     <div class="description ">
         <h3>Intro</h3>
-        <p>Some where in my brain, i felt our questions were sit sitting too idle so we decided to open its APIs end points.  Developers and education stakeholders can use these questions to develop interesting apps for students</p>
+        <p>We have this database of past questions which took lot of effort and resources to put together. We felt those questions are sitting too idle so we decided to open its APIs end points.  Software developers, educators and stakeholders can use these questions to develop interesting apps for students.</p>
 
         <h3>Supported Subjects</h3>
         <p>We currently support 16 subjects namely
