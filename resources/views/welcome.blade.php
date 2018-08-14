@@ -172,20 +172,20 @@
 
         <h3>API call Examples</h3>
         <p><strong>Get a question</strong></p>
-        <p>https://questions.aloc.ng/api/q?subject=chemistry</p>
+        <p><a href="https://questions.aloc.ng/api/q?subject=chemistry">https://questions.aloc.ng/api/q?subject=chemistry</a></p>
 
         <p><strong>Get several questions</strong></p>
-        <p>https://questions.aloc.ng/api/q/7?subject=chemistry</p>
+        <p><a href="https://questions.aloc.ng/api/q/7?subject=chemistry">https://questions.aloc.ng/api/q/7?subject=chemistry</a></p>
 
         <p><strong>Get a question by year</strong></p>
-        <p>https://questions.aloc.ng/api/q?subject=chemistry&year=2005</p>
+        <p><a href="https://questions.aloc.ng/api/q?subject=chemistry&year=2005">https://questions.aloc.ng/api/q?subject=chemistry&year=2005</a></p>
 
         <p><strong>Get a question by exam type</strong></p>
-        <p>https://questions.aloc.ng/api/q?subject=chemistry&type=utme</p>
+        <p><a href="https://questions.aloc.ng/api/q?subject=chemistry&type=utme">https://questions.aloc.ng/api/q?subject=chemistry&type=utme</a></p>
 
 
         <p><strong>Get a question by type and year</strong></p>
-        <p>https://questions.aloc.ng/api/q?subject=chemistry&year=2009&type=utme</p>
+        <p><a href="https://questions.aloc.ng/api/q?subject=chemistry&year=2010&type=utme">https://questions.aloc.ng/api/q?subject=chemistry&year=2010&type=utme</a></p>
     </div>
     <div class="support content">
         <p>Built with love by Team ALOC</p>
