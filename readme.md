@@ -38,7 +38,29 @@ Focus on building great apps for students with unlimited access to api calls for
 
 - `php artisan server` to load app. You Got it!
 
+## API call Examples
 
+Get a question
+
+https://questions.aloc.ng/api/q?subject=chemistry
+
+Get several questions
+
+https://questions.aloc.ng/api/q/7?subject=chemistry
+
+Get a question by year
+
+https://questions.aloc.ng/api/q?subject=chemistry&year=2005
+
+Get a question by exam type
+
+https://questions.aloc.ng/api/q?subject=chemistry&type=utme
+
+Get a question by type and year
+
+https://questions.aloc.ng/api/q?subject=chemistry&year=2009&type=utme
+
+For more detailed example visit https://questions.aloc.ng
 ## ALOC Sponsors
 
 We would like to extend our thanks to the following sponsors for helping fund on-going ALOC development. If you are interested in becoming a sponsor, please visit send a mail to Admin [info@aloc.ng]:

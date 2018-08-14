@@ -105,9 +105,9 @@
             </div>
 
             <div class="links">
-                <a href="">JAMB</a>
-                <a href="">WAEC</a>
-                <a href="">NECO</a>
+                <a href="">UTME</a>
+                <a href="">WASSCE</a>
+                <a href="">Post-UTME</a>
                 <a href="https://aloc.ng">ALOC Games</a>
             </div>
 
@@ -155,9 +155,8 @@
         <h3>Exam supported</h3>
         <p>We have questions for four major exams in Nigeria</p>
         <ul>
-            <li>JAMB</li>
-            <li>WAEC (limited)</li>
-            <li>NECO (limited) </li>
+            <li>UTME</li>
+            <li>WASSCE (limited)</li>
             <li>Post-UTME (very limited)</li>
         </ul>
 
@@ -167,29 +166,30 @@
 
         <h3>URL parameters</h3>
         <p>You can supply subject, type and year to the API URL</p>
-        <p><strong>subject</strong> = english, mathematics , commerce , account, biology , physics, chemistry, englishlit, government, crk, geography, economics, irk, civiledu, insurance, currentaffairs, history</p>
-        <p><strong>type</strong> = jamb, waec, neco, post-utme</p>
+        <p><strong>subject</strong> = english, mathematics , commerce , accounting, biology , physics, chemistry, englishlit, government, crk, geography, economics, irk, civiledu, insurance, currentaffairs, history</p>
+        <p><strong>type</strong> = utme, wassce, post-utme</p>
         <p><strong>year</strong> = 2001, 2002, 2003...</p>
 
         <h3>API call Examples</h3>
         <p><strong>Get a question</strong></p>
-        <p>https://questions.aloc.ng/api/q?subject=account</p>
+        <p>https://questions.aloc.ng/api/q?subject=chemistry</p>
 
         <p><strong>Get several questions</strong></p>
-        <p>https://questions.aloc.ng/api/q/7?subject=account</p>
+        <p>https://questions.aloc.ng/api/q/7?subject=chemistry</p>
 
         <p><strong>Get a question by year</strong></p>
-        <p>https://questions.aloc.ng/api/q?subject=account&year=2013</p>
+        <p>https://questions.aloc.ng/api/q?subject=chemistry&year=2005</p>
 
         <p><strong>Get a question by exam type</strong></p>
-        <p>https://questions.aloc.ng/api/q?subject=account&type=jamb</p>
+        <p>https://questions.aloc.ng/api/q?subject=chemistry&type=utme</p>
 
 
         <p><strong>Get a question by type and year</strong></p>
-        <p>https://questions.aloc.ng/api/q?subject=account&year=2013&type=waec</p>
+        <p>https://questions.aloc.ng/api/q?subject=chemistry&year=2009&type=utme</p>
     </div>
     <div class="support content">
         <p>Built with love by Team ALOC</p>
+        <p>Source code available on <a href="https://github.com/Seunope/aloc-endpoints">GitHub</a></p>
         <p>info@aloc.ng</p>
         <p>Copyright © <?php echo date('Y'); ?> MaSSive Teck</p>
     </div>

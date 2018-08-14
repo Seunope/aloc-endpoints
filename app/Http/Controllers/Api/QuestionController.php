@@ -31,7 +31,7 @@ class QuestionController extends Controller
                 }
 
                 if(empty($data)){
-                    $data['message'] = "No record found or Bad request.";
+                    $data['message'] = "No record found. Try again";
                     $data['status'] = 400;
                     return response()->json($data, 400, [], JSON_PRETTY_PRINT);
                 }
@@ -47,10 +47,10 @@ class QuestionController extends Controller
             }catch (\Exception $e){
                 $subject = (object) ['english','mathematics','commerce', 'account','biology','physics','chemistry','englishlit','government','crk','geography','economics','irk','civiledu','insurance','currentaffairs','history'];
                 $type = (object) ['waec', 'jamb', 'neco','post-utme'];
-                $querySample = (object) ['https://questions.aloc.ng/api/q?subject=account',
-                                        'https://questions.aloc.ng/api/q?subject=account&year=2010',
-                                        'https://questions.aloc.ng/api/q?subject=account&type=waec',
-                                        'https://questions.aloc.ng/api/q?subject=account&year=2014&type=jamb'];
+                $querySample = (object) ['https://questions.aloc.ng/api/q?subject=english',
+                                        'https://questions.aloc.ng/api/q?subject=english&year=2010',
+                                        'https://questions.aloc.ng/api/q?subject=insurance&type=wassce',
+                                        'https://questions.aloc.ng/api/q?subject=english&year=2009&type=utme'];
 
                 $data ['error'] = "Something strange just happened";
                 $data['status'] = 406;
@@ -108,7 +108,7 @@ class QuestionController extends Controller
                 }
 
                 if(empty($data)){
-                    $data['message'] = "No record found or Bad request.";
+                    $data['message'] = "No record found. Try again";
                     $data['status'] = 400;
                     return response()->json($data, 400, [], JSON_PRETTY_PRINT);
                 }
@@ -126,10 +126,10 @@ class QuestionController extends Controller
             }catch (\Exception $e){
                 $subject = (object) ['english','mathematics','commerce', 'account','biology','physics','chemistry','englishlit','government','crk','geography','economics','irk','civiledu','insurance','currentaffairs','history'];
                 $type = (object) ['waec', 'jamb', 'neco','post-utme'];
-                $querySample = (object) ['https://questions.aloc.ng/api/q/0?subject=account',
-                                        'https://questions.aloc.ng/api/q/1?subject=account&year=2010',
-                                        'https://questions.aloc.ng/api/q/2?subject=account&type=waec',
-                                        'https://questions.aloc.ng/api/q/3?subject=account&year=2014&type=jamb'];
+                $querySample = (object) ['https://questions.aloc.ng/api/q/0?subject=english',
+                                        'https://questions.aloc.ng/api/q/1?subject=english&year=2010',
+                                        'https://questions.aloc.ng/api/q/2?subject=insurance&type=wassce',
+                                        'https://questions.aloc.ng/api/q/3?subject=english&year=2009&type=utme'];
 
                 $data ['error'] = "Something strange just happened";
                 $data['status'] = 406;

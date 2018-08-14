@@ -27,7 +27,7 @@ class CreateQuestionsTables extends Migration
             $table->text('solution')->nullable();
             $table->string('examtype',20);
             $table->string('examyear', 6);
-            $table->tinyInteger('requestCount')->default(0);
+            $table->mediumInteger('requestCount')->default(0);
             $table->string('authorised', 50)->nullable();
             $table->timestamps();
         });
@@ -46,7 +46,7 @@ class CreateQuestionsTables extends Migration
             $table->text('solution')->nullable();
             $table->string('examtype',20);
             $table->string('examyear', 6);
-            $table->tinyInteger('requestCount')->default(0);
+            $table->mediumInteger('requestCount')->default(0);
             $table->string('authorised', 50)->nullable();
             $table->timestamps();
         });
@@ -65,7 +65,7 @@ class CreateQuestionsTables extends Migration
             $table->text('solution')->nullable();
             $table->string('examtype',20);
             $table->string('examyear', 6);
-            $table->tinyInteger('requestCount')->default(0);
+            $table->mediumInteger('requestCount')->default(0);
             $table->string('authorised', 50)->nullable();
             $table->timestamps();
         });
@@ -84,7 +84,7 @@ class CreateQuestionsTables extends Migration
             $table->text('solution')->nullable();
             $table->string('examtype',20);
             $table->string('examyear', 6);
-            $table->tinyInteger('requestCount')->default(0);
+            $table->mediumInteger('requestCount')->default(0);
             $table->string('authorised', 50)->nullable();
             $table->timestamps();
         });
@@ -104,7 +104,7 @@ class CreateQuestionsTables extends Migration
             $table->text('solution')->nullable();
             $table->string('examtype',20);
             $table->string('examyear', 6);
-            $table->tinyInteger('requestCount')->default(0);
+            $table->mediumInteger('requestCount')->default(0);
             $table->string('authorised', 50)->nullable();
             $table->timestamps();
         });
@@ -123,7 +123,7 @@ class CreateQuestionsTables extends Migration
             $table->text('solution')->nullable();
             $table->string('examtype',20);
             $table->string('examyear', 6);
-            $table->tinyInteger('requestCount')->default(0);
+            $table->mediumInteger('requestCount')->default(0);
             $table->string('authorised', 50)->nullable();
             $table->timestamps();
         });
@@ -142,7 +142,7 @@ class CreateQuestionsTables extends Migration
             $table->text('solution')->nullable();
             $table->string('examtype',20);
             $table->string('examyear', 6);
-            $table->tinyInteger('requestCount')->default(0);
+            $table->mediumInteger('requestCount')->default(0);
             $table->string('authorised', 50)->nullable();
             $table->timestamps();
         });
