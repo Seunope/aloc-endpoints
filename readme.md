@@ -1,6 +1,6 @@
 <p align="center"><img src="https://aloc.ng/asset/images/slide/aloc-shield.png"></p>
 
-<p align="center"><i>Get inspired to learn</i></p>
+<p align="center"><i>Get Inspired to Practice</i></p>
 
 ## About ALOC
 

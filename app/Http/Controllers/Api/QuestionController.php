@@ -10,11 +10,7 @@ use App\Http\Controllers\Controller;
 
 class QuestionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $input =request()->all();
@@ -40,21 +36,21 @@ class QuestionController extends Controller
                     return response()->json($data, 400, [], JSON_PRETTY_PRINT);
                 }
 
-//                $question->requestCount=1;
-//                $question->update(['requestCount' =>1]);
+                $count = $data->requestCount + 1;
+                $question->where(['id'=> $data->id ])->update(['requestCount' => $count]);
+
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
                 $res['data']  = $data;
                 return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
-
             }catch (\Exception $e){
                 $subject = (object) ['english','mathematics','commerce', 'account','biology','physics','chemistry','englishlit','government','crk','geography','economics','irk','civiledu','insurance','currentaffairs','history'];
                 $type = (object) ['waec', 'jamb', 'neco','post-utme'];
-                $querySample = (object) ['q?subject=account',
-                                        'q?subject=account&year=2010',
-                                        'q?subject=account&type=waec',
-                                        'q?subject=account&year=2014&type=jamb'];
+                $querySample = (object) ['https://questions.aloc.ng/api/q?subject=account',
+                                        'https://questions.aloc.ng/api/q?subject=account&year=2010',
+                                        'https://questions.aloc.ng/api/q?subject=account&type=waec',
+                                        'https://questions.aloc.ng/api/q?subject=account&year=2014&type=jamb'];
 
                 $data ['error'] = "Something strange just happened";
                 $data['status'] = 406;
@@ -66,48 +62,93 @@ class QuestionController extends Controller
                 return response()->json($data, 406, [], JSON_PRETTY_PRINT);
             }
 
+        }else{
+            $data ['error'] = "Subject not supplied";
+            $data['status'] = 400;
+            return response()->json($data, 400, [], JSON_PRETTY_PRINT);
         }
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function show($recordLimit)
     {
-        //
+        $input =request()->all();
+        $limit = $recordLimit;
+        if($input['subject'] != ""){
+
+            if(!is_numeric($recordLimit)){$limit = 1;}
+            else if($recordLimit > 7){ $limit = 7; }
+
+            $subjectTable = $input['subject'];
+            try{
+                $question = new QLoader;
+                $question->setTable($subjectTable);
+
+                if(isset($input['year']) && isset($input['type'])  ){
+                    $data = $question->where(['examtype' =>$input['type'],'examyear' =>$input['year']])->inRandomOrder()->limit($limit)->get();
+                }else if(isset($input['year'])  ){
+                    $data = $question->where(['examyear' =>$input['year'] ])->inRandomOrder()->limit($limit)->get();
+                }else if(isset($input['type'])  ){
+                    $data = $question->where(['examtype' =>$input['type'] ])->inRandomOrder()->limit($limit)->get();
+                }else{
+                    $data = $question->inRandomOrder()->limit($limit)->get();
+                }
+
+                if(empty($data)){
+                    $data['message'] = "No record found or Bad request.";
+                    $data['status'] = 400;
+                    return response()->json($data, 400, [], JSON_PRETTY_PRINT);
+                }
+
+                foreach ( $data as $datum){
+                    $count = $datum->requestCount + 1;
+                    $question->where(['id'=> $datum->id ])->update(['requestCount' => $count]);
+                }
+
+                $res['subject'] = $subjectTable;
+                $res['status'] = 200;
+                $res['data']  = $data;
+                return response()->json($res, 200, [], JSON_PRETTY_PRINT);
+
+            }catch (\Exception $e){
+                $subject = (object) ['english','mathematics','commerce', 'account','biology','physics','chemistry','englishlit','government','crk','geography','economics','irk','civiledu','insurance','currentaffairs','history'];
+                $type = (object) ['waec', 'jamb', 'neco','post-utme'];
+                $querySample = (object) ['https://questions.aloc.ng/api/q/0?subject=account',
+                                        'https://questions.aloc.ng/api/q/1?subject=account&year=2010',
+                                        'https://questions.aloc.ng/api/q/2?subject=account&type=waec',
+                                        'https://questions.aloc.ng/api/q/3?subject=account&year=2014&type=jamb'];
+
+                $data ['error'] = "Something strange just happened";
+                $data['status'] = 406;
+                $data ['hint'] = ['message-1'=>'This is the list of supported subjects.', 'Subjects'=> $subject,
+                                    'message-2'=>'Supported exam types.', 'Exams'=> $type,
+                                    'message-3'=>'Query samples.', 'Queries'=> $querySample,];
+
+
+                return response()->json($data, 406, [], JSON_PRETTY_PRINT);
+            }
+
+        }else{
+            $data ['error'] = "Subject not supplied";
+            $data['status'] = 400;
+            return response()->json($data, 400, [], JSON_PRETTY_PRINT);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
