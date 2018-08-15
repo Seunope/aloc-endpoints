@@ -31,9 +31,11 @@ class QuestionController extends Controller
                 }
 
                 if(empty($data)){
-                    $data['message'] = "No record found. Try again";
-                    $data['status'] = 400;
-                    return response()->json($data, 400, [], JSON_PRETTY_PRINT);
+                    // $data['message'] = "No record found. Try again";
+                    // $data['status'] = 400;
+                    // return response()->json($data, 400, [], JSON_PRETTY_PRINT);
+                    $res['message'] = "We could not find what you asked for, but got you this";
+                    $data = $question->inRandomOrder()->first();
                 }
 
                 $count = $data->requestCount + 1;
@@ -107,10 +109,12 @@ class QuestionController extends Controller
                     $data = $question->inRandomOrder()->limit($limit)->get();
                 }
 
-                if(empty($data)){
-                    $data['message'] = "No record found. Try again";
-                    $data['status'] = 400;
-                    return response()->json($data, 400, [], JSON_PRETTY_PRINT);
+                if($data->isEmpty()){
+                    // $data['message'] = "No record found. Try again";
+                    // $data['status'] = 400;
+                    // return response()->json($data, 400, [], JSON_PRETTY_PRINT);
+                    $res['message'] = "We could not find what you asked for, but got you this";
+                    $data = $question->inRandomOrder()->limit($limit)->get();
                 }
 
                 foreach ( $data as $datum){
