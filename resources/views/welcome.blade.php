@@ -145,7 +145,7 @@
                 <li>Geography</li>
                 <li>Economics</li>
                 <li>Islamic Religious Knowledge</li>
-                <li>Civil Education</li>
+                <li>Civic Education</li>
                 <li>Insurance</li>
                 <li>Current Affairs</li>
                 <li>History</li>
@@ -153,7 +153,7 @@
         </p>
 
         <h3>Exam supported</h3>
-        <p>We have questions for four major exams in Nigeria</p>
+        <p>We have questions for three major exams in Nigeria</p>
         <ul>
             <li>UTME</li>
             <li>WASSCE (limited)</li>
@@ -162,13 +162,13 @@
 
 
         <h3>Years Supported</h3>
-        <p>This depends on the subject, but please note, the years varies from 2001 to 2013</p>
+        <p>This depends on the subject, but please note, the years vary from 2001 to 2013</p>
 
         <h3>URL parameters</h3>
-        <p>You can supply subject, type and year to the API URL</p>
-        <p><strong>subject</strong> = english, mathematics , commerce , accounting, biology , physics, chemistry, englishlit, government, crk, geography, economics, irk, civiledu, insurance, currentaffairs, history</p>
-        <p><strong>type</strong> = utme, wassce, post-utme</p>
-        <p><strong>year</strong> = 2001, 2002, 2003...</p>
+        <p>You can supply a subject, type and year to the API URL</p>
+        <p><strong>subject :</strong> english, mathematics , commerce , accounting, biology , physics, chemistry, englishlit, government, crk, geography, economics, irk, civiledu, insurance, currentaffairs, history</p>
+        <p><strong>type :</strong> utme, wassce, post-utme</p>
+        <p><strong>year :</strong> 2001, 2002, 2003...</p>
 
         <h3>API call Examples</h3>
         <p><strong>Get a question</strong></p>
