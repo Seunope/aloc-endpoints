@@ -16,4 +16,57 @@ class QLoader extends Model
         $this->table = $table;
     }
 
+    public function getQuestionAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->question} {$this->id}";
+    }
+
+    public static function FormatQuestionData($result)
+    {
+        $data =[];
+        $option['a'] = $result->optionA;
+        $option['b'] = $result->optionB;
+        $option['c'] = $result->optionC;
+        $option['d'] = $result->optionD;
+
+        $data['id'] = $result->id;
+        $data['question'] = $result->question;
+        $data['option'] = $option;
+        $data['section'] = $result->section;
+        $data['image'] = $result->image;
+        $data['answer'] = $result->answer;
+        $data['solution'] = $result->solution;
+        $data['examtype'] = $result->examtype;
+        $data['examyear'] = $result->examyear;
+
+        return $data;
+    }
+
+    public static function FormatQuestionsData($results)
+    {
+        $dataAll =[];
+        foreach ($results as $result){
+            $option['a'] = $result->optionA;
+            $option['b'] = $result->optionB;
+            $option['c'] = $result->optionC;
+            $option['d'] = $result->optionD;
+
+            $data['id'] = $result->id;
+            $data['question'] = $result->question;
+            $data['option'] = $option;
+            $data['section'] = $result->section;
+            $data['image'] = $result->image;
+            $data['answer'] = $result->answer;
+            $data['solution'] = $result->solution;
+            $data['examtype'] = $result->examtype;
+            $data['examyear'] = $result->examyear;
+            $dataAll[] = $data;
+        }
+        return $dataAll;
+    }
 }
