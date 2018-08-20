@@ -16,16 +16,6 @@ class QLoader extends Model
         $this->table = $table;
     }
 
-    public function getQuestionAttribute($value)
-    {
-        return ucwords($value);
-    }
-
-    public function getFullNameAttribute()
-    {
-        return "{$this->question} {$this->id}";
-    }
-
     public static function FormatQuestionData($result)
     {
         $data =[];
