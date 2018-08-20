@@ -20,7 +20,7 @@ This app gives developers and educator access to our questions via APIs call. Th
 
 Make api calls to have access to over 6,000 Major Nigeria past questions. 100% FREE
 
-Focus on building great apps for students with unlimited access to api calls for trivial questions of major exams in Nigeria
+You can focus on building great apps for students with unlimited access to api calls for trivial questions of major exams in Nigeria
 
 ## Setup
 
@@ -43,6 +43,8 @@ Focus on building great apps for students with unlimited access to api calls for
 Get a question
 
 https://questions.aloc.ng/api/q?subject=chemistry
+
+<img src="https://questions.aloc.ng/asset/aloc-api-sample.jpg">
 
 Get several questions
 
