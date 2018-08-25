@@ -60,7 +60,7 @@ https://questions.aloc.ng/api/q?subject=chemistry&type=utme
 
 Get a question by type and year
 
-https://questions.aloc.ng/api/q?subject=chemistry&year=2009&type=utme
+https://questions.aloc.ng/api/q?subject=chemistry&year=2010&type=utme
 
 For more detailed examples visit https://questions.aloc.ng
 ## ALOC Sponsors

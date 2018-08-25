@@ -13,7 +13,7 @@ class QuestionController extends Controller
     public function index()
     {
         $input = request()->all();
-        if ($input['subject'] != "") {
+        if (isset($input['subject']) && $input['subject'] != "") {
             $subjectTable = $input['subject'];
             try {
                 $question = new QLoader;
@@ -73,7 +73,7 @@ class QuestionController extends Controller
     {
         $input = request()->all();
         $limit = $recordLimit;
-        if ($input['subject'] != "") {
+        if (isset($input['subject']) && $input['subject'] != "") {
 
             if (!is_numeric($recordLimit)) {
                 $limit = 1;
