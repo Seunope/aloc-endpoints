@@ -136,5 +136,27 @@ class QuestionController extends Controller
         }
     }
 
+    public function reportQuestion(Request $request){
 
+        dd('sdsdsd');
+        $input = $request->all();
+
+        if(isset($input['question_id']) && isset($input['subject'])){
+
+            try{
+
+                ReportQuestion:create($input);
+                $data['status'] = 200;
+                $data['message'] = "We have received your report on the question. Thank you.";
+                return response()->json($data, 200, [], JSON_PRETTY_PRINT);
+
+            }catch(\Exception $e){
+
+                $data['status'] = 406;
+                $data['message'] = "Something strange went wrong.";
+                return response()->json($data, 406, [], JSON_PRETTY_PRINT);
+            }
+        }
+
+    }
 }

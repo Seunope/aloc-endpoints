@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chemistry extends Model
 {
-    protected $table = chemistry'';
+    protected $table = 'chemistry';
 
 }
