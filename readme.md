@@ -36,6 +36,8 @@ You can focus on building great apps for students with unlimited access to api c
 
 - You can load some dummy data into database for testing `php artisan db:seed --class=LoadDummyQuestions`
 
+- Load report question types `php artisan db:seed --class=ReportQuestionType` this is optional
+
 - `php artisan server` to load app. You Got it!
 
 ## API call Examples
