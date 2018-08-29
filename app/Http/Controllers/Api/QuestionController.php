@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\QLoader;
+use App\Models\ReportQuestion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,17 +15,20 @@ class QuestionController extends Controller
     {
         $input = request()->all();
         if (isset($input['subject']) && $input['subject'] != "") {
-            $subjectTable = $input['subject'];
+
+            $subjectTable = strtolower($input['subject']);
             try {
                 $question = new QLoader;
                 $question->setTable($subjectTable);
 
                 if (isset($input['year']) && isset($input['type'])) {
-                    $data = $question->where(['examtype' => $input['type'], 'examyear' => $input['year']])->inRandomOrder()->first();
+                    $examType = strtolower($input['type']);
+                    $data = $question->where(['examtype' => $examType, 'examyear' => $input['year']])->inRandomOrder()->first();
                 } else if (isset($input['year'])) {
                     $data = $question->where(['examyear' => $input['year']])->inRandomOrder()->first();
                 } else if (isset($input['type'])) {
-                    $data = $question->where(['examtype' => $input['type']])->inRandomOrder()->first();
+                    $examType = strtolower($input['type']);
+                    $data = $question->where(['examtype' => $examType])->inRandomOrder()->first();
                 } else {
                     $data = $question->inRandomOrder()->first();
                 }
@@ -44,19 +48,16 @@ class QuestionController extends Controller
                 return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
             } catch (\Exception $e) {
-                $subject = (object)['english', 'mathematics', 'commerce', 'account', 'biology', 'physics', 'chemistry', 'englishlit', 'government', 'crk', 'geography', 'economics', 'irk', 'civiledu', 'insurance', 'currentaffairs', 'history'];
-                $type = (object)['waec', 'jamb', 'neco', 'post-utme'];
-                $querySample = (object)['https://questions.aloc.ng/api/q?subject=english',
-                    'https://questions.aloc.ng/api/q?subject=english&year=2010',
-                    'https://questions.aloc.ng/api/q?subject=insurance&type=wassce',
-                    'https://questions.aloc.ng/api/q?subject=english&year=2009&type=utme'];
+
+                $subject = (object) subjectArray();
+                $type = (object) examTypeArray();
+                $querySample = (object) querySampleArray1();
 
                 $data ['error'] = "Something strange just happened";
                 $data['status'] = 406;
                 $data ['hint'] = ['message-1' => 'This is the list of supported subjects.', 'Subjects' => $subject,
-                    'message-2' => 'Supported exam types.', 'Exams' => $type,
-                    'message-3' => 'Query samples.', 'Queries' => $querySample,];
-
+                                  'message-2' => 'Supported exam types.', 'Exams' => $type,
+                                  'message-3' => 'Query samples.', 'Queries' => $querySample,];
 
                 return response()->json($data, 406, [], JSON_PRETTY_PRINT);
             }
@@ -81,17 +82,19 @@ class QuestionController extends Controller
                 $limit = 7;
             }
 
-            $subjectTable = $input['subject'];
+            $subjectTable = strtolower($input['subject']);
             try {
                 $question = new QLoader;
                 $question->setTable($subjectTable);
 
                 if (isset($input['year']) && isset($input['type'])) {
-                    $data = $question->where(['examtype' => $input['type'], 'examyear' => $input['year']])->inRandomOrder()->limit($limit)->get();
+                    $examType = strtolower($input['type']);
+                    $data = $question->where(['examtype' => $examType, 'examyear' => $input['year']])->inRandomOrder()->limit($limit)->get();
                 } else if (isset($input['year'])) {
                     $data = $question->where(['examyear' => $input['year']])->inRandomOrder()->limit($limit)->get();
                 } else if (isset($input['type'])) {
-                    $data = $question->where(['examtype' => $input['type']])->inRandomOrder()->limit($limit)->get();
+                    $examType = strtolower($input['type']);
+                    $data = $question->where(['examtype' => $examType])->inRandomOrder()->limit($limit)->get();
                 } else {
                     $data = $question->inRandomOrder()->limit($limit)->get();
                 }
@@ -112,18 +115,15 @@ class QuestionController extends Controller
                 return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
             } catch (\Exception $e) {
-                $subject = (object)['english', 'mathematics', 'commerce', 'account', 'biology', 'physics', 'chemistry', 'englishlit', 'government', 'crk', 'geography', 'economics', 'irk', 'civiledu', 'insurance', 'currentaffairs', 'history'];
-                $type = (object)['waec', 'jamb', 'neco', 'post-utme'];
-                $querySample = (object)['https://questions.aloc.ng/api/q/0?subject=english',
-                    'https://questions.aloc.ng/api/q/1?subject=english&year=2010',
-                    'https://questions.aloc.ng/api/q/2?subject=insurance&type=wassce',
-                    'https://questions.aloc.ng/api/q/3?subject=english&year=2009&type=utme'];
+                $subject = (object) subjectArray();
+                $type = (object) examTypeArray();
+                $querySample = (object) querySampleArray2();
 
                 $data ['error'] = "Something strange just happened";
                 $data['status'] = 406;
                 $data ['hint'] = ['message-1' => 'This is the list of supported subjects.', 'Subjects' => $subject,
-                    'message-2' => 'Supported exam types.', 'Exams' => $type,
-                    'message-3' => 'Query samples.', 'Queries' => $querySample,];
+                                  'message-2' => 'Supported exam types.', 'Exams' => $type,
+                                  'message-3' => 'Query samples.', 'Queries' => $querySample,];
 
 
                 return response()->json($data, 406, [], JSON_PRETTY_PRINT);
@@ -138,20 +138,36 @@ class QuestionController extends Controller
 
     public function reportQuestion(Request $request){
 
-        dd('sdsdsd');
         $input = $request->all();
-
+        if(isset($input['message'])){$input['message'] = ucfirst($input['message']);}
+        if(isset($input['full_name'])){$input['full_name'] = ucfirst($input['full_name']);}
         if(isset($input['question_id']) && isset($input['subject'])){
+
+            $questionID = (int) $input['question_id'];
+            $questionID = abs($questionID);
+            $subject =  strtolower($input['subject']);
+            $subjectList = subjectArray();
+
+            if( $questionID == 0 ){
+                $data ['error'] = "You supplied wrong question id";
+                $data ['status'] = 400;
+                return response()->json($data, 400, [], JSON_PRETTY_PRINT);
+            }
+
+            if(!in_array ( $subject, $subjectList )){
+                $data ['error'] = "Wrong subject not supplied";
+                $data ['status'] = 400;
+                return response()->json($data, 400, [], JSON_PRETTY_PRINT);
+            }
 
             try{
 
-                ReportQuestion:create($input);
+                ReportQuestion::create($input);
                 $data['status'] = 200;
                 $data['message'] = "We have received your report on the question. Thank you.";
                 return response()->json($data, 200, [], JSON_PRETTY_PRINT);
 
             }catch(\Exception $e){
-
                 $data['status'] = 406;
                 $data['message'] = "Something strange went wrong.";
                 return response()->json($data, 406, [], JSON_PRETTY_PRINT);

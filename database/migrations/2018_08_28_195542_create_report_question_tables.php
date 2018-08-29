@@ -20,7 +20,7 @@ class CreateReportQuestionTables extends Migration
             $table->string('subject');
             $table->text('message', 225)->nullable();
             $table->enum('type',['1','2','3','4','5','6','7']); //1=>question. 2=>option A 3=> option B, 4=>option C 5=> option D 6=>answer 7=>solution
-            $table->enum('status', ['0,1']);  //0=> opened 1=>closed
+            $table->enum('status', ['0','1']);  //0=> opened 1=>closed
             $table->timestamps();
         });
 
