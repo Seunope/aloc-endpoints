@@ -172,6 +172,11 @@ class QuestionController extends Controller
                 $data['message'] = "Something strange went wrong.";
                 return response()->json($data, 406, [], JSON_PRETTY_PRINT);
             }
+        }else{
+
+            $data['status'] = 406;
+            $data['message'] = "The parameters you sent does not match our requirement. You should provide subject and question_id";
+            return response()->json($data, 406, [], JSON_PRETTY_PRINT);
         }
 
     }
