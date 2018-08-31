@@ -141,7 +141,7 @@
                 <li>Chemistry</li>
                 <li>English literature</li>
                 <li>Government</li>
-                <li>Christ Religious Knowledge</li>
+                <li>Christian Religious Knowledge</li>
                 <li>Geography</li>
                 <li>Economics</li>
                 <li>Islamic Religious Knowledge</li>
