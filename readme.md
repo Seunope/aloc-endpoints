@@ -56,6 +56,12 @@ Get several questions (limit 40)
 
 https://questions.aloc.ng/api/q/7?subject=chemistry
 
+eg.
+
+`https://questions.aloc.ng/api/q/23?subject=chemistry`
+`https://questions.aloc.ng/api/q/30?subject=chemistry`
+`https://questions.aloc.ng/api/q/4?subject=chemistry`
+
 Get a question by year
 
 https://questions.aloc.ng/api/q?subject=chemistry&year=2005
