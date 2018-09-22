@@ -1,7 +1,7 @@
 <?php
 
 function subjectArray (){
-   return ['english', 'mathematics', 'commerce', 'account', 'biology', 'physics', 'chemistry', 'englishlit', 'government', 'crk', 'geography', 'economics', 'irk', 'civiledu', 'insurance', 'currentaffairs', 'history'];
+   return ['english', 'mathematics', 'commerce', 'accounting', 'biology', 'physics', 'chemistry', 'englishlit', 'government', 'crk', 'geography', 'economics', 'irk', 'civiledu', 'insurance', 'currentaffairs', 'history'];
 }
 
 function examTypeArray(){

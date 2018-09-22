@@ -180,4 +180,67 @@ class QuestionController extends Controller
         }
 
     }
+
+    public function manyQuestions(){
+        $input = request()->all();
+        $questionLimit = 40;
+        if (isset($input['subject']) && $input['subject'] != "") {
+
+            $subjectTable = strtolower($input['subject']);
+            try {
+                $question = new QLoader;
+                $question->setTable($subjectTable);
+
+                if (isset($input['year']) && isset($input['type'])) {
+                    $examType = strtolower($input['type']);
+                    $data = $question->where(['examtype' => $examType, 'examyear' => $input['year']])
+                                     ->inRandomOrder()->take($questionLimit)->get();
+                } else if (isset($input['year'])) {
+                    $data = $question->where(['examyear' => $input['year']])
+                                     ->inRandomOrder()->take($questionLimit)->get();
+                } else if (isset($input['type'])) {
+                    $examType = strtolower($input['type']);
+                    $data = $question->where(['examtype' => $examType])
+                                     ->inRandomOrder()->take($questionLimit)->get();
+                } else {
+                    $data = $question->inRandomOrder()->take($questionLimit)->get();
+                }
+
+                if (empty($data)) {
+                    $res['message'] = "We could not find what you asked for, but got you this";
+                    $data = $question->inRandomOrder()->take($questionLimit)->get();
+                }
+
+                foreach ($data as $datum) {
+                    $count = $datum->requestCount + 1;
+                    $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
+                }
+
+                $res['subject'] = $subjectTable;
+                $res['status'] = 200;
+                $res['data'] = $question::FormatQuestionsData($data);
+
+                return response()->json($res, 200, [], JSON_PRETTY_PRINT);
+
+            } catch (\Exception $e) {
+                $subject = (object) subjectArray();
+                $type = (object) examTypeArray();
+                $querySample = (object) querySampleArray1();
+
+                $data ['error'] = "Something strange just happened";
+                $data['status'] = 406;
+                $data ['hint'] = ['message-1' => 'This is the list of supported subjects.', 'Subjects' => $subject,
+                    'message-2' => 'Supported exam types.', 'Exams' => $type,
+                    'message-3' => 'Query samples.', 'Queries' => $querySample,];
+
+                return response()->json($data, 406, [], JSON_PRETTY_PRINT);
+            }
+
+        } else {
+            $data ['error'] = "Subject not supplied";
+            $data['status'] = 400;
+            return response()->json($data, 400, [], JSON_PRETTY_PRINT);
+        }
+    }
+
 }

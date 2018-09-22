@@ -20,6 +20,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['namespace' => 'Api'], function () {
 
     Route::resource('/q', 'QuestionController');
+    Route::get('/m', 'QuestionController@manyQuestions');
     Route::post('/r', 'QuestionController@reportQuestion');
+
+    Route::group(['prefix'=>'metrics'], function(){
+        Route::get('/subjects-call', 'MetricsController@subjectsApiCallCounts');
+    });
 
 });
