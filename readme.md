@@ -54,13 +54,15 @@ https://questions.aloc.ng/api/m?subject=chemistry
 
 Get several questions (limit 40)
 
-https://questions.aloc.ng/api/q/7?subject=chemistry
+https://questions.aloc.ng/api/m/7?subject=chemistry
 
 eg.
 
-`https://questions.aloc.ng/api/q/23?subject=chemistry`
-`https://questions.aloc.ng/api/q/30?subject=chemistry`
-`https://questions.aloc.ng/api/q/4?subject=chemistry`
+`https://questions.aloc.ng/api/m/23?subject=chemistry`
+`https://questions.aloc.ng/api/m/30?subject=chemistry`
+`https://questions.aloc.ng/api/m/4?subject=chemistry`
+
+#### Please note: when you use 'q' in your query the questions limit is 7 while 'm' limit is 40 
 
 Get a question by year
 
