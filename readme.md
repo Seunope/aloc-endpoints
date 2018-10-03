@@ -54,7 +54,7 @@ https://questions.aloc.ng/api/m?subject=chemistry
 
 Get several questions (limit 40)
 
-https://questions.aloc.ng/api/m/7?subject=chemistry
+https://questions.aloc.ng/api/q/7?subject=chemistry
 
 eg.
 
