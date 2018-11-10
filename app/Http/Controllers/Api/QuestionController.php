@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\ApiCallIpAddress;
 use App\Models\QLoader;
 use App\Models\ReportQuestion;
 use Illuminate\Http\Request;
@@ -40,6 +41,7 @@ class QuestionController extends Controller
 
                 $count = $data->requestCount + 1;
                 $question->where(['id' => $data->id])->update(['requestCount' => $count]);
+                storeQuestionRequestByIP($subjectTable);
 
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
@@ -52,7 +54,7 @@ class QuestionController extends Controller
                 $subject = (object) subjectArray();
                 $type = (object) examTypeArray();
                 $querySample = (object) querySampleArray1();
-
+                $data = null;
                 $data ['error'] = "Something strange just happened";
                 $data['status'] = 406;
                 $data ['hint'] = ['message-1' => 'This is the list of supported subjects.', 'Subjects' => $subject,
@@ -69,7 +71,6 @@ class QuestionController extends Controller
         }
     }
 
-
     public function show($recordLimit)
     {
         $input = request()->all();
@@ -78,8 +79,8 @@ class QuestionController extends Controller
 
             if (!is_numeric($recordLimit)) {
                 $limit = 1;
-            } else if ($recordLimit > 7) {
-                $limit = 7;
+            } else if ($recordLimit > 40) {
+                $limit = 40;
             }
 
             $subjectTable = strtolower($input['subject']);
@@ -107,6 +108,7 @@ class QuestionController extends Controller
                 foreach ($data as $datum) {
                     $count = $datum->requestCount + 1;
                     $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
+                    storeQuestionRequestByIP($subjectTable);
                 }
 
                 $res['subject'] = $subjectTable;
@@ -118,13 +120,66 @@ class QuestionController extends Controller
                 $subject = (object) subjectArray();
                 $type = (object) examTypeArray();
                 $querySample = (object) querySampleArray2();
-
+                $data = null;
                 $data ['error'] = "Something strange just happened";
                 $data['status'] = 406;
                 $data ['hint'] = ['message-1' => 'This is the list of supported subjects.', 'Subjects' => $subject,
                                   'message-2' => 'Supported exam types.', 'Exams' => $type,
                                   'message-3' => 'Query samples.', 'Queries' => $querySample,];
 
+
+                return response()->json($data, 406, [], JSON_PRETTY_PRINT);
+            }
+
+        } else {
+            $data ['error'] = "Subject not supplied";
+            $data['status'] = 400;
+            return response()->json($data, 400, [], JSON_PRETTY_PRINT);
+        }
+    }
+
+    public function questionById($questionId){
+        $input = request()->all();
+        if (isset($input['subject']) && $input['subject'] != "") {
+
+            if (!is_numeric($questionId)) {
+                $data ['error'] = "Supply numbers only";
+                $data['status'] = 400;
+                return response()->json($data, 400, [], JSON_PRETTY_PRINT);
+            }
+
+            $subjectTable = strtolower($input['subject']);
+            try {
+                $question = new QLoader;
+                $question->setTable($subjectTable);
+                $data = $question->find($questionId);
+
+                if (!empty($data)) {
+                    $res['subject'] = $subjectTable;
+                    $res['status'] = 200;
+                    $res['data'] = $question::FormatQuestionData($data);
+
+                    $count = $data->requestCount + 1;
+                    $question->where(['id' => $data->id])->update(['requestCount' => $count]);
+                    storeQuestionRequestByIP($subjectTable);
+                    return response()->json($res, 200, [], JSON_PRETTY_PRINT);
+
+                } else {
+                    $res['subject'] = $subjectTable;
+                    $res['question_id'] = $questionId;
+                    $res['status'] = 204;
+                    $res['error'] = "No content found";
+                    return response()->json($res, 400, [], JSON_PRETTY_PRINT);
+                }
+
+            } catch (\Exception $e) {
+                $subject = (object) subjectArray();
+                $querySample = (object) querySampleArray2();
+                $data = null;
+                $data ['error'] = "Something strange just happened";
+                $data['status'] = 406;
+                $data ['hint'] = ['message-1' => 'This is the list of supported subjects.', 'Subjects' => $subject,
+                    'message-2' => 'Query samples.', 'Queries' => $querySample,];
 
                 return response()->json($data, 406, [], JSON_PRETTY_PRINT);
             }
@@ -214,6 +269,7 @@ class QuestionController extends Controller
                 foreach ($data as $datum) {
                     $count = $datum->requestCount + 1;
                     $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
+                    storeQuestionRequestByIP($subjectTable);
                 }
 
                 $res['subject'] = $subjectTable;
@@ -226,7 +282,7 @@ class QuestionController extends Controller
                 $subject = (object) subjectArray();
                 $type = (object) examTypeArray();
                 $querySample = (object) querySampleArray1();
-
+                $data = null;
                 $data ['error'] = "Something strange just happened";
                 $data['status'] = 406;
                 $data ['hint'] = ['message-1' => 'This is the list of supported subjects.', 'Subjects' => $subject,
@@ -240,6 +296,36 @@ class QuestionController extends Controller
             $data ['error'] = "Subject not supplied";
             $data['status'] = 400;
             return response()->json($data, 400, [], JSON_PRETTY_PRINT);
+        }
+    }
+
+    public function topQuestion(){
+
+        try{
+            $randSubjects = randomSubjects();
+            $question = new QLoader;
+            foreach ( $randSubjects as $key => $subject ){
+                $question->setTable( $subject);
+                $questionSet = $question->where('id','!=', 0)->latest('updated_at')->inRandomOrder()->limit(2)->get();
+
+                foreach ($questionSet as $eachQuestion){
+
+                    $eachQuestion['subject'] = $subject;
+                    $data[] = $eachQuestion;
+                    storeQuestionRequestByIP($subject);
+                    $count = $eachQuestion->requestCount + 1;
+                    $question->where(['id' => $eachQuestion->id])->update(['requestCount' => $count]);
+                }
+            }
+            shuffle($data);
+            $res['status'] = 200;
+            $res['data'] = $question::FormatTopQuestionsData($data);
+            return response()->json($res, 200, [], JSON_PRETTY_PRINT);
+        } catch (\Exception $e) {
+            $data = null;
+            $data ['error'] = "Something strange just happened";
+            $data['status'] = 406;
+            return response()->json($data, 406, [], JSON_PRETTY_PRINT);
         }
     }
 

@@ -59,4 +59,27 @@ class QLoader extends Model
         }
         return $dataAll;
     }
+
+    public static function FormatTopQuestionsData($results)
+    {
+        $dataAll =[];
+        foreach ($results as $result){
+            $option['a'] = $result->optionA;
+            $option['b'] = $result->optionB;
+            $option['c'] = $result->optionC;
+            $option['d'] = $result->optionD;
+
+            $data['id'] = $result->id;
+            $data['subject'] = $result->subject;
+            $data['question'] = $result->question;
+            $data['option'] = $option;
+            $data['section'] = $result->section;
+            $data['image'] = $result->image;
+            $data['answer'] = $result->answer;
+            $data['solution'] = $result->solution;
+            $data['examtype'] = $result->examtype;
+            $dataAll[] = $data;
+        }
+        return $dataAll;
+    }
 }
