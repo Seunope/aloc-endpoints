@@ -48,9 +48,20 @@ https://questions.aloc.ng/api/q?subject=chemistry
 
 <img src="https://questions.aloc.ng/asset/aloc-api-sample.jpg">
 
-Get several questions
+Get many questions (returns 40 questions)
+
+https://questions.aloc.ng/api/m?subject=chemistry
+
+Get several questions (limit 40)
 
 https://questions.aloc.ng/api/q/7?subject=chemistry
+
+eg.
+
+`https://questions.aloc.ng/api/q/23?subject=chemistry`
+`https://questions.aloc.ng/api/q/30?subject=chemistry`
+`https://questions.aloc.ng/api/q/4?subject=chemistry`
+
 
 Get a question by year
 
