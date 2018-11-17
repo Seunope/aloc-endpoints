@@ -75,6 +75,10 @@ Get a question by type and year
 
 https://questions.aloc.ng/api/q?subject=chemistry&year=2010&type=utme
 
+Get question by id and subject
+
+https://questions.aloc.ng/api/q-by-id/1?subject=chemistry
+
 For more detailed examples visit https://questions.aloc.ng
 ## ALOC Sponsors
 
