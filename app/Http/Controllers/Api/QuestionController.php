@@ -313,8 +313,8 @@ class QuestionController extends Controller
                     $eachQuestion['subject'] = $subject;
                     $data[] = $eachQuestion;
                     storeQuestionRequestByIP($subject);
-                    $count = $eachQuestion->requestCount + 1;
-                    $question->where(['id' => $eachQuestion->id])->update(['requestCount' => $count]);
+                    // $count = $eachQuestion->requestCount + 1;
+                    // $question->where(['id' => $eachQuestion->id])->update(['requestCount' => $count]);
                 }
             }
             shuffle($data);
