@@ -236,6 +236,15 @@ class QuestionController extends Controller
 
     }
 
+    public function allSubjects(){
+
+        $subject = (object) subjectArray();
+        $data['message'] = "List of subjects supported";
+        $data['status'] = 200;
+        $data['subjects'] = $subject;
+        return response()->json($data, 200, [], JSON_PRETTY_PRINT);
+    }
+
     public function manyQuestions(){
         $input = request()->all();
         $questionLimit = 40;

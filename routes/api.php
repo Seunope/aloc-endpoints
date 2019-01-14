@@ -21,6 +21,8 @@ Route::group(['namespace' => 'Api'], function () {
 
     Route::resource('/q', 'QuestionController');
     Route::get('/q-by-id/{id}', 'QuestionController@questionById');
+    Route::get('/q-subjects', 'QuestionController@allSubjects');
+
 
     Route::get('/m', 'QuestionController@manyQuestions');
     Route::post('/r', 'QuestionController@reportQuestion');
