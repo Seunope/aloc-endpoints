@@ -117,6 +117,7 @@ class QuestionController extends Controller
                 return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
             } catch (\Exception $e) {
+                dd($e);
                 $subject = (object) subjectArray();
                 $type = (object) examTypeArray();
                 $querySample = (object) querySampleArray2();
