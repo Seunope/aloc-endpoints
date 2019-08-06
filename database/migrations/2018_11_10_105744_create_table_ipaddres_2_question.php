@@ -17,6 +17,14 @@ class CreateTableIpaddres2Question extends Migration
             $table->increments('id');
             $table->string('subject');
             $table->string('ipAddress');
+            $table->string('countryName')->nullable();
+            $table->string('countryCode')->nullable();
+            $table->string('regionCode')->nullable();
+            $table->string('regionName')->nullable();
+            $table->string('cityName')->nullable();
+            $table->string('zipCode')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->Integer('requestCount')->default(0);
             $table->timestamps();
         });

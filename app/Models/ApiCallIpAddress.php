@@ -8,6 +8,7 @@ class ApiCallIpAddress extends Model
 {
     protected $table = 'api_call_ip_address';
 
-    protected  $fillable = ['subject', 'ipAddress','requestCount'];
+    protected  $fillable = ['subject', 'ipAddress','requestCount','countryCode','countryName','regionCode',
+                            'regionName','cityName','zipCode','latitude','longitude'];
 
 }

@@ -31,12 +31,25 @@ function randomSubjects(){
 
 function storeQuestionRequestByIP($subject){
     $userIp = request()->getClientIp(true);
+    $locationData = \Location::get("197.149.92.146");
+
     $res =  ApiCallIpAddress::where(['ipAddress' => $userIp,'subject' => $subject] )->get();
     if(!$res->isEmpty()){
         $res = $res->first();
         $count = $res->requestCount + 1;
-        $res::where('id','=', $res->id)->update(['requestCount'=>$count]);
+        $res::where('id','=', $res->id)->update(['requestCount'=>$count,'countryCode'=>$locationData->countryCode,
+                                                'countryName'=>$locationData->countryName,'regionName'=>$locationData->regionName,]);
     }else{
+
+        $data['countryCode'] = $locationData->countryCode;
+        $data['countryName'] = $locationData->countryName ;
+        $data['regionCode'] = $locationData->regionCode ;
+        $data['regionName'] = $locationData->regionName ;
+        $data['cityName'] = $locationData->cityName ;
+        $data['zipCode'] = $locationData->zipCode;
+        $data['latitude'] = $locationData->latitude ;
+        $data['longitude'] = $locationData->longitude;
+
         $data['subject'] = $subject;
         $data['ipAddress'] = $userIp;
         ApiCallIpAddress::create($data);
