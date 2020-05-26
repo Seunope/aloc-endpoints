@@ -31,7 +31,7 @@ function randomSubjects(){
 
 function storeQuestionRequestByIP($subject){
     $userIp = request()->getClientIp(true);
-    $locationData = \Location::get("197.149.92.146");
+    $locationData = \Location::get( $userIp);
 
     $res =  ApiCallIpAddress::where(['ipAddress' => $userIp,'subject' => $subject] )->get();
     if(!$res->isEmpty()){

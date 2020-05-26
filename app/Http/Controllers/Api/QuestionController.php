@@ -41,7 +41,7 @@ class QuestionController extends Controller
 
                 $count = $data->requestCount + 1;
                 $question->where(['id' => $data->id])->update(['requestCount' => $count]);
-                storeQuestionRequestByIP($subjectTable);
+                //storeQuestionRequestByIP($subjectTable);
 
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
@@ -50,7 +50,7 @@ class QuestionController extends Controller
                 return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
             } catch (\Exception $e) {
-
+                //dd($e);
                 $subject = (object) subjectArray();
                 $type = (object) examTypeArray();
                 $querySample = (object) querySampleArray1();
@@ -108,7 +108,7 @@ class QuestionController extends Controller
                 foreach ($data as $datum) {
                     $count = $datum->requestCount + 1;
                     $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
-                    storeQuestionRequestByIP($subjectTable);
+                    //storeQuestionRequestByIP($subjectTable);
                 }
 
                 $res['subject'] = $subjectTable;
