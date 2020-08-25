@@ -31,6 +31,11 @@ Route::group(['namespace' => 'Api'], function () {
 
     Route::group(['prefix'=>'metrics'], function(){
         Route::get('/subjects-call', 'MetricsController@subjectsApiCallCounts');
+        Route::get('/list-subjects', 'MetricsController@availableSubjects');
+        Route::get('/subjects-available-for/{year}', 'MetricsController@subjectAvailableForYear');
+        Route::get('/years-available-for/{subject}', 'MetricsController@yearAvailableForSubject');
+        Route::get('/questions-available-for/{subject}', 'MetricsController@subjectQuestions');
+
     });
 
 });
