@@ -75,7 +75,7 @@ class MetricsController extends Controller
                         $itemCounter++;
                     }
                 }
-                $res['message'] = 'Subjects available for year'.$year;
+                $res['message'] = 'Subjects available for year '.$year;
                 $res['status'] = 200;
                 $res['data'] =  $subjectAvailable;
 
