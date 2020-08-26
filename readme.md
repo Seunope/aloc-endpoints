@@ -46,7 +46,7 @@ Get a question
 
 https://questions.aloc.ng/api/q?subject=chemistry
 
-<img src="https://questions.aloc.ng/asset/aloc-api-sample.jpg">
+<img src="https://aloc.ng/asset/images/others/aloc-api-sample.png">
 
 Get many questions (returns 40 questions)
 
@@ -80,6 +80,17 @@ Get question by id and subject
 https://questions.aloc.ng/api/q-by-id/1?subject=chemistry
 
 For more detailed examples visit https://questions.aloc.ng
+## API Documentation
+
+Vist the <a href='https://github.com/Seunope/aloc-endpoints/wiki'>lib wiki</a> to get access to some special features.<a href='https://github.com/Seunope/aloc-endpoints/wiki'>API Documentation</a>
+
+<ul>
+  <li>Subject Metrics</li>
+   <li>API Parameters</li>
+   <li>Sample APi</li>
+   <li>Subject & Year</li>
+<ul>  
+  
 ## ALOC Sponsors
 
 We would like to extend our thanks to the following sponsors for helping fund on-going ALOC development. If you are interested in becoming a sponsor, please send a mail to Admin [info@aloc.ng]:
