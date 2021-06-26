@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +15,4 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::get('backup', function(){
-    \Illuminate\Support\Facades\Artisan::call('run:backup-db');
-    dd('Action was successful');
 });

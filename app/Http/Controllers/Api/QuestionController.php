@@ -41,7 +41,7 @@ class QuestionController extends Controller
 
                 $count = $data->requestCount + 1;
                 $question->where(['id' => $data->id])->update(['requestCount' => $count]);
-                //storeQuestionRequestByIP($subjectTable);
+                storeQuestionRequestByIP($subjectTable);
 
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
@@ -108,7 +108,7 @@ class QuestionController extends Controller
                 foreach ($data as $datum) {
                     $count = $datum->requestCount + 1;
                     $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
-                    //storeQuestionRequestByIP($subjectTable);
+                    storeQuestionRequestByIP($subjectTable);
                 }
 
                 $res['subject'] = $subjectTable;
@@ -174,6 +174,7 @@ class QuestionController extends Controller
                 }
 
             } catch (\Exception $e) {
+                //dd($e);
                 $subject = (object) subjectArray();
                 $querySample = (object) querySampleArray2();
                 $data = null;
