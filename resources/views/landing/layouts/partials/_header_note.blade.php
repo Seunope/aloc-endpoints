@@ -8,9 +8,11 @@
                 <nav class="site-navigation position-relative text-right" role="navigation">
                     <ul class="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block  m-0 p-0">
                         <li><a href="#home-section" class="nav-link">Home</a></li>
-                        <li><a href="#courses-section" class="nav-link">Courses</a></li>
-                        <li><a href="#programs-section" class="nav-link">Programs</a></li>
-                        <li><a href="#teachers-section" class="nav-link">Teachers</a></li>
+                        <li><a href="#programs-section" class="nav-link">APIs</a></li>
+                        <li><a href="#subjects-section" class="nav-link">Subjects</a></li>
+                        <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
+                        <li><a href="https://github.com/Seunope/aloc-endpoints/wiki" target="_blank">Docs</a></li>
+
                     </ul>
                 </nav>
             </div>

@@ -26,7 +26,7 @@
             <div class="col-12">
               <div class="row align-items-center">
                 <div class="col-lg-6 mb-4">
-                  <h1  data-aos="fade-up" data-aos-delay="100">Acess 20,000 Past Questions</h1>
+                  <h1  data-aos="fade-up" data-aos-delay="100">Access 20,000 Past Questions</h1>
                   <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">Make API calls to get major Nigeria exams past questions.</p>
                     <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">UTME | WASSCE | POST-UTME | ALOC GAMES</p>
                     <p data-aos="fade-up" data-aos-delay="300"><a href="#" class="btn btn-primary py-3 px-5 btn-pill">Start Now</a></p>
@@ -69,21 +69,14 @@
         </div>
         <div class="row mb-5 align-items-center">
           <div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100">
-            <img src="{{url('landing/images/undraw_youtube_tutorial.svg')}}" alt="Image" class="img-fluid">
+            <img src="{{url('landing/images/api_question_sample.png')}}" alt="Image" class="img-fluid">
           </div>
           <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
             <h2 class="text-black mb-4">How it started</h2>
-            <p class="mb-4">We have this database of past questions which took lot of effort and resources to put together. We felt those questions are sitting too idle so we decided to open its APIs end points. Software developers, educators and stakeholders can use these questions to develop interesting apps for students.</p>
+            <p class="mb-4">We have this database of past questions which took lot of effort and resources to put together. We felt those questions are sitting too idle so we decided to open its APIs end points.</p>
 
-            <div class="d-flex align-items-center custom-icon-wrap mb-3">
-              <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
-              <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>
-            </div>
+              <p class="mb-4">Software developers, educators and stakeholders can use these questions to develop interesting apps for students.</p>
 
-            <div class="d-flex align-items-center custom-icon-wrap">
-              <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
-              <div><h3 class="m-0">150 Universities Worldwide</h3></div>
-            </div>
 
           </div>
         </div>
@@ -122,28 +115,18 @@
             <h2 class="text-black mb-4">Years Supported</h2>
             <p class="mb-4">This depends on the subject, but please note, the years vary from 2001 to 2020</p>
 
-            <div class="d-flex align-items-center custom-icon-wrap mb-3">
-              <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
-              <div><h3 class="m-0">22,931 Yearly Graduates</h3></div>
-            </div>
-
-            <div class="d-flex align-items-center custom-icon-wrap">
-              <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
-              <div><h3 class="m-0">150 Universities Worldwide</h3></div>
-            </div>
-
           </div>
         </div>
 
       </div>
     </div>
 
-    <div class="site-section" id="teachers-section">
+    <div class="site-section" id="pricing-section">
       <div class="container">
 
         <div class="row mb-5 justify-content-center">
           <div class="col-lg-7 mb-5 text-center"  data-aos="fade-up" data-aos-delay="">
-            <h2 class="section-title">How to get Access</h2>
+            <h2 class="section-title">Our Pricing</h2>
             <p class="mb-5">Create a free account and get authorization token to talk to our past questions endpoints remotely</p>
           </div>
         </div>
@@ -152,10 +135,10 @@
 
           <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
             <div class="teacher text-center">
-              <img src="{{url('landing/images/person_1.jpg')}}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">
+{{--              <img src="{{url('landing/images/person_1.jpg')}}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">--}}
               <div class="py-2">
-                <h3 class="text-black">Benjamin Stone</h3>
-                <p class="position">Physics Teacher</p>
+                <h3 class="text-black">Access Plan</h3>
+                <p class="position">50,000 free API calls</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eius suscipit delectus enim iusto tempora, adipisci at provident.</p>
               </div>
             </div>
@@ -163,10 +146,10 @@
 
           <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
             <div class="teacher text-center">
-              <img src="{{url('landing/images/person_2.jpg')}}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">
+{{--              <img src="{{url('landing/images/person_2.jpg')}}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">--}}
               <div class="py-2">
-                <h3 class="text-black">Katleen Stone</h3>
-                <p class="position">Physics Teacher</p>
+                <h3 class="text-black">Basic Plan</h3>
+                <p class="position">100,0000 free API calls</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eius suscipit delectus enim iusto tempora, adipisci at provident.</p>
               </div>
             </div>
@@ -174,10 +157,10 @@
 
           <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
             <div class="teacher text-center">
-              <img src="{{url('landing/images/person_3.jpg')}}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">
+{{--              <img src="{{url('landing/images/person_3.jpg')}}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">--}}
               <div class="py-2">
-                <h3 class="text-black">Sadie White</h3>
-                <p class="position">Physics Teacher</p>
+                <h3 class="text-black">Huge Plan</h3>
+                <p class="position">Unlimited API calls</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eius suscipit delectus enim iusto tempora, adipisci at provident.</p>
               </div>
             </div>
@@ -190,17 +173,17 @@
       <div class="container">
         <div class="row justify-content-center align-items-center">
           <div class="col-md-8 text-center testimony">
-            <img src="{{url('landing/images/person_4.jpg')}}" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-            <h3 class="mb-4">Jerome Jensen</h3>
+            <img src="{{url('assets/aloc-shield.png')}}" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
+            <h3 class="mb-4">Supported By ALOC</h3>
             <blockquote>
-              <p>&ldquo; Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum rem soluta sit eius necessitatibus voluptate excepturi beatae ad eveniet sapiente impedit quae modi quo provident odit molestias! Rem reprehenderit assumenda &rdquo;</p>
+              <p>&ldquo; ALOC is an adventure based CBT practice platform with an engaging game story that unravels as students’ progresses in game levels. We use gaming concepts to increase student practice time and grade &rdquo;</p>
             </blockquote>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="site-section pb-0">
+    <div class="site-section pb-0" id="subjects-section">
 
       <div class="future-blobs">
         <div class="blob_2">
@@ -210,7 +193,7 @@
           <img src="{{url('landing/images/blob_1.svg')}}" alt="Image">
         </div>
       </div>
-      <div class="container">
+      <div class="container" >
         <div class="row mb-5 justify-content-center" data-aos="fade-up" data-aos-delay="">
           <div class="col-lg-7 text-center">
             <h2 class="section-title">Supported Subjects</h2>
@@ -291,44 +274,10 @@
 
 
 
-            <h2 class="section-title mb-3">Message Us</h2>
-            <p class="mb-5">Natus totam voluptatibus animi aspernatur ducimus quas obcaecati mollitia quibusdam temporibus culpa dolore molestias blanditiis consequuntur sunt nisi.</p>
+            <h2 class="section-title mb-3">Contact Us</h2>
+            <p class="mb-5">Over 5,483,149 API questions request has been made to this library. Do you have questions you want to add to this database? We are excited to receive your mail at aloc.mass@gmail.com</p>
 
-            <form method="post" data-aos="fade">
-              <div class="form-group row">
-                <div class="col-md-6 mb-3 mb-lg-0">
-                  <input type="text" class="form-control" placeholder="First name">
-                </div>
-                <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="Last name">
-                </div>
-              </div>
 
-              <div class="form-group row">
-                <div class="col-md-12">
-                  <input type="text" class="form-control" placeholder="Subject">
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-md-12">
-                  <input type="email" class="form-control" placeholder="Email">
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class="col-md-12">
-                  <textarea class="form-control" id="" cols="30" rows="10" placeholder="Write your message here."></textarea>
-                </div>
-              </div>
-
-              <div class="form-group row">
-                <div class="col-md-6">
-
-                  <input type="submit" class="btn btn-primary py-3 px-5 btn-block btn-pill" value="Send Message">
-                </div>
-              </div>
-
-            </form>
           </div>
         </div>
       </div>

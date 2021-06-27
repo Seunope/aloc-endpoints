@@ -2,30 +2,29 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <h3>About OneSchool</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro consectetur ut hic ipsum et veritatis corrupti. Itaque eius soluta optio dolorum temporibus in, atque, quos fugit sunt sit quaerat dicta.</p>
+                <h3>Our Goal</h3>
+                <p>To have the largest open source database of various past questions in Nigeria.</p>
             </div>
 
             <div class="col-md-3 ml-auto">
                 <h3>Links</h3>
                 <ul class="list-unstyled footer-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Courses</a></li>
-                    <li><a href="#">Programs</a></li>
-                    <li><a href="#">Teachers</a></li>
+                    <li><a href="https://github.com/Seunope/aloc-endpoints">Github Repo</a></li>
+                    <li><a href="https://github.com/Seunope/aloc-endpoints/wiki">Documentation</a></li>
+                    <li><a href="https://github.com/Seunope/aloc-endpoints/wiki/Sample-API">Sample API Call</a></li>
                 </ul>
             </div>
 
-            <div class="col-md-4">
-                <h3>Subscribe</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt iure iusto architecto? Numquam, natus?</p>
-                <form action="#" class="footer-subscribe">
-                    <div class="d-flex mb-5">
-                        <input type="text" class="form-control rounded-0" placeholder="Email">
-                        <input type="submit" class="btn btn-primary rounded-0" value="Subscribe">
-                    </div>
-                </form>
-            </div>
+{{--            <div class="col-md-4">--}}
+{{--                <h3>Subscribe</h3>--}}
+{{--                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt iure iusto architecto? Numquam, natus?</p>--}}
+{{--                <form action="#" class="footer-subscribe">--}}
+{{--                    <div class="d-flex mb-5">--}}
+{{--                        <input type="text" class="form-control rounded-0" placeholder="Email">--}}
+{{--                        <input type="submit" class="btn btn-primary rounded-0" value="Subscribe">--}}
+{{--                    </div>--}}
+{{--                </form>--}}
+{{--            </div>--}}
 
         </div>
 
@@ -34,7 +33,7 @@
                 <div class="border-top pt-5">
                     <p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | MaSSive Teck <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
