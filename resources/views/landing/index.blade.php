@@ -34,17 +34,33 @@
                 </div>
 
                 <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
-                  <form action="" method="post" class="form-box">
-                    <h3 class="h4 text-black mb-4">Sign Up</h3>
+                  <form action="{{route('signup')}}" method="post" class="form-box"  >
+                      @include('flash::message')
+                      @csrf
+                    <h3 class="h4 text-black mb-4">Sign Up
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Email Addresss">
+                        <input type="text" class="form-control" name="name"  value="{!! old('name') !!}" placeholder="Full Name" required>
                     </div>
+                    @foreach($errors->get('name') as $message)
+                        <span class="btn-danger  small">{{$message}}</span>
+                    @endforeach
+
                     <div class="form-group">
-                      <input type="password" class="form-control" placeholder="Password">
+                      <input type="text" class="form-control" name="email"  value="{!! old('email') !!}" placeholder="Email Address" required>
                     </div>
-                    <div class="form-group mb-4">
-                      <input type="password" class="form-control" placeholder="Re-type Password">
+                    @foreach($errors->get('email') as $message)
+                        <span class="btn-danger small">{{$message}}</span>
+                    @endforeach
+
+                    <div class="form-group">
+                      <input type="password" class="form-control" name="password" placeholder="Password" required>
                     </div>
+                    @foreach($errors->get('password') as $message)
+                        <span class="btn-danger">{{$message}}</span>
+                    @endforeach
+{{--                    <div class="form-group mb-4">--}}
+{{--                      <input type="password" class="form-control" placeholder="Re-type Password">--}}
+{{--                    </div>--}}
                     <div class="form-group">
                       <input type="submit" class="btn btn-primary btn-pill" value="Sign up">
                     </div>

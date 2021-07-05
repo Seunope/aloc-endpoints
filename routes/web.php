@@ -16,3 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('landing.index');
 });
+
+Route::group(['namespace' => 'Admin', 'prefix'=> 'admin'], function () {
+
+    //Route::get('/login', 'AuthController@login');
+    Route::post('/signup', 'AuthController@handleSignup')->name('signup');
+
+//    Route::get('/login', 'AuthController@login');
+//    Route::post('/login', 'AuthController@handleLogin')->name('login');
+//    Route::get('/logout', 'AuthController@handleLogout')->name('logout');
+
+    Route::group(['middleware' => 'auth'], function () {
+
+        Route::get('/dashboard', 'DashboardController@index');
+
+    });
+});
+
+
