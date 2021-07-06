@@ -95,7 +95,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials,true)) {
             $user = auth()->user();
             flash('Welcome back '.$user->name)->warning();
-            return view('admin.dashboard');
+            return redirect('admin/dashboard');
         }
         else {
             flash('Awh! Incorrect login details')->warning();
