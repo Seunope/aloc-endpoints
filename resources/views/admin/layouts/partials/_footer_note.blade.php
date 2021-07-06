@@ -2,11 +2,14 @@
 /**
  * Created by PhpStorm.
  * User: Gathem
- * Date: 2/24/2019
+ * Date: 6/07/2021
  * Time: 12:50 AM
  */?>
-<footer class="page-footer">
-    <div class="font-13">{{date('Y')}} © <b>ALOC</b> - All rights reserved.</div>
-    <a class="px-4" href="https://aloc.ng" target="_blank">ALOC Games</a>
-    <div class="to-top"><i class="fa fa-angle-double-up"></i></div>
-</footer>
+<div class="footer">
+    <div class="pull-right">
+        Built <strong>with</strong> Love.
+    </div>
+    <div>
+        <strong>Copyright</strong> MassiveTech  &copy; {{date('Y')}}
+    </div>
+</div>

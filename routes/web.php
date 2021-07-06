@@ -17,11 +17,22 @@ Route::get('/', function () {
     return view('landing.index');
 });
 
-Route::group(['namespace' => 'Admin', 'prefix'=> 'admin'], function () {
+Route::group(['namespace' => 'Admin', 'prefix'=> 'secure'], function () {
 
-    //Route::get('/login', 'AuthController@login');
+    Route::get('/signup', 'AuthController@signup');
     Route::post('/signup', 'AuthController@handleSignup')->name('signup');
 
+    Route::get('/login', 'AuthController@login');
+    Route::post('/login', 'AuthController@handleLogin')->name('login');
+    Route::get('/logout', 'AuthController@handleLogout')->name('logout');
+
+});
+
+Route::group(['namespace' => 'Admin', 'prefix'=> 'admin'], function () {
+
+//    Route::get('/signup', 'AuthController@signup');
+//    Route::post('/signup', 'AuthController@handleSignup')->name('signup');
+//
 //    Route::get('/login', 'AuthController@login');
 //    Route::post('/login', 'AuthController@handleLogin')->name('login');
 //    Route::get('/logout', 'AuthController@handleLogout')->name('logout');

@@ -34,16 +34,10 @@
                 </div>
 
                 <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
-                  <form action="{{route('signup')}}" method="post" class="form-box"  >
+                  <form action="{{route('login')}}" method="post" class="form-box"  >
                       @include('flash::message')
                       @csrf
-                    <h3 class="h4 text-black mb-4">Sign Up
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="name"  value="{!! old('name') !!}" placeholder="Full Name" required>
-                    </div>
-                    @foreach($errors->get('name') as $message)
-                        <span class="btn-danger  small">{{$message}}</span>
-                    @endforeach
+                    <h3 class="h4 text-black mb-4">Login
 
                     <div class="form-group">
                       <input type="text" class="form-control" name="email"  value="{!! old('email') !!}" placeholder="Email Address" required>
@@ -62,7 +56,7 @@
 {{--                      <input type="password" class="form-control" placeholder="Re-type Password">--}}
 {{--                    </div>--}}
                     <div class="form-group">
-                      <input type="submit" class="btn btn-primary btn-pill" value="Sign up">
+                      <input type="submit" class="btn btn-primary btn-pill" value="Submit">
                     </div>
                   </form>
 
