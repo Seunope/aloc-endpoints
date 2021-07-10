@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AccessToken;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,13 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials,true))
         {
+            $bytes = random_bytes(10);
             $user = auth()->user();
+            $accessData['user_id'] = $user->id;
+            $accessData['token'] = "ACT-".bin2hex($bytes);
+            AccessToken::create($accessData);
+
+
 //            if($user->hasRole('admin') || $user->hasRole('admin2')){
 //                return redirect('admin/dashboard');
 //            }else{
@@ -94,7 +101,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials,true)) {
             $user = auth()->user();
-            flash('Welcome back '.$user->name)->warning();
+            flash('Welcome back '.$user->name)->sucess ();
             return redirect('admin/dashboard');
         }
         else {
