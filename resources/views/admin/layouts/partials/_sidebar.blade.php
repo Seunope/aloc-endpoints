@@ -34,7 +34,7 @@
 {{--                </ul>--}}
             </li>
             <li>
-                <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Access Token</span> <span class="label label-primary pull-right">NEW</span></a>
+                <a href="{{url('admin/access-token')}}"><i class="fa fa-diamond"></i> <span class="nav-label">Access Token</span> <span class="label label-primary pull-right">NEW</span></a>
             </li>
 
 {{--            <li>--}}

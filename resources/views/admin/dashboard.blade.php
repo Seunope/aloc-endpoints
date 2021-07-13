@@ -39,7 +39,7 @@
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
                                 <span class="label label-primary pull-right">Today</span>
-                                <h5>Vistits</h5>
+                                <h5>Visits</h5>
                             </div>
                             <div class="ibox-content">
                                 <h1 class="no-margins">106,120</h1>

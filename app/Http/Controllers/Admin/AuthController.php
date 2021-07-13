@@ -101,7 +101,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials,true)) {
             $user = auth()->user();
-            flash('Welcome back '.$user->name)->sucess ();
+            flash('Welcome back '.$user->name)->success ();
             return redirect('admin/dashboard');
         }
         else {

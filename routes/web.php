@@ -30,16 +30,12 @@ Route::group(['namespace' => 'Admin', 'prefix'=> 'secure'], function () {
 
 Route::group(['namespace' => 'Admin', 'prefix'=> 'admin'], function () {
 
-//    Route::get('/signup', 'AuthController@signup');
-//    Route::post('/signup', 'AuthController@handleSignup')->name('signup');
-//
-//    Route::get('/login', 'AuthController@login');
-//    Route::post('/login', 'AuthController@handleLogin')->name('login');
-//    Route::get('/logout', 'AuthController@handleLogout')->name('logout');
-
     Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/dashboard', 'DashboardController@index');
+        Route::get('/access-token', 'AccessTokenController@index');
+        Route::get('/access-token/generate', 'AccessTokenController@generateNewToken');
+
 
     });
 });
