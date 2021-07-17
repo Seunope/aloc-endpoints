@@ -87,111 +87,111 @@
     </style>
 </head>
 <body>
-    <div class="flex-center position-ref full-height">
-        @if (Route::has('login'))
-            <div class="top-right links">
-                @auth
+<div class="flex-center position-ref full-height">
+    @if (Route::has('login'))
+        <div class="top-right links">
+            @auth
                 <a href="{{ url('/home') }}">Home</a>
-                @else
-                    <a href="{{ route('login') }}">Login</a>
-                    <a href="{{ route('register') }}">Register</a>
-                    @endauth
-            </div>
-        @endif
+            @else
+                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('register') }}">Register</a>
+            @endauth
+        </div>
+    @endif
 
-        <div class="content">
-            <div class="title m-b-md">
-                5,000 Past Questions
-            </div>
-
-            <div class="links">
-                <a href="">UTME</a>
-                <a href="">WASSCE</a>
-                <a href="">Post-UTME</a>
-                <a href="https://aloc.ng">ALOC Games</a>
-            </div>
-
-            <p>Make API calls to get major Nigeria exams past questions. 100% FREE</p>
-
-            <h3>Focus on building great apps for students with unlimited access to trivial questions of major exams in Nigeria</h3>
-
+    <div class="content">
+        <div class="title m-b-md">
+            5,000 Past Questions
         </div>
 
+        <div class="links">
+            <a href="">UTME</a>
+            <a href="">WASSCE</a>
+            <a href="">Post-UTME</a>
+            <a href="https://aloc.ng">ALOC Games</a>
+        </div>
 
+        <p>Make API calls to get major Nigeria exams past questions. 100% FREE</p>
+
+        <h3>Focus on building great apps for students with unlimited access to trivial questions of major exams in Nigeria</h3>
 
     </div>
-    <div class="support content ">
-        <h4>Supported by</h4>
-        <a href="https://aloc.ng"><img src="{{url('assets/aloc-shield.png')}}"></a>
-        <p><i>Get Inspired to Practice</i></p>
-    </div>
-    <div class="description ">
-        <h3>Intro</h3>
-        <p>We have this database of past questions which took lot of effort and resources to put together. We felt those questions are sitting too idle so we decided to open its APIs end points.  Software developers, educators and stakeholders can use these questions to develop interesting apps for students.</p>
-
-        <h3>Supported Subjects</h3>
-        <p>We currently support 17 subjects namely
-            <ul>
-                <li>English language</li>
-                <li>Mathematics</li>
-                <li>Commerce</li>
-                <li>Accounting</li>
-                <li>Biology</li>
-                <li>Physics</li>
-                <li>Chemistry</li>
-                <li>English literature</li>
-                <li>Government</li>
-                <li>Christian Religious Knowledge</li>
-                <li>Geography</li>
-                <li>Economics</li>
-                <li>Islamic Religious Knowledge</li>
-                <li>Civic Education</li>
-                <li>Insurance</li>
-                <li>Current Affairs</li>
-                <li>History</li>
-             </ul>
-        </p>
-
-        <h3>Exam supported</h3>
-        <p>We have questions for three major exams in Nigeria</p>
-        <ul>
-            <li>UTME</li>
-            <li>WASSCE (limited)</li>
-            <li>Post-UTME (very limited)</li>
-        </ul>
 
 
-        <h3>Years Supported</h3>
-        <p>This depends on the subject, but please note, the years vary from 2001 to 2013</p>
 
-        <h3>URL parameters</h3>
-        <p>You can supply a subject, type and year to the API URL</p>
-        <p><strong>subject :</strong> english, mathematics , commerce , accounting, biology , physics, chemistry, englishlit, government, crk, geography, economics, irk, civiledu, insurance, currentaffairs, history</p>
-        <p><strong>type :</strong> utme, wassce, post-utme</p>
-        <p><strong>year :</strong> 2001, 2002, 2003...</p>
+</div>
+<div class="support content ">
+    <h4>Supported by</h4>
+    <a href="https://aloc.ng"><img src="{{url('assets/aloc-shield.png')}}"></a>
+    <p><i>Get Inspired to Practice</i></p>
+</div>
+<div class="description ">
+    <h3>Intro</h3>
+    <p>We have this database of past questions which took lot of effort and resources to put together. We felt those questions are sitting too idle so we decided to open its APIs end points.  Software developers, educators and stakeholders can use these questions to develop interesting apps for students.</p>
 
-        <h3>API call Examples</h3>
-        <p><strong>Get a question</strong></p>
-        <p><a href="https://questions.aloc.ng/api/q?subject=chemistry">https://questions.aloc.ng/api/q?subject=chemistry</a></p>
+    <h3>Supported Subjects</h3>
+    <p>We currently support 17 subjects namely
+    <ul>
+        <li>English language</li>
+        <li>Mathematics</li>
+        <li>Commerce</li>
+        <li>Accounting</li>
+        <li>Biology</li>
+        <li>Physics</li>
+        <li>Chemistry</li>
+        <li>English literature</li>
+        <li>Government</li>
+        <li>Christian Religious Knowledge</li>
+        <li>Geography</li>
+        <li>Economics</li>
+        <li>Islamic Religious Knowledge</li>
+        <li>Civic Education</li>
+        <li>Insurance</li>
+        <li>Current Affairs</li>
+        <li>History</li>
+    </ul>
+    </p>
 
-        <p><strong>Get several questions</strong></p>
-        <p><a href="https://questions.aloc.ng/api/q/7?subject=chemistry">https://questions.aloc.ng/api/q/7?subject=chemistry</a></p>
+    <h3>Exam supported</h3>
+    <p>We have questions for three major exams in Nigeria</p>
+    <ul>
+        <li>UTME</li>
+        <li>WASSCE (limited)</li>
+        <li>Post-UTME (very limited)</li>
+    </ul>
 
-        <p><strong>Get a question by year</strong></p>
-        <p><a href="https://questions.aloc.ng/api/q?subject=chemistry&year=2005">https://questions.aloc.ng/api/q?subject=chemistry&year=2005</a></p>
 
-        <p><strong>Get a question by exam type</strong></p>
-        <p><a href="https://questions.aloc.ng/api/q?subject=chemistry&type=utme">https://questions.aloc.ng/api/q?subject=chemistry&type=utme</a></p>
+    <h3>Years Supported</h3>
+    <p>This depends on the subject, but please note, the years vary from 2001 to 2013</p>
+
+    <h3>URL parameters</h3>
+    <p>You can supply a subject, type and year to the API URL</p>
+    <p><strong>subject :</strong> english, mathematics , commerce , accounting, biology , physics, chemistry, englishlit, government, crk, geography, economics, irk, civiledu, insurance, currentaffairs, history</p>
+    <p><strong>type :</strong> utme, wassce, post-utme</p>
+    <p><strong>year :</strong> 2001, 2002, 2003...</p>
+
+    <h3>API call Examples</h3>
+    <p><strong>Get a question</strong></p>
+    <p><a href="https://questions.aloc.ng/api/q?subject=chemistry">https://questions.aloc.ng/api/q?subject=chemistry</a></p>
+
+    <p><strong>Get several questions</strong></p>
+    <p><a href="https://questions.aloc.ng/api/q/7?subject=chemistry">https://questions.aloc.ng/api/q/7?subject=chemistry</a></p>
+
+    <p><strong>Get a question by year</strong></p>
+    <p><a href="https://questions.aloc.ng/api/q?subject=chemistry&year=2005">https://questions.aloc.ng/api/q?subject=chemistry&year=2005</a></p>
+
+    <p><strong>Get a question by exam type</strong></p>
+    <p><a href="https://questions.aloc.ng/api/q?subject=chemistry&type=utme">https://questions.aloc.ng/api/q?subject=chemistry&type=utme</a></p>
 
 
-        <p><strong>Get a question by type and year</strong></p>
-        <p><a href="https://questions.aloc.ng/api/q?subject=chemistry&year=2010&type=utme">https://questions.aloc.ng/api/q?subject=chemistry&year=2010&type=utme</a></p>
-    </div>
-    <div class="support content">
-        <p>Built with love by Team ALOC</p>
-        <p>Source code available on <a href="https://github.com/Seunope/aloc-endpoints">GitHub</a></p>
-        <p>info@aloc.ng</p>
-        <p>Copyright © <?php echo date('Y'); ?> MaSSive Teck</p>
-    </div>
+    <p><strong>Get a question by type and year</strong></p>
+    <p><a href="https://questions.aloc.ng/api/q?subject=chemistry&year=2010&type=utme">https://questions.aloc.ng/api/q?subject=chemistry&year=2010&type=utme</a></p>
+</div>
+<div class="support content">
+    <p>Built with love by Team ALOC</p>
+    <p>Source code available on <a href="https://github.com/Seunope/aloc-endpoints">GitHub</a></p>
+    <p>info@aloc.ng</p>
+    <p>Copyright © <?php echo date('Y'); ?> MaSSive Teck</p>
+</div>
 </body>
 </html>

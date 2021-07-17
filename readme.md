@@ -16,11 +16,19 @@ Finally, boring time are over, academic practice can now be Fun for students see
 
 ## About ALOC Questions API
 
-This app gives developers and educator access to our questions via APIs call. They get free access to over 6,000 past questions for UTME, WASSCE, POST-UTME
+This app gives developers and educator access to our questions via APIs call. You get free access to over 6,000 past questions for UTME, WASSCE, POST-UTME
 
 Make api calls to have access to over 6,000 Major Nigeria past questions. 100% FREE
 
 You can focus on building great apps for students with unlimited access to api calls for trivial questions of major exams in Nigeria
+
+## Our Goal
+
+To have the largest open source database of various past questions in Nigeria. 
+
+## Call for Questions
+
+Over <a href=https://questions.aloc.ng/api/metrics/subjects-call>3,850,863 API questions</a> request has been made to this library. Do you have questions you want to add to this database? We are excited to receive your mail at aloc.mass@gmail.com
 
 ## Setup
 
@@ -46,7 +54,7 @@ Get a question
 
 https://questions.aloc.ng/api/q?subject=chemistry
 
-<img src="https://questions.aloc.ng/asset/aloc-api-sample.jpg">
+<img src="https://aloc.ng/asset/images/others/aloc-api-sample.png">
 
 Get many questions (returns 40 questions)
 
@@ -80,11 +88,21 @@ Get question by id and subject
 https://questions.aloc.ng/api/q-by-id/1?subject=chemistry
 
 For more detailed examples visit https://questions.aloc.ng
+## API Documentation
+
+Vist the <a href='https://github.com/Seunope/aloc-endpoints/wiki'>lib wiki</a> to get access to some special features.<a href='https://github.com/Seunope/aloc-endpoints/wiki'>API Documentation</a>
+
+ 
+- Subject Metrics
+- API Parameters
+- Sample APIs
+- Subject & Year
+  
 ## ALOC Sponsors
 
-We would like to extend our thanks to the following sponsors for helping fund on-going ALOC development. If you are interested in becoming a sponsor, please send a mail to Admin [info@aloc.ng]:
+We would like to extend our thanks to the following sponsors for helping fund on-going ALOC development. If you are interested in becoming a sponsor, please send a mail to Admin [aloc.mass@gmail.com]:
 
-- **[Magbodo](https://magbodo.com/)**
+- **[MaSSiveTeck](https://magbodo.com/)**
 
 ## Contributing
 
@@ -92,7 +110,7 @@ Thank you for considering contributing to the ALOC Questions Api end points!
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within ALOC APIs, please send an e-mail to Admin via [info@aloc.ng](mailto:info@aloc.ng. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within ALOC APIs, please send an e-mail to Admin via [aloc.mass@gmail.com](mailto:aloc.mass@gmail.com. All security vulnerabilities will be promptly addressed.
 
 ## License
 

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,10 +14,30 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landing.index');
 });
 
-Route::get('backup', function(){
-    \Illuminate\Support\Facades\Artisan::call('run:backup-db');
-    dd('Action was successful');
+Route::group(['namespace' => 'Admin', 'prefix'=> 'secure'], function () {
+
+    Route::get('/signup', 'AuthController@signup');
+    Route::post('/signup', 'AuthController@handleSignup')->name('signup');
+
+    Route::get('/login', 'AuthController@login');
+    Route::post('/login', 'AuthController@handleLogin')->name('login');
+    Route::get('/logout', 'AuthController@handleLogout')->name('logout');
+
 });
+
+Route::group(['namespace' => 'Admin', 'prefix'=> 'admin'], function () {
+
+    Route::group(['middleware' => 'auth'], function () {
+
+        Route::get('/dashboard', 'DashboardController@index');
+        Route::get('/access-token', 'AccessTokenController@index');
+        Route::get('/access-token/generate', 'AccessTokenController@generateNewToken');
+
+
+    });
+});
+
+
