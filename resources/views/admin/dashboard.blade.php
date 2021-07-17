@@ -12,39 +12,39 @@
                     <div class="col-lg-3">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <span class="label label-success pull-right">Monthly</span>
-                                <h5>Income</h5>
+                                <span class="label label-success pull-right">{{$topMetrics['plan']->plan}}</span>
+                                <h5>Plan</h5>
                             </div>
                             <div class="ibox-content">
-                                <h1 class="no-margins">40 886,200</h1>
+                                <h1 class="no-margins">{{formatNumber($topMetrics['accessCount'])}}/{{formatNumber($topMetrics['plan']->unit_limit)}}</h1>
                                 <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
-                                <small>Total income</small>
+                                <small>API Calls</small>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <span class="label label-info pull-right">Annual</span>
-                                <h5>Orders</h5>
+                                <span class="label label-info pull-right">Subject</span>
+                                <h5>Subject</h5>
                             </div>
                             <div class="ibox-content">
-                                <h1 class="no-margins">275,800</h1>
+                                <h1 class="no-margins">{{formatNumber($tracker['questionCalls'])}}</h1>
                                 <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
-                                <small>New orders</small>
+                                <small>Question calls</small>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <span class="label label-primary pull-right">Today</span>
-                                <h5>Visits</h5>
+                                <span class="label label-primary pull-right">Token</span>
+                                <h5>Access</h5>
                             </div>
                             <div class="ibox-content">
-                                <h1 class="no-margins">106,120</h1>
+                                <h1 class="no-margins">1</h1>
                                 <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
-                                <small>New visits</small>
+                                <small>Token created</small>
                             </div>
                         </div>
                     </div>
@@ -63,65 +63,65 @@
             </div>
         </div>
         <div class="row">
-                    <div class="col-lg-12">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                <h5>Orders</h5>
-                                <div class="pull-right">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-xs btn-white active">Today</button>
-                                        <button type="button" class="btn btn-xs btn-white">Monthly</button>
-                                        <button type="button" class="btn btn-xs btn-white">Annual</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ibox-content">
-                                <div class="row">
-                                <div class="col-lg-9">
-                                    <div class="flot-chart">
-                                        <div class="flot-chart-content" id="flot-dashboard-chart"></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <ul class="stat-list">
-                                        <li>
-                                            <h2 class="no-margins">2,346</h2>
-                                            <small>Total orders in period</small>
-                                            <div class="stat-percent">48% <i class="fa fa-level-up text-navy"></i></div>
-                                            <div class="progress progress-mini">
-                                                <div style="width: 48%;" class="progress-bar"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <h2 class="no-margins ">4,422</h2>
-                                            <small>Orders in last month</small>
-                                            <div class="stat-percent">60% <i class="fa fa-level-down text-navy"></i></div>
-                                            <div class="progress progress-mini">
-                                                <div style="width: 60%;" class="progress-bar"></div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <h2 class="no-margins ">9,180</h2>
-                                            <small>Monthly income from orders</small>
-                                            <div class="stat-percent">22% <i class="fa fa-bolt text-navy"></i></div>
-                                            <div class="progress progress-mini">
-                                                <div style="width: 22%;" class="progress-bar"></div>
-                                            </div>
-                                        </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                </div>
+{{--                    <div class="col-lg-12">--}}
+{{--                        <div class="ibox float-e-margins">--}}
+{{--                            <div class="ibox-title">--}}
+{{--                                <h5>Orders</h5>--}}
+{{--                                <div class="pull-right">--}}
+{{--                                    <div class="btn-group">--}}
+{{--                                        <button type="button" class="btn btn-xs btn-white active">Today</button>--}}
+{{--                                        <button type="button" class="btn btn-xs btn-white">Monthly</button>--}}
+{{--                                        <button type="button" class="btn btn-xs btn-white">Annual</button>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="ibox-content">--}}
+{{--                                <div class="row">--}}
+{{--                                <div class="col-lg-9">--}}
+{{--                                    <div class="flot-chart">--}}
+{{--                                        <div class="flot-chart-content" id="flot-dashboard-chart"></div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-lg-3">--}}
+{{--                                    <ul class="stat-list">--}}
+{{--                                        <li>--}}
+{{--                                            <h2 class="no-margins">2,346</h2>--}}
+{{--                                            <small>Total orders in period</small>--}}
+{{--                                            <div class="stat-percent">48% <i class="fa fa-level-up text-navy"></i></div>--}}
+{{--                                            <div class="progress progress-mini">--}}
+{{--                                                <div style="width: 48%;" class="progress-bar"></div>--}}
+{{--                                            </div>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <h2 class="no-margins ">4,422</h2>--}}
+{{--                                            <small>Orders in last month</small>--}}
+{{--                                            <div class="stat-percent">60% <i class="fa fa-level-down text-navy"></i></div>--}}
+{{--                                            <div class="progress progress-mini">--}}
+{{--                                                <div style="width: 60%;" class="progress-bar"></div>--}}
+{{--                                            </div>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <h2 class="no-margins ">9,180</h2>--}}
+{{--                                            <small>Monthly income from orders</small>--}}
+{{--                                            <div class="stat-percent">22% <i class="fa fa-bolt text-navy"></i></div>--}}
+{{--                                            <div class="progress progress-mini">--}}
+{{--                                                <div style="width: 22%;" class="progress-bar"></div>--}}
+{{--                                            </div>--}}
+{{--                                        </li>--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                </div>--}}
 
-                            </div>
-                        </div>
-                    </div>
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <h5>Hover Table  </h5>
+                                <h5>Request Tracker  </h5>
                                 <div class="ibox-tools">
                                     <a class="collapse-link">
                                         <i class="fa fa-chevron-up"></i>
@@ -146,32 +146,26 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Data</th>
+                                        <th>Token</th>
                                         <th>Subjects</th>
-                                        <th>Value</th>
+                                        <th>Request Count</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td><span class="pie">0.52,1.041</span></td>
-                                        <td>English</td>
-                                        <td class="text-navy"> <i class="fa fa-level-up"></i> 40% </td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td><span class="pie">226,134</span></td>
-                                        <td>Mathematics</td>
-                                        <td class="text-warning"> <i class="fa fa-level-down"></i> 200 </td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td><span class="pie">0.52/1.561</span></td>
-                                        <td>Damien</td>
-                                        <td class="text-navy"> <i class="fa fa-level-up"></i> 26% </td>
-                                    </tr>
-                                    </tbody>
+                                    @if(!is_null($tracker))
+                                        <tbody>
+                                        @php $subjectRequest = $tracker['subjectTracker'] @endphp
+                                        @for($i =0; $i < count($subjectRequest); $i++)
+                                        <tr>
+                                            <td>{{$i+1}}</td>
+                                            <td>{{$subjectRequest[$i]['token']}}</td>
+                                            <td>{{ucfirst($subjectRequest[$i]['subject'])}}</td>
+                                            <td class="text-navy"> {{$subjectRequest[$i]['count']}} </td>
+                                        </tr>
+                                        @endfor
+                                        </tbody>
+                                    @endif
                                 </table>
+
                             </div>
                         </div>
                     </div>

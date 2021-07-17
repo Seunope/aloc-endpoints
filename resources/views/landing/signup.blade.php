@@ -26,7 +26,7 @@
             <div class="col-12">
               <div class="row align-items-center">
                 <div class="col-lg-6 mb-4">
-                  <h1  data-aos="fade-up" data-aos-delay="100">1,000 free Past Questions API calls</h1>
+                  <h1  data-aos="fade-up" data-aos-delay="100">7,000 free Past Questions API calls</h1>
                   <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">Make API calls to get major Nigeria exams past questions.</p>
                     <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">UTME | WASSCE | POST-UTME | ALOC GAMES</p>
                     <p data-aos="fade-up" data-aos-delay="300"><a href="#" class="btn btn-primary py-3 px-5 btn-pill">Start Now</a></p>

@@ -41,6 +41,7 @@ class AuthController extends Controller
         $input['name'] = ucfirst($input['name']);
         $input['password'] = Hash::make($input['password']);
         User::create($input);
+
         flash('Account created successfully')->success();
         $credentials = $request->except('_token', 'name');
 
@@ -50,7 +51,7 @@ class AuthController extends Controller
             $bytes = random_bytes(10);
             $user = auth()->user();
             $accessData['user_id'] = $user->id;
-            $accessData['token'] = "ACT-".bin2hex($bytes);
+            $accessData['token'] = "ALOC-".bin2hex($bytes);
             AccessToken::create($accessData);
 
 

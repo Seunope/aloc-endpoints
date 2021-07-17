@@ -148,8 +148,10 @@
 {{--              <img src="{{url('landing/images/person_1.jpg')}}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">--}}
               <div class="py-2">
                 <h3 class="text-black">Access Plan</h3>
-                <p class="position">50,000 free API calls</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eius suscipit delectus enim iusto tempora, adipisci at provident.</p>
+                <p class="position">7,000 free API calls</p>
+                <p>Default units: 5,000 </p>
+                  <p>Bonus units: 2,000 </p>
+                  <p>Price: FREE </p>
               </div>
             </div>
           </div>
@@ -159,8 +161,10 @@
 {{--              <img src="{{url('landing/images/person_2.jpg')}}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">--}}
               <div class="py-2">
                 <h3 class="text-black">Basic Plan</h3>
-                <p class="position">100,0000 free API calls</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eius suscipit delectus enim iusto tempora, adipisci at provident.</p>
+                <p class="position">10,0000 free API calls</p>
+                  <p>Default units: 10,000 </p>
+                  <p>Bonus units: 10,000 </p>
+                  <p>Price: ₦2,000 </p>
               </div>
             </div>
           </div>
@@ -171,7 +175,9 @@
               <div class="py-2">
                 <h3 class="text-black">Huge Plan</h3>
                 <p class="position">Unlimited API calls</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro eius suscipit delectus enim iusto tempora, adipisci at provident.</p>
+                  <p>Default units: 70,000 </p>
+                  <p>Bonus units: 50,000 </p>
+                  <p>Price: ₦5,000 </p>
               </div>
             </div>
           </div>

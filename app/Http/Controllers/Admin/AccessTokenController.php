@@ -22,7 +22,7 @@ class AccessTokenController extends Controller
 
         $access = AccessToken::whereUserId(auth()->user()->id)->first();
         $bytes = random_bytes(10);
-        $token = "ACT-".bin2hex($bytes);
+        $token = "ALOC-".bin2hex($bytes);
         $access->update(['token'=> $token]);
         flash('New token created successfully')->success();
 
