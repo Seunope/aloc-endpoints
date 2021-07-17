@@ -13,21 +13,21 @@ class CreateTableIpaddres2Question extends Migration
      */
     public function up()
     {
-        Schema::create('api_call_ip_address', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('subject');
-            $table->string('ipAddress');
-            $table->string('countryName')->nullable();
-            $table->string('countryCode')->nullable();
-            $table->string('regionCode')->nullable();
-            $table->string('regionName')->nullable();
-            $table->string('cityName')->nullable();
-            $table->string('zipCode')->nullable();
-            $table->string('latitude')->nullable();
-            $table->string('longitude')->nullable();
-            $table->Integer('requestCount')->default(0);
-            $table->timestamps();
-        });
+//        Schema::create('api_call_ip_address', function (Blueprint $table) {
+//            $table->increments('id');
+//            $table->string('subject');
+//            $table->string('ipAddress');
+//            $table->string('countryName')->nullable();
+//            $table->string('countryCode')->nullable();
+//            $table->string('regionCode')->nullable();
+//            $table->string('regionName')->nullable();
+//            $table->string('cityName')->nullable();
+//            $table->string('zipCode')->nullable();
+//            $table->string('latitude')->nullable();
+//            $table->string('longitude')->nullable();
+//            $table->Integer('requestCount')->default(0);
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -37,7 +37,7 @@ class CreateTableIpaddres2Question extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('api_call_ip_address');
+        //Schema::dropIfExists('api_call_ip_address');
 
     }
 }

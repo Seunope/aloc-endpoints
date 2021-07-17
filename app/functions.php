@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\ApiCallIpAddress;
+use Illuminate\Support\Arr;
 
 function subjectArray (){
     return ['english', 'mathematics', 'commerce', 'accounting', 'biology', 'physics', 'chemistry', 'englishlit', 'government', 'crk', 'geography', 'economics', 'irk', 'civiledu', 'insurance', 'currentaffairs', 'history'];
@@ -25,7 +26,7 @@ function querySampleArray2(){
 }
 
 function randomSubjects(){
-    return array_random(subjectArray(), 7);
+    return Arr::random(subjectArray(), 7);
 
 }
 
