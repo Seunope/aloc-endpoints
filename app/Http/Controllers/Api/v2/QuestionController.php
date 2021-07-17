@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api\v2;
 
+use App\Models\AccessToken;
+use App\Models\AccessTokenCall;
 use App\Models\ApiCallIpAddress;
 use App\Models\QLoader;
 use App\Models\ReportQuestion;
@@ -14,7 +16,14 @@ class QuestionController extends Controller
 
     public function index()
     {
+        $processReq =  $this->processRequest();
+        if($processReq['shouldReturn']){
+            unset($processReq['shouldReturn']);
+            return response()->json($processReq, 406, [], JSON_PRETTY_PRINT);
+        }
+
         $input = request()->all();
+
         if (isset($input['subject']) && $input['subject'] != "") {
 
             $subjectTable = strtolower($input['subject']);
@@ -41,11 +50,15 @@ class QuestionController extends Controller
 
                 $count = $data->requestCount + 1;
                 $question->where(['id' => $data->id])->update(['requestCount' => $count]);
-                storeQuestionRequestByIP($subjectTable);
+                if(!env('APP_DEBUG')){
+                    storeQuestionRequestByIP($subjectTable);
+                }
 
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
                 $res['data'] = $question::FormatQuestionData($data);
+
+                $this->tokenQuestions(1, $subjectTable, $processReq['userId'], $processReq['token'] );
 
                 return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
@@ -73,6 +86,12 @@ class QuestionController extends Controller
 
     public function show($recordLimit)
     {
+        $processReq =  $this->processRequest();
+        if($processReq['shouldReturn']){
+            unset($processReq['shouldReturn']);
+            return response()->json($processReq, 406, [], JSON_PRETTY_PRINT);
+        }
+
         $input = request()->all();
         $limit = $recordLimit;
         if (isset($input['subject']) && $input['subject'] != "") {
@@ -105,15 +124,21 @@ class QuestionController extends Controller
                     $data = $question->inRandomOrder()->limit($limit)->get();
                 }
 
-                foreach ($data as $datum) {
-                    $count = $datum->requestCount + 1;
-                    $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
-                    storeQuestionRequestByIP($subjectTable);
+                if(!env('APP_DEBUG')){
+                    foreach ($data as $datum) {
+                        $count = $datum->requestCount + 1;
+                        $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
+                        storeQuestionRequestByIP($subjectTable);
+                    }
                 }
+
 
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
                 $res['data'] = $question::FormatQuestionsData($data);
+
+                $this->tokenQuestions($recordLimit, $subjectTable, $processReq['userId'], $processReq['token'] );
+
                 return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
             } catch (\Exception $e) {
@@ -140,6 +165,12 @@ class QuestionController extends Controller
     }
 
     public function questionById($questionId){
+
+        $processReq =  $this->processRequest();
+        if($processReq['shouldReturn']){
+            unset($processReq['shouldReturn']);
+            return response()->json($processReq, 406, [], JSON_PRETTY_PRINT);
+        }
         $input = request()->all();
         if (isset($input['subject']) && $input['subject'] != "") {
 
@@ -162,7 +193,10 @@ class QuestionController extends Controller
 
                     $count = $data->requestCount + 1;
                     $question->where(['id' => $data->id])->update(['requestCount' => $count]);
-                    storeQuestionRequestByIP($subjectTable);
+                    if(!env('APP_DEBUG')){
+                        storeQuestionRequestByIP($subjectTable);
+                    }
+                    $this->tokenQuestions(1, $subjectTable, $processReq['userId'], $processReq['token'] );
                     return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
                 } else {
@@ -248,6 +282,13 @@ class QuestionController extends Controller
     }
 
     public function manyQuestions(){
+
+        $processReq =  $this->processRequest();
+        if($processReq['shouldReturn']){
+            unset($processReq['shouldReturn']);
+            return response()->json($processReq, 406, [], JSON_PRETTY_PRINT);
+        }
+
         $input = request()->all();
         $questionLimit = 40;
         if (isset($input['subject']) && $input['subject'] != "") {
@@ -277,16 +318,19 @@ class QuestionController extends Controller
                     $data = $question->inRandomOrder()->take($questionLimit)->get();
                 }
 
-                foreach ($data as $datum) {
-                    $count = $datum->requestCount + 1;
-                    $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
-                    storeQuestionRequestByIP($subjectTable);
+                if(!env('APP_DEBUG')){
+                    foreach ($data as $datum) {
+                        $count = $datum->requestCount + 1;
+                        $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
+                        storeQuestionRequestByIP($subjectTable);
+                    }
                 }
 
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
                 $res['data'] = $question::FormatQuestionsData($data);
 
+                $this->tokenQuestions(40, $subjectTable, $processReq['userId'], $processReq['token'] );
                 return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
             } catch (\Exception $e) {
@@ -315,6 +359,7 @@ class QuestionController extends Controller
         try{
             $randSubjects = randomSubjects();
             $question = new QLoader;
+            $data = Array();
             foreach ( $randSubjects as $key => $subject ){
                 $question->setTable( $subject);
                 $questionSet = $question->where('id','!=', 0)->latest('updated_at')->inRandomOrder()->limit(2)->get();
@@ -323,7 +368,9 @@ class QuestionController extends Controller
 
                     $eachQuestion['subject'] = $subject;
                     $data[] = $eachQuestion;
-                    storeQuestionRequestByIP($subject);
+                    if(!env('APP_DEBUG')) {
+                        storeQuestionRequestByIP($subject);
+                    }
                     // $count = $eachQuestion->requestCount + 1;
                     // $question->where(['id' => $eachQuestion->id])->update(['requestCount' => $count]);
                 }
@@ -337,6 +384,46 @@ class QuestionController extends Controller
             $data ['error'] = "Something strange just happened";
             $data['status'] = 406;
             return response()->json($data, 406, [], JSON_PRETTY_PRINT);
+        }
+    }
+
+    private function processRequest(){
+        $accessToken =  request()->header('AccessToken');
+        if(!$accessToken){
+            $data['status'] = 400;
+            $data['shouldReturn'] = true;
+            $data ['error'] = "Access token not provide on request header";
+            return $data;
+        }
+
+        $res = AccessToken::whereToken($accessToken)->first();
+        if(!is_null($res)){
+            $data['status'] = 200;
+            $data['shouldReturn'] = false;
+            $data['userId'] = $res->user_id;
+            $data['token'] = $accessToken;
+            $res->update(['count'=> $res->count+1]);
+        }else{
+            $data['status'] = 406;
+            $data['shouldReturn'] = true;
+            $data ['error'] = "Access token not valid or deactivated";
+        }
+        return $data;
+    }
+
+    private function tokenQuestions($questionNumber,$subject, $userId, $token){
+
+        $res =  AccessTokenCall::where(['token' =>$token,'subject' => $subject])->first();
+        if(!is_null($res)){
+            $count = $res->requestCount + $questionNumber;
+            $res->update(['requestCount'=>$count]);
+        }else{
+
+            $data['subject'] =$subject;
+            $data['requestCount'] = $questionNumber ;
+            $data['token'] = $token ;
+            $data['user_id'] =$userId;
+            AccessTokenCall::create($data);
         }
     }
 

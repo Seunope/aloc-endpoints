@@ -46,11 +46,9 @@ Route::group(['namespace' => 'Api'], function () {
         Route::get('/q-by-id/{id}', 'QuestionController@questionById');
         Route::get('/q-subjects', 'QuestionController@allSubjects');
 
-//
-//        Route::get('/m', 'QuestionController@manyQuestions');
+        Route::get('/m', 'QuestionController@manyQuestions');
 //        Route::post('/r', 'QuestionController@reportQuestion');
-//        Route::get('/top-q', 'QuestionController@topQuestion');
-//
+        Route::get('/top-q', 'QuestionController@topQuestion');
 
     });
 
