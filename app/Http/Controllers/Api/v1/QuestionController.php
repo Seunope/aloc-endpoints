@@ -41,7 +41,7 @@ class QuestionController extends Controller
 
                 $count = $data->requestCount + 1;
                 $question->where(['id' => $data->id])->update(['requestCount' => $count]);
-                storeQuestionRequestByIP($subjectTable);
+                //storeQuestionRequestByIP($subjectTable);
 
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
@@ -108,7 +108,7 @@ class QuestionController extends Controller
                 foreach ($data as $datum) {
                     $count = $datum->requestCount + 1;
                     $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
-                    storeQuestionRequestByIP($subjectTable);
+                    //storeQuestionRequestByIP($subjectTable);
                 }
 
                 $res['subject'] = $subjectTable;
@@ -162,7 +162,7 @@ class QuestionController extends Controller
 
                     $count = $data->requestCount + 1;
                     $question->where(['id' => $data->id])->update(['requestCount' => $count]);
-                    storeQuestionRequestByIP($subjectTable);
+                    //storeQuestionRequestByIP($subjectTable);
                     return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
                 } else {
@@ -280,7 +280,7 @@ class QuestionController extends Controller
                 foreach ($data as $datum) {
                     $count = $datum->requestCount + 1;
                     $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
-                    storeQuestionRequestByIP($subjectTable);
+                    //storeQuestionRequestByIP($subjectTable);
                 }
 
                 $res['subject'] = $subjectTable;
@@ -323,7 +323,7 @@ class QuestionController extends Controller
 
                     $eachQuestion['subject'] = $subject;
                     $data[] = $eachQuestion;
-                    storeQuestionRequestByIP($subject);
+                    //storeQuestionRequestByIP($subject);
                     // $count = $eachQuestion->requestCount + 1;
                     // $question->where(['id' => $eachQuestion->id])->update(['requestCount' => $count]);
                 }
