@@ -29,7 +29,7 @@
                   <h1  data-aos="fade-up" data-aos-delay="100">Access 20,000 Past Questions</h1>
                   <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">Make API calls to get major Nigeria exams past questions.</p>
                     <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">UTME | WASSCE | POST-UTME | ALOC GAMES</p>
-                    <p data-aos="fade-up" data-aos-delay="300"><a href="#" class="btn btn-primary py-3 px-5 btn-pill">Start Now</a></p>
+                    <p data-aos="fade-up" data-aos-delay="300"><a href="{{url('secure/signup')}}" class="btn btn-primary py-3 px-5 btn-pill">Start Now</a></p>
 
                 </div>
 
@@ -82,18 +82,17 @@
             <img src="{{url('landing/images/api_question_sample.png')}}" alt="Image" class="img-fluid">
           </div>
           <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
-            <h2 class="text-black mb-4">How it started</h2>
-            <p class="mb-4">We have this database of past questions which took lot of effort and resources to put together. We felt those questions are sitting too idle so we decided to open its APIs end points.</p>
+            <h2 class="text-black mb-4">How to get started</h2>
+            <p class="mb-4">Create a free account today and an Access Token will be generated for you to communicate with our REST APIs.</p>
 
-              <p class="mb-4">Software developers, educators and stakeholders can use these questions to develop interesting apps for students.</p>
-
+              <p class="mb-4">Add the access token as header when calling our APIs. <a href="https://github.com/Seunope/aloc-endpoints/wiki" target="_blank">Our API endpoints documentation is here.</a></p>
 
           </div>
         </div>
 
         <div class="row mb-5 align-items-center">
           <div class="col-lg-7 mb-5 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
-            <img src="{{url('landing/images/undraw_teaching.svg')}}" alt="Image" class="img-fluid">
+            <img src="{{url('landing/images/test.jpg')}}" alt="Image" class="img-fluid">
           </div>
           <div class="col-lg-4 mr-auto order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
             <h2 class="text-black mb-4">Exam supported</h2>
@@ -119,11 +118,11 @@
 
         <div class="row mb-5 align-items-center">
           <div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100">
-            <img src="{{url('landing/images/undraw_teacher.svg')}}" alt="Image" class="img-fluid">
+            <img src="{{url('landing/images/brainstorm.jpg')}}" alt="Image" class="img-fluid">
           </div>
           <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
             <h2 class="text-black mb-4">Years Supported</h2>
-            <p class="mb-4">This depends on the subject, but please note, the years vary from 2001 to 2020</p>
+            <p class="mb-4">This depends on the subject, but please note, the years varies from 2001 to 2020</p>
 
           </div>
         </div>
@@ -264,7 +263,7 @@
 
                 <div class="d-flex align-items-center custom-icon-wrap custom-icon-light">
                     <div class="mr-3"><span class="custom-icon-inner"><span class="icon icon-university"></span></span></div>
-                    <div><h3 class="m-0">Physics</h3></div>
+                    <div><h3 class="m-0">more ...</h3></div>
                 </div>
 
             </div>
