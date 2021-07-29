@@ -28,7 +28,7 @@ To have the largest open source database of various past questions in Nigeria.
 
 ## Call for Questions
 
-Over <a href=https://questions.aloc.ng/api/metrics/subjects-call>3,850,863 API questions</a> request has been made to this library. Do you have questions you want to add to this database? We are excited to receive your mail at aloc.mass@gmail.com
+Over <a href=https://questions.aloc.ng/api/metrics/subjects-call>5,495,158 API questions</a> request has been made to this library. Do you have questions you want to add to this database? We are excited to receive your mail at aloc.mass@gmail.com
 
 ## Setup
 
@@ -48,44 +48,52 @@ Over <a href=https://questions.aloc.ng/api/metrics/subjects-call>3,850,863 API q
 
 - `php artisan server` to load app. You Got it!
 
+
+
+## Sample API call 
+
+ _Sign up at https://questions.aloc.ng to get *Acces Token* ._
+
+Visit https://github.com/Seunope/aloc-endpoints/wiki/API-Parameters for sample API call with headers and parameters  
+
 ## API call Examples
 
 Get a question
 
-https://questions.aloc.ng/api/q?subject=chemistry
+https://questions.aloc.ng/api/v2/q?subject=chemistry
 
 <img src="https://aloc.ng/asset/images/others/aloc-api-sample.png">
 
 Get many questions (returns 40 questions)
 
-https://questions.aloc.ng/api/m?subject=chemistry
+https://questions.aloc.ng/api/v2/m?subject=chemistry
 
 Get several questions (limit 40)
 
-https://questions.aloc.ng/api/q/7?subject=chemistry
+https://questions.aloc.ng/api/v2/q/7?subject=chemistry
 
 eg.
 
-`https://questions.aloc.ng/api/q/23?subject=chemistry`
-`https://questions.aloc.ng/api/q/30?subject=chemistry`
-`https://questions.aloc.ng/api/q/4?subject=chemistry`
+`https://questions.aloc.ng/api/v2/q/23?subject=chemistry`
+`https://questions.aloc.ng/api/v2/q/30?subject=chemistry`
+`https://questions.aloc.ng/api/v2/q/4?subject=chemistry`
 
 
 Get a question by year
 
-https://questions.aloc.ng/api/q?subject=chemistry&year=2005
+https://questions.aloc.ng/api/v2/q?subject=chemistry&year=2005
 
 Get a question by exam type
 
-https://questions.aloc.ng/api/q?subject=chemistry&type=utme
+https://questions.aloc.ng/api/v2/q?subject=chemistry&type=utme
 
 Get a question by type and year
 
-https://questions.aloc.ng/api/q?subject=chemistry&year=2010&type=utme
+https://questions.aloc.ng/api/v2/q?subject=chemistry&year=2010&type=utme
 
 Get question by id and subject
 
-https://questions.aloc.ng/api/q-by-id/1?subject=chemistry
+https://questions.aloc.ng/api/v2/q-by-id/1?subject=chemistry
 
 For more detailed examples visit https://questions.aloc.ng
 ## API Documentation
