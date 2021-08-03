@@ -47,7 +47,7 @@
 {{--                </ul>--}}
 {{--            </li>--}}
             <li>
-                <a href="widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Billing</span> </a>
+                <a href="{{url('admin/pricing')}}"><i class="fa fa-flask"></i> <span class="nav-label">Pricing</span> </a>
             </li>
             <li>
                 <a href="widgets.html"><i class="fa fa-people"></i> <span class="nav-label">Profile</span> </a>

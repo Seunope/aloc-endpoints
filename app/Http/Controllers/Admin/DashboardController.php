@@ -24,9 +24,10 @@ class DashboardController extends Controller
              ->groupBy('subject');
         $data = Array();
         $questionCalls = 0;
+        $subjectCount = 0;
+
         if(!$res->isEmpty()){
 
-            $subjectCount = 0;
             foreach ($res as $subjectCalls){
                  $groupCounter = 0;
                  $requestCount = 0 ;
@@ -42,6 +43,7 @@ class DashboardController extends Controller
                  $subjectCount++;
              }
         }
+        $finalData['subjectCount'] = $subjectCount;
         $finalData['questionCalls'] = $questionCalls;
         $finalData['subjectTracker'] = $data;
 

@@ -14,7 +14,7 @@ class CreateAccessTokenTable extends Migration
     public function up()
     {
 
-        Schema::create('access_tokens', function (Blueprint $table) {
+        Schema::create('q_access_tokens', function (Blueprint $table) {
             $table->id();
             $table->Integer('user_id')->unsigned()->unique();
             $table->string('token', 225);
@@ -30,6 +30,6 @@ class CreateAccessTokenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('access_tokens');
+        Schema::dropIfExists('q_access_tokens');
     }
 }
