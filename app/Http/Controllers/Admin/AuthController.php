@@ -75,7 +75,7 @@ class AuthController extends Controller
         }
         catch(\Exception $e)
         {
-            dd($e);
+            //dd($e);
             DB::rollback();
             flash('Technical issue. Try again or contact admin')->error();
             return back();

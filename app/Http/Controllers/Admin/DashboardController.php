@@ -55,8 +55,9 @@ class DashboardController extends Controller
         $access = AccessToken::whereUserId($user->id)->first();
 
         $data['accessCount'] = $access->count;
+        $data['subscription'] = $user->subscription;
         $data['plan'] = $user->pricePlan;
-        return $data;
 
+        return $data;
     }
 }

@@ -55,4 +55,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(PricePlan::class,'price_plan');
     }
+
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class,'user_id', );
+    }
 }

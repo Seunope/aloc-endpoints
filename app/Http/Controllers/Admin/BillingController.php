@@ -15,17 +15,8 @@ class BillingController extends Controller
 {
     public function index (){
         $data['pricing'] = PricePlan::get();
-        return view('admin.billing')->with($data);;
+        return view('admin.subscription.billing')->with($data);
     }
-
-//    public function payment (Request $request){
-//        $input = $request->all();
-//
-//        $data['email'] = auth()->user()->email;
-//        $data['name'] = auth()->user()->name;
-//        $data['amount'] =  $input['amount'];
-//        return view('admin.paystack')->with($data);
-//    }
 
     public function paystackCallBack(Request $request)
     {

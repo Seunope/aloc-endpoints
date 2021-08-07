@@ -16,7 +16,7 @@
                                 <h5>Plan</h5>
                             </div>
                             <div class="ibox-content">
-                                <h1 class="no-margins">{{formatNumber($topMetrics['accessCount'])}}/{{formatNumber($topMetrics['plan']->unit_limit)}}</h1>
+                                <h1 class="no-margins">{{formatNumber($topMetrics['accessCount'])}}/{{formatNumber($topMetrics['subscription']->limit)}}</h1>
                                 <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
                                 <small>API Calls</small>
                             </div>

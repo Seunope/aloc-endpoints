@@ -102,35 +102,9 @@
                     var data = { amount: amount, name: "{{$name}}", paystack_ref:response.reference, email:"{{$email}}", "_token": "{{ csrf_token() }}"}
                     console.log(data);
                     window.location.href = "/admin/pricing/paystack/callback?amount="+amount+"&plan="+plan+"&name="+name+"&transReference="+response.reference;
-                    {{--window.location.href = "{{ route('paystack-callback?amount=')}}";--}}
-
-                    // if (response.reference) {
-                    //
-                    //     return $.ajax({
-                    //         type: "post",
-                    //         url: url, //Where form data is sent on submission
-                    //         dataType:"text", // Data type, HTML, json etc.
-                    //         data: data,
-                    //     }).done(function (data) {
-                    //         return data;
-                    //         //window.location.href = data; "/admin/dashboard";
-                    //         //console.log('ddd', data)
-                    //
-                    //     }).fail(function(){
-                    //         //window.location.href = "/admin/dashboard";
-                    //
-                    //         document.getElementById("message").innerHTML = '<h2>Internet error! Payment not saved contact info@aloc.ng</h2>';
-                    //         console.log('dd');
-                    //     })
-                    // } else {
-                    //
-                    //     document.getElementById("message").innerHTML = `<h2>Error from Paystack! We could not charge card, try again.</h2>`;
-                    //
-                    // }
                 },
                 onClose: function(){
-                    //alert('window closed');
-                    window.ReactNativeWebView.postMessage("Success!")
+                    alert('window closed');
                 }
             });
             handler.openIframe();
