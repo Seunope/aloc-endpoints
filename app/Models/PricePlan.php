@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class PricePlan extends Model
 {
     use HasFactory;
+    protected $table = 'q_price_plans';
+
 }

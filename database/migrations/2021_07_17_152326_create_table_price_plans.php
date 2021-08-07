@@ -13,7 +13,7 @@ class CreateTablePricePlans extends Migration
      */
     public function up()
     {
-        Schema::create('price_plans', function (Blueprint $table) {
+        Schema::create('q_price_plans', function (Blueprint $table) {
             $table->id();
             $table->string('plan');
             $table->Integer('price')->default(0);
@@ -32,6 +32,6 @@ class CreateTablePricePlans extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('price_plans');
+        Schema::dropIfExists('q_price_plans');
     }
 }

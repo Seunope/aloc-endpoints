@@ -16,7 +16,7 @@
                                 <h5>Plan</h5>
                             </div>
                             <div class="ibox-content">
-                                <h1 class="no-margins">{{formatNumber($topMetrics['accessCount'])}}/{{formatNumber($topMetrics['plan']->unit_limit)}}</h1>
+                                <h1 class="no-margins">{{formatNumber($topMetrics['accessCount'])}}/{{formatNumber($topMetrics['subscription']->limit)}}</h1>
                                 <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
                                 <small>API Calls</small>
                             </div>
@@ -51,13 +51,13 @@
                     <div class="col-lg-3">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <span class="label label-danger pull-right">Low value</span>
-                                <h5>User activity</h5>
+                                <span class="label label-danger pull-right">Subject</span>
+                                <h5>Subject activity</h5>
                             </div>
                             <div class="ibox-content">
-                                <h1 class="no-margins">80,600</h1>
-                                <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>
-                                <small>In first month</small>
+                                <h1 class="no-margins">{{$tracker['subjectCount']}}</h1>
+                                <div class="stat-percent font-bold text-danger">90% <i class="fa fa-level-up"></i></div>
+                                <small>Subj</small>
                             </div>
                         </div>
             </div>

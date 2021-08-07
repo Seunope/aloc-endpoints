@@ -13,7 +13,7 @@ class CreateTableAccessTokenCalls extends Migration
      */
     public function up()
     {
-        Schema::create('access_token_calls', function (Blueprint $table) {
+        Schema::create('q_access_token_calls', function (Blueprint $table) {
             $table->id();
             $table->Integer('user_id')->unsigned();
             $table->string('subject');
@@ -30,6 +30,6 @@ class CreateTableAccessTokenCalls extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('access_token_calls');
+        Schema::dropIfExists('q_access_token_calls');
     }
 }

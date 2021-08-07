@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\AccessToken;
+use App\Models\PricePlan;
+use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -38,36 +41,43 @@ class AuthController extends Controller
             return back()->withInput()->withErrors($validator);
         }
 
-        $input['name'] = ucfirst($input['name']);
-        $input['password'] = Hash::make($input['password']);
-        User::create($input);
+        try {
 
-        flash('Account created successfully')->success();
-        $credentials = $request->except('_token', 'name');
+            DB::beginTransaction();
+            $input['name'] = ucfirst($input['name']);
+            $input['password'] = Hash::make($input['password']);
+            $newUser = User::create($input);
 
-
-        if (Auth::attempt($credentials,true))
-        {
             $bytes = random_bytes(10);
-            $user = auth()->user();
-            $accessData['user_id'] = $user->id;
-            $accessData['token'] = "ALOC-".bin2hex($bytes);
+            $accessData['user_id'] = $newUser->id;
+            $accessData['token'] = "ALOC-" . bin2hex($bytes);
             AccessToken::create($accessData);
 
+            $price = PricePlan::first();
 
-//            if($user->hasRole('admin') || $user->hasRole('admin2')){
-//                return redirect('admin/dashboard');
-//            }else{
-//                Auth::logout();
-//                flash('Access denied! Unauthorised login')->warning();
-//                return redirect('/admin/login');
-//            }
-            return redirect('/admin/dashboard');
+            $sub['user_id'] = $newUser->id;
+            $sub['limit'] = $price->unit_limit;
+            $sub['plan_id'] = $price->id;
+            Subscription::create($sub);
+            DB::commit();
 
+            flash('Account created successfully')->success();
+            $credentials = $request->except('_token', 'name');
+
+
+            if (Auth::attempt($credentials, true)) {
+                return redirect('/admin/dashboard');
+
+            } else {
+                flash('Hey! Contact admin, could not login')->warning();
+                return back();
+            }
         }
-        else
+        catch(\Exception $e)
         {
-            flash('Hey! Contact admin, could not login')->warning();
+            //dd($e);
+            DB::rollback();
+            flash('Technical issue. Try again or contact admin')->error();
             return back();
         }
 

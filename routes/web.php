@@ -36,6 +36,10 @@ Route::group(['namespace' => 'Admin', 'prefix'=> 'admin'], function () {
         Route::get('/access-token', 'AccessTokenController@index');
         Route::get('/access-token/generate', 'AccessTokenController@generateNewToken');
 
+        Route::get('/pricing', 'BillingController@index');
+        Route::get('/pricing/paystack/callback', 'BillingController@paystackCallBack');
+
+
 
     });
 });
