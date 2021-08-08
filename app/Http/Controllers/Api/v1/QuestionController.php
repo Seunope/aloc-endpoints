@@ -43,9 +43,12 @@ class QuestionController extends Controller
                 $question->where(['id' => $data->id])->update(['requestCount' => $count]);
                 storeQuestionRequestByIP($subjectTable);
 
+
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
                 $res['data'] = $question::FormatQuestionData($data);
+                $res['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
+
 
                 return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
@@ -55,6 +58,7 @@ class QuestionController extends Controller
                 $type = (object) examTypeArray();
                 $querySample = (object) querySampleArray1();
                 $data = null;
+                $data['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
                 $data ['error'] = "Something strange just happened";
                 $data['status'] = 406;
                 $data ['hint'] = ['message-1' => 'This is the list of supported subjects.', 'Subjects' => $subject,
@@ -65,6 +69,7 @@ class QuestionController extends Controller
             }
 
         } else {
+            $data['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
             $data ['error'] = "Subject not supplied";
             $data['status'] = 400;
             return response()->json($data, 400, [], JSON_PRETTY_PRINT);
@@ -114,6 +119,8 @@ class QuestionController extends Controller
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
                 $res['data'] = $question::FormatQuestionsData($data);
+                $res['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
+
                 return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
             } catch (\Exception $e) {
@@ -123,6 +130,7 @@ class QuestionController extends Controller
                 $querySample = (object) querySampleArray2();
                 $data = null;
                 $data ['error'] = "Something strange just happened";
+                $data['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
                 $data['status'] = 406;
                 $data ['hint'] = ['message-1' => 'This is the list of supported subjects.', 'Subjects' => $subject,
                                   'message-2' => 'Supported exam types.', 'Exams' => $type,
@@ -133,6 +141,7 @@ class QuestionController extends Controller
             }
 
         } else {
+            $data['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
             $data ['error'] = "Subject not supplied";
             $data['status'] = 400;
             return response()->json($data, 400, [], JSON_PRETTY_PRINT);
@@ -155,6 +164,7 @@ class QuestionController extends Controller
                 $question->setTable($subjectTable);
                 $data = $question->find($questionId);
 
+                $res['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
                 if (!empty($data)) {
                     $res['subject'] = $subjectTable;
                     $res['status'] = 200;
@@ -180,6 +190,7 @@ class QuestionController extends Controller
                 $data = null;
                 $data ['error'] = "Something strange just happened";
                 $data['status'] = 406;
+                $data['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
                 $data ['hint'] = ['message-1' => 'This is the list of supported subjects.', 'Subjects' => $subject,
                     'message-2' => 'Query samples.', 'Queries' => $querySample,];
 
@@ -187,6 +198,7 @@ class QuestionController extends Controller
             }
 
         } else {
+            $data['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
             $data ['error'] = "Subject not supplied";
             $data['status'] = 400;
             return response()->json($data, 400, [], JSON_PRETTY_PRINT);
@@ -241,6 +253,7 @@ class QuestionController extends Controller
     public function allSubjects(){
 
         $subject = (object) subjectArray();
+        $res['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
         $data['message'] = "List of subjects supported";
         $data['status'] = 200;
         $data['subjects'] = $subject;
@@ -286,6 +299,7 @@ class QuestionController extends Controller
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
                 $res['data'] = $question::FormatQuestionsData($data);
+                $res['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
 
                 return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
@@ -296,6 +310,7 @@ class QuestionController extends Controller
                 $data = null;
                 $data ['error'] = "Something strange just happened";
                 $data['status'] = 406;
+                $data['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
                 $data ['hint'] = ['message-1' => 'This is the list of supported subjects.', 'Subjects' => $subject,
                     'message-2' => 'Supported exam types.', 'Exams' => $type,
                     'message-3' => 'Query samples.', 'Queries' => $querySample,];
@@ -304,6 +319,7 @@ class QuestionController extends Controller
             }
 
         } else {
+            $data['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
             $data ['error'] = "Subject not supplied";
             $data['status'] = 400;
             return response()->json($data, 400, [], JSON_PRETTY_PRINT);
@@ -330,10 +346,12 @@ class QuestionController extends Controller
             }
             shuffle($data);
             $res['status'] = 200;
+            $res['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
             $res['data'] = $question::FormatTopQuestionsData($data);
             return response()->json($res, 200, [], JSON_PRETTY_PRINT);
         } catch (\Exception $e) {
             $data = null;
+            $data['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
             $data ['error'] = "Something strange just happened";
             $data['status'] = 406;
             return response()->json($data, 406, [], JSON_PRETTY_PRINT);
