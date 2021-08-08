@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\AccessToken;
@@ -17,7 +17,7 @@ class AuthController extends Controller
 {
     public function signup()
     {
-        return view('landing.signup');
+        return view('landing.auth.signup');
     }
 
     public function handleSignup(Request $request)

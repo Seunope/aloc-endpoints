@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
+use App\Http\Controllers\Admin\Auth\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +19,20 @@ Route::get('/', function () {
     return view('landing.index');
 });
 
-Route::group(['namespace' => 'Admin', 'prefix'=> 'secure'], function () {
 
-    Route::get('/signup', 'AuthController@signup');
-    Route::post('/signup', 'AuthController@handleSignup')->name('signup');
+Route::group(['prefix'=> 'secure'], function () {
 
-    Route::get('/login', 'AuthController@login');
-    Route::post('/login', 'AuthController@handleLogin')->name('login');
-    Route::get('/logout', 'AuthController@handleLogout')->name('logout');
+    Route::get('/signup',  [AuthController::class, 'signup']);
+    Route::post('/signup', [AuthController::class, 'handleSignup'])->name('signup');
+
+    Route::get('/login',   [AuthController::class, 'login']);
+    Route::post('/login',  [AuthController::class, 'handleLogin'])->name('login');
+    Route::get('/logout',  [AuthController::class, 'handleLogout'])->name('logout');
+
+    Route::get('/forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+    Route::post('/forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+    Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+    Route::post('/reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 });
 

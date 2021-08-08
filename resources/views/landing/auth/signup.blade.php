@@ -38,6 +38,7 @@
                       @include('flash::message')
                       @csrf
                     <h3 class="h4 text-black mb-4">Sign Up
+                        <h6></h6>
                     <div class="form-group">
                         <input type="text" class="form-control" name="name"  value="{!! old('name') !!}" placeholder="Full Name" required>
                     </div>
