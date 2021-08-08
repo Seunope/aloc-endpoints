@@ -7,6 +7,7 @@ use App\Models\AccessTokenCall;
 use App\Models\ApiCallIpAddress;
 use App\Models\QLoader;
 use App\Models\ReportQuestion;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -398,6 +399,14 @@ class QuestionController extends Controller
 
         $res = AccessToken::whereToken($accessToken)->first();
         if(!is_null($res)){
+
+            $subscription = Subscription::whereUserId($res->user_id)->first();
+            if($res->count >= $subscription->limit){
+                $data['status'] = 400;
+                $data['shouldReturn'] = true;
+                $data ['error'] = "You have used up your quota. Please, upgrade your plan to continue";
+                return $data;
+            }
             $data['status'] = 200;
             $data['shouldReturn'] = false;
             $data['userId'] = $res->user_id;
