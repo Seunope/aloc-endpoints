@@ -38,6 +38,7 @@
                       @include('flash::message')
                       @csrf
                     <h3 class="h4 text-black mb-4">Login
+                        <h6></h6>
 
                     <div class="form-group">
                       <input type="text" class="form-control" name="email"  value="{!! old('email') !!}" placeholder="Email Address" required>
@@ -58,6 +59,7 @@
                     <div class="form-group">
                       <input type="submit" class="btn btn-primary btn-pill" value="Submit">
                     </div>
+                        <p style="color:lightslategrey"><a href="{{url('secure/forget-password')}}">Forgot Password</a></p>
                   </form>
 
                 </div>
