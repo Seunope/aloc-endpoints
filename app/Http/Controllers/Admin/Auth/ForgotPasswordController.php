@@ -36,6 +36,7 @@ class ForgotPasswordController extends Controller
                 $message->subject('ALOC Endpoints Reset Password');
             });
         }catch (\Exception $e){
+            dd($e);
             flash('Could not send email. Please try again')->error();
             return back();
         }
