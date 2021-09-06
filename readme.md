@@ -28,7 +28,7 @@ To have the largest open source database of various past questions in Nigeria.
 
 ## Call for Questions
 
-Over <a href=https://questions.aloc.ng/api/metrics/subjects-call>5,495,158 API questions</a> request has been made to this library. Do you have questions you want to add to this database? We are excited to receive your mail at aloc.mass@gmail.com
+Over <a href=https://questions.aloc.ng/api/metrics/subjects-call>5,534,083 API questions</a> request has been made to this library. Do you have questions you want to add to this database? We are excited to receive your mail at aloc.mass@gmail.com
 
 ## Setup
 
