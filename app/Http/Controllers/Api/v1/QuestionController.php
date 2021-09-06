@@ -14,6 +14,8 @@ class QuestionController extends Controller
 
     public function index()
     {
+        return $this->depreciateApiV1();
+
         $input = request()->all();
         if (isset($input['subject']) && $input['subject'] != "") {
 
@@ -62,8 +64,8 @@ class QuestionController extends Controller
                 $data ['error'] = "Something strange just happened";
                 $data['status'] = 406;
                 $data ['hint'] = ['message-1' => 'This is the list of supported subjects.', 'Subjects' => $subject,
-                                  'message-2' => 'Supported exam types.', 'Exams' => $type,
-                                  'message-3' => 'Query samples.', 'Queries' => $querySample,];
+                    'message-2' => 'Supported exam types.', 'Exams' => $type,
+                    'message-3' => 'Query samples.', 'Queries' => $querySample,];
 
                 return response()->json($data, 406, [], JSON_PRETTY_PRINT);
             }
@@ -78,6 +80,8 @@ class QuestionController extends Controller
 
     public function show($recordLimit)
     {
+        return $this->depreciateApiV1();
+
         $input = request()->all();
         $limit = $recordLimit;
         if (isset($input['subject']) && $input['subject'] != "") {
@@ -133,8 +137,8 @@ class QuestionController extends Controller
                 $data['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
                 $data['status'] = 406;
                 $data ['hint'] = ['message-1' => 'This is the list of supported subjects.', 'Subjects' => $subject,
-                                  'message-2' => 'Supported exam types.', 'Exams' => $type,
-                                  'message-3' => 'Query samples.', 'Queries' => $querySample,];
+                    'message-2' => 'Supported exam types.', 'Exams' => $type,
+                    'message-3' => 'Query samples.', 'Queries' => $querySample,];
 
 
                 return response()->json($data, 406, [], JSON_PRETTY_PRINT);
@@ -149,6 +153,9 @@ class QuestionController extends Controller
     }
 
     public function questionById($questionId){
+
+        return $this->depreciateApiV1();
+
         $input = request()->all();
         if (isset($input['subject']) && $input['subject'] != "") {
 
@@ -261,6 +268,9 @@ class QuestionController extends Controller
     }
 
     public function manyQuestions(){
+
+        return $this->depreciateApiV1();
+
         $input = request()->all();
         $questionLimit = 40;
         if (isset($input['subject']) && $input['subject'] != "") {
@@ -273,14 +283,14 @@ class QuestionController extends Controller
                 if (isset($input['year']) && isset($input['type'])) {
                     $examType = strtolower($input['type']);
                     $data = $question->where(['examtype' => $examType, 'examyear' => $input['year']])
-                                     ->inRandomOrder()->take($questionLimit)->get();
+                        ->inRandomOrder()->take($questionLimit)->get();
                 } else if (isset($input['year'])) {
                     $data = $question->where(['examyear' => $input['year']])
-                                     ->inRandomOrder()->take($questionLimit)->get();
+                        ->inRandomOrder()->take($questionLimit)->get();
                 } else if (isset($input['type'])) {
                     $examType = strtolower($input['type']);
                     $data = $question->where(['examtype' => $examType])
-                                     ->inRandomOrder()->take($questionLimit)->get();
+                        ->inRandomOrder()->take($questionLimit)->get();
                 } else {
                     $data = $question->inRandomOrder()->take($questionLimit)->get();
                 }
@@ -327,6 +337,7 @@ class QuestionController extends Controller
     }
 
     public function topQuestion(){
+        return $this->depreciateApiV1();
 
         try{
             $randSubjects = randomSubjects();
@@ -356,6 +367,13 @@ class QuestionController extends Controller
             $data['status'] = 406;
             return response()->json($data, 406, [], JSON_PRETTY_PRINT);
         }
+    }
+
+    private function depreciateApiV1 (){
+        $data['notice'] = 'This API is depreciated and will be terminated by September 1st 2021. Kindly migrate to v2';
+        $data ['error'] = "Depreciated v1 was terminated on September 6th 2021. Kindly migrate to v2";
+        $data['status'] = 400;
+        return response()->json($data, 400, [], JSON_PRETTY_PRINT);
     }
 
 }
