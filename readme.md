@@ -1,4 +1,4 @@
-<p align="center"><img src="https://aloc.ng/asset/images/slide/aloc-shield.png"></p>
+<p align="center"><img src="https://aloc.com.ng/asset/images/slide/aloc-shield.png"></p>
 
 <p align="center"><i>Get Inspired to Practice</i></p>
 
@@ -62,7 +62,7 @@ Get a question
 
 https://questions.aloc.com.ng/api/v2/q?subject=chemistry
 
-<img src="https://aloc.ng/asset/images/others/aloc-api-sample.png">
+<img src="https://aloc.com.ng/asset/images/others/aloc-api-sample.png">
 
 Get many questions (returns 40 questions)
 
