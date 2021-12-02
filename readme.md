@@ -1,10 +1,10 @@
-<p align="center"><img src="https://aloc.ng/asset/images/slide/aloc-shield.png"></p>
+<p align="center"><img src="https://aloc.com.ng/asset/images/slide/aloc-shield.png"></p>
 
 <p align="center"><i>Get Inspired to Practice</i></p>
 
 ## About ALOC
 
-ALOC is an adventure based CBT practice platform with an engaging game story that unravels as students’ progresses in game levels. We use gaming concepts to increase student practice time and grade.[https://aloc.ng]
+ALOC is an adventure based CBT practice platform with an engaging game story that unravels as students’ progresses in game levels. We use gaming concepts to increase student practice time and grade.[https://aloc.com.ng]
 
 - Experience CBT in game environment
 - Gain free access to unlimited past questions
@@ -28,7 +28,7 @@ To have the largest open source database of various past questions in Nigeria.
 
 ## Call for Questions
 
-Over <a href=https://questions.aloc.ng/api/metrics/subjects-call>5,534,083 API questions</a> request has been made to this library. Do you have questions you want to add to this database? We are excited to receive your mail at aloc.mass@gmail.com
+Over <a href=https://questions.aloc.com.ng/api/metrics/subjects-call>5,534,083 API questions</a> request has been made to this library. Do you have questions you want to add to this database? We are excited to receive your mail at aloc.mass@gmail.com
 
 ## Setup
 
