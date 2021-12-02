@@ -52,7 +52,7 @@ Over <a href=https://questions.aloc.com.ng/api/metrics/subjects-call>5,534,083 A
 
 ## Sample API call 
 
- _Sign up at https://questions.aloc.ng to get *Acces Token* ._
+ _Sign up at https://questions.aloc.com.ng to get *Acces Token* ._
 
 Visit https://github.com/Seunope/aloc-endpoints/wiki/API-Parameters for sample API call with headers and parameters  
 
@@ -60,42 +60,42 @@ Visit https://github.com/Seunope/aloc-endpoints/wiki/API-Parameters for sample A
 
 Get a question
 
-https://questions.aloc.ng/api/v2/q?subject=chemistry
+https://questions.aloc.com.ng/api/v2/q?subject=chemistry
 
-<img src="https://aloc.ng/asset/images/others/aloc-api-sample.png">
+<img src="https://aloc.com.ng/asset/images/others/aloc-api-sample.png">
 
 Get many questions (returns 40 questions)
 
-https://questions.aloc.ng/api/v2/m?subject=chemistry
+https://questions.aloc.com.ng/api/v2/m?subject=chemistry
 
 Get several questions (limit 40)
 
-https://questions.aloc.ng/api/v2/q/7?subject=chemistry
+https://questions.aloc.com.ng/api/v2/q/7?subject=chemistry
 
 eg.
 
-`https://questions.aloc.ng/api/v2/q/23?subject=chemistry`
-`https://questions.aloc.ng/api/v2/q/30?subject=chemistry`
-`https://questions.aloc.ng/api/v2/q/4?subject=chemistry`
+`https://questions.aloc.com.ng/api/v2/q/23?subject=chemistry`
+`https://questions.aloc.com.ng/api/v2/q/30?subject=chemistry`
+`https://questions.aloc.com.ng/api/v2/q/4?subject=chemistry`
 
 
 Get a question by year
 
-https://questions.aloc.ng/api/v2/q?subject=chemistry&year=2005
+https://questions.aloc.com.ng/api/v2/q?subject=chemistry&year=2005
 
 Get a question by exam type
 
-https://questions.aloc.ng/api/v2/q?subject=chemistry&type=utme
+https://questions.aloc.com.ng/api/v2/q?subject=chemistry&type=utme
 
 Get a question by type and year
 
-https://questions.aloc.ng/api/v2/q?subject=chemistry&year=2010&type=utme
+https://questions.aloc.com.ng/api/v2/q?subject=chemistry&year=2010&type=utme
 
 Get question by id and subject
 
-https://questions.aloc.ng/api/v2/q-by-id/1?subject=chemistry
+https://questions.aloc.com.ng/api/v2/q-by-id/1?subject=chemistry
 
-For more detailed examples visit https://questions.aloc.ng
+For more detailed examples visit https://questions.aloc.com.ng
 ## API Documentation
 
 Vist the <a href='https://github.com/Seunope/aloc-endpoints/wiki'>lib wiki</a> to get access to some special features.<a href='https://github.com/Seunope/aloc-endpoints/wiki'>API Documentation</a>
