@@ -2,7 +2,7 @@
 
     <div class="container-fluid">
         <div class="d-flex align-items-center">
-            <div class="site-logo mr-auto w-25"><a href="{{url('/')}}">ALOC Endpoints</a></div>
+            <div class="site-logo mr-auto w-25"><a href="{{url('/')}}">QBoard Endpoints</a></div>
 
             <div class="mx-auto text-center">
                 <nav class="site-navigation position-relative text-right" role="navigation">
