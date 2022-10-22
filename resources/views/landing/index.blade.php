@@ -292,7 +292,7 @@
 
 
             <h2 class="section-title mb-3">Contact Us</h2>
-            <p class="mb-5">Over 5,483,149 API questions request has been made to this library. Do you have questions you want to add to this database? We are excited to receive your mail at aloc.mass@gmail.com</p>
+            <p class="mb-5">Over 6,854,170 API questions request has been made to this library. Do you have questions you want to add to this database? We are excited to receive your mail at aloc.mass@gmail.com</p>
 
 
           </div>

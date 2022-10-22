@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Api\v2;
 
+use App\Models\QLoader;
+use App\Models\QBoardLog;
 use App\Models\AccessToken;
+use Illuminate\Http\Request;
+use App\Models\Subscription;
+use App\Models\ReportQuestion;
 use App\Models\AccessTokenCall;
 use App\Models\ApiCallIpAddress;
-use App\Models\QLoader;
-use App\Models\ReportQuestion;
-use App\Models\Subscription;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 
 class QuestionController extends Controller
 {
@@ -433,6 +433,29 @@ class QuestionController extends Controller
             $data['token'] = $token ;
             $data['user_id'] =$userId;
             AccessTokenCall::create($data);
+        }
+
+        $this->saveQuestionsRequestByMonth($questionNumber,$subject);
+    }
+
+
+    private function saveQuestionsRequestByMonth ($questionNumber,$subject){
+
+        $year = date('Y');
+        $month = date('M');
+        $res =  QBoardLog::where(['month' =>$month,'year' =>$year,'subject' => $subject])->first();
+        if(!is_null($res)){
+            $count = $res->requestCount + 1;
+            $countQ = $res->questionCount + $questionNumber;
+            $res->update(['requestCount'=>$count, 'questionCount'=>$countQ]);
+        }else{
+
+            $data['subject'] =$subject;
+            $data['requestCount'] = 1 ;
+            $data['questionCount'] = $questionNumber ;
+            $data['month'] = $month ;
+            $data['year'] =$year;
+            QBoardLog::create($data);
         }
     }
 

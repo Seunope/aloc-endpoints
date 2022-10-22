@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class QLoader extends Model
 {
-    protected  $fillable = ['question', 'optionA','optionB','optionC','section','image','answer','solution','examtype','examyear','requestCount','authorised' ];
+    protected  $fillable = ['question', 'optionA','optionB','optionC','optionD','optionE','section','image','answer','solution','examtype','examyear','requestCount','authorised' ];
 
     protected $hidden = ['created_at, updated_at', 'requestCount', 'authorised'];
 
@@ -23,6 +23,7 @@ class QLoader extends Model
         $option['b'] = $result->optionB;
         $option['c'] = $result->optionC;
         $option['d'] = $result->optionD;
+        $option['e'] = $result->optionE;
 
         $data['id'] = $result->id;
         $data['question'] = $result->question;
@@ -45,6 +46,7 @@ class QLoader extends Model
             $option['b'] = $result->optionB;
             $option['c'] = $result->optionC;
             $option['d'] = $result->optionD;
+            $option['e'] = $result->optionD;
 
             $data['id'] = $result->id;
             $data['question'] = $result->question;
@@ -68,6 +70,7 @@ class QLoader extends Model
             $option['b'] = $result->optionB;
             $option['c'] = $result->optionC;
             $option['d'] = $result->optionD;
+            $option['e'] = $result->optionD;
 
             $data['id'] = $result->id;
             $data['subject'] = $result->subject;
