@@ -327,11 +327,94 @@ class QuestionController extends Controller
                     }
                 }
 
+                $qResult = $question::FormatQuestionsData($data);
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
-                $res['data'] = $question::FormatQuestionsData($data);
+                $res['total'] = count($qResult);
+                $res['data'] = $qResult;
 
                 $this->tokenQuestions(40, $subjectTable, $processReq['userId'], $processReq['token'] );
+                return response()->json($res, 200, [], JSON_PRETTY_PRINT);
+
+            } catch (\Exception $e) {
+                $subject = (object) subjectArray();
+                $type = (object) examTypeArray();
+                $querySample = (object) querySampleArray1();
+                $data = null;
+                $data ['error'] = "Something strange just happened";
+                $data['status'] = 406;
+                $data ['hint'] = ['message-1' => 'This is the list of supported subjects.', 'Subjects' => $subject,
+                    'message-2' => 'Supported exam types.', 'Exams' => $type,
+                    'message-3' => 'Query samples.', 'Queries' => $querySample,];
+
+                return response()->json($data, 406, [], JSON_PRETTY_PRINT);
+            }
+
+        } else {
+            $data ['error'] = "Subject not supplied";
+            $data['status'] = 400;
+            return response()->json($data, 400, [], JSON_PRETTY_PRINT);
+        }
+    }
+
+    public function hugeQuestions($questionLimit){
+
+        if($questionLimit > 120){
+            $data ['error'] = "Maximum questions support is 120";
+            $data['status'] = 400;
+            return response()->json($data, 400, [], JSON_PRETTY_PRINT);
+        }
+
+        $processReq =  $this->processRequest($questionLimit);
+        if($processReq['shouldReturn']){
+            unset($processReq['shouldReturn']);
+            return response()->json($processReq, 406, [], JSON_PRETTY_PRINT);
+        }
+
+        $input = request()->all();
+        // $questionLimit = 40;
+        if (isset($input['subject']) && $input['subject'] != "") {
+
+            $subjectTable = strtolower($input['subject']);
+            try {
+                $question = new QLoader;
+                $question->setTable($subjectTable);
+
+                if (isset($input['year']) && isset($input['type'])) {
+                    $examType = strtolower($input['type']);
+                    $data = $question->where(['examtype' => $examType, 'examyear' => $input['year']])
+                                     ->inRandomOrder()->take($questionLimit)->get();
+                } else if (isset($input['year'])) {
+                    $data = $question->where(['examyear' => $input['year']])
+                                     ->inRandomOrder()->take($questionLimit)->get();
+                } else if (isset($input['type'])) {
+                    $examType = strtolower($input['type']);
+                    $data = $question->where(['examtype' => $examType])
+                                     ->inRandomOrder()->take($questionLimit)->get();
+                } else {
+                    $data = $question->inRandomOrder()->take($questionLimit)->get();
+                }
+
+                if (empty($data)) {
+                    $res['message'] = "We could not find what you asked for, but got you this";
+                    $data = $question->inRandomOrder()->take($questionLimit)->get();
+                }
+
+                if(!env('APP_DEBUG')){
+                    foreach ($data as $datum) {
+                        $count = $datum->requestCount + 1;
+                        $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
+                        storeQuestionRequestByIP($subjectTable);
+                    }
+                }
+
+                $qResult = $question::FormatQuestionsData($data);
+                $res['subject'] = $subjectTable;
+                $res['status'] = 200;
+                $res['total'] = count($qResult);
+                $res['data'] = $qResult;
+
+                $this->tokenQuestions($questionLimit, $subjectTable, $processReq['userId'], $processReq['token'] );
                 return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
             } catch (\Exception $e) {
@@ -388,7 +471,8 @@ class QuestionController extends Controller
         }
     }
 
-    private function processRequest(){
+    private function processRequest($questions = 40){
+        $computeCount = ceil($questions/40);
         $accessToken =  request()->header('AccessToken');
         if(!$accessToken){
             $data['status'] = 400;
@@ -407,11 +491,16 @@ class QuestionController extends Controller
                 $data ['error'] = "You have used up your quota. Please, upgrade your plan to continue";
                 return $data;
             }
+            $newCount =  $res->count + $computeCount;
+
+            if($newCount > $subscription->limit){
+                $newCount = $subscription->limit;
+            }
             $data['status'] = 200;
             $data['shouldReturn'] = false;
             $data['userId'] = $res->user_id;
             $data['token'] = $accessToken;
-            $res->update(['count'=> $res->count+1]);
+            $res->update(['count'=> $newCount]);
         }else{
             $data['status'] = 406;
             $data['shouldReturn'] = true;
