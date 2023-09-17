@@ -16,7 +16,7 @@ class QLoader extends Model
         $this->table = $table;
     }
 
-    public static function FormatQuestionData($result)
+    public static function FormatQuestionData($result, $subject)
     {
         $data =[];
         $option['a'] = $result->optionA;
@@ -35,10 +35,17 @@ class QLoader extends Model
         $data['examtype'] = $result->examtype;
         $data['examyear'] = $result->examyear;
 
+
+        if($subject=== 'english'){
+            $data['questionNub'] = $result->questionNub;
+            $data['hasPassage'] = $result->hasPassage;
+            $data['category'] = $result->category;
+        }
+
         return $data;
     }
 
-    public static function FormatQuestionsData($results)
+    public static function FormatQuestionsData($results, $subject)
     {
         $dataAll =[];
         foreach ($results as $result){
@@ -57,6 +64,13 @@ class QLoader extends Model
             $data['solution'] = $result->solution;
             $data['examtype'] = $result->examtype;
             $data['examyear'] = $result->examyear;
+
+            if($subject=== 'english'){
+                $data['questionNub'] = $result->questionNub;
+                $data['hasPassage'] = $result->hasPassage;
+                $data['category'] = $result->category;
+            }
+
             $dataAll[] = $data;
         }
         return $dataAll;

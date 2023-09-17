@@ -57,14 +57,14 @@ class QuestionController extends Controller
 
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
-                $res['data'] = $question::FormatQuestionData($data);
+                $res['data'] = $question::FormatQuestionData($data, $subjectTable);
 
                 $this->tokenQuestions(1, $subjectTable, $processReq['userId'], $processReq['token'] );
 
                 return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
             } catch (\Exception $e) {
-                //dd($e);
+                print($e);
                 $subject = (object) subjectArray();
                 $type = (object) examTypeArray();
                 $querySample = (object) querySampleArray1();
@@ -136,7 +136,7 @@ class QuestionController extends Controller
 
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
-                $res['data'] = $question::FormatQuestionsData($data);
+                $res['data'] = $question::FormatQuestionsData($data, $subjectTable);
 
                 $this->tokenQuestions($recordLimit, $subjectTable, $processReq['userId'], $processReq['token'] );
 
@@ -190,7 +190,7 @@ class QuestionController extends Controller
                 if (!empty($data)) {
                     $res['subject'] = $subjectTable;
                     $res['status'] = 200;
-                    $res['data'] = $question::FormatQuestionData($data);
+                    $res['data'] = $question::FormatQuestionData($data,$subjectTable);
 
                     $count = $data->requestCount + 1;
                     $question->where(['id' => $data->id])->update(['requestCount' => $count]);
@@ -327,7 +327,7 @@ class QuestionController extends Controller
                     }
                 }
 
-                $qResult = $question::FormatQuestionsData($data);
+                $qResult = $question::FormatQuestionsData($data, $subjectTable);
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
                 $res['total'] = count($qResult);
@@ -373,26 +373,50 @@ class QuestionController extends Controller
 
         $input = request()->all();
         // $questionLimit = 40;
+        //dd($input);
         if (isset($input['subject']) && $input['subject'] != "") {
 
             $subjectTable = strtolower($input['subject']);
+
+            if(!isset($input['random'])){
+                $random = 'true';
+            }else{
+                $random = strtolower($input['random']);
+            }
+
             try {
                 $question = new QLoader;
                 $question->setTable($subjectTable);
 
                 if (isset($input['year']) && isset($input['type'])) {
                     $examType = strtolower($input['type']);
-                    $data = $question->where(['examtype' => $examType, 'examyear' => $input['year']])
-                                     ->inRandomOrder()->take($questionLimit)->get();
+                    if($random === 'true'){
+                        $data = $question->where(['examtype' => $examType, 'examyear' => $input['year']])
+                                        ->inRandomOrder()->take($questionLimit)->get();
+                    }else{
+                        $data = $question->where(['examtype' => $examType, 'examyear' => $input['year']])->take($questionLimit)->get();
+                    }
                 } else if (isset($input['year'])) {
-                    $data = $question->where(['examyear' => $input['year']])
-                                     ->inRandomOrder()->take($questionLimit)->get();
+                    if($random === 'true'){
+                        $data = $question->where(['examyear' => $input['year']])->inRandomOrder()->take($questionLimit)->get();
+                    }else{
+                        $data = $question->where(['examyear' => $input['year']])->take($questionLimit)->get();
+                    }
+
                 } else if (isset($input['type'])) {
                     $examType = strtolower($input['type']);
-                    $data = $question->where(['examtype' => $examType])
+                    if($random === 'true'){
+                         $data = $question->where(['examtype' => $examType])
                                      ->inRandomOrder()->take($questionLimit)->get();
+                    }else{
+                        $data = $question->where(['examtype' => $examType])->take($questionLimit)->get();
+                    }
                 } else {
-                    $data = $question->inRandomOrder()->take($questionLimit)->get();
+                    if($random === 'true'){
+                      $data = $question->inRandomOrder()->take($questionLimit)->get();
+                    }else{
+                        $data = $question->take($questionLimit)->get();
+                    }
                 }
 
                 if (empty($data)) {
@@ -408,7 +432,7 @@ class QuestionController extends Controller
                     }
                 }
 
-                $qResult = $question::FormatQuestionsData($data);
+                $qResult = $question::FormatQuestionsData($data, $subjectTable);
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
                 $res['total'] = count($qResult);
