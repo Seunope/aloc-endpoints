@@ -87,7 +87,7 @@
             <h2 class="text-black mb-4">How to get started</h2>
             <p class="mb-4">Create a free account today and an Access Token will be generated for you to communicate with our REST APIs.</p>
 
-              <p class="mb-4">Add the access token as header when calling our APIs. <a href="https://github.com/Seunope/aloc-endpoints/wiki" target="_blank">Our API endpoints documentation is here.</a></p>
+              <p class="mb-4">Add the access token as header when calling our APIs. <a href="https://documenter.getpostman.com/view/1319216/2s9YCBuA3V" target="_blank">API endpoints documentation is here.</a></p>
 
           </div>
         </div>
