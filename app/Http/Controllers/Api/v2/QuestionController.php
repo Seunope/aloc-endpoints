@@ -32,16 +32,39 @@ class QuestionController extends Controller
                 $question = new QLoader;
                 $question->setTable($subjectTable);
 
+                if(!isset($input['random'])){
+                    $random = 'true';
+                }else{
+                    $random = strtolower($input['random']);
+                }
+
                 if (isset($input['year']) && isset($input['type'])) {
                     $examType = strtolower($input['type']);
-                    $data = $question->where(['examtype' => $examType, 'examyear' => $input['year']])->inRandomOrder()->first();
+                    if($random === 'true'){
+                        $data = $question->where(['examtype' => $examType, 'examyear' => $input['year']])->inRandomOrder()->first();
+                    }else{
+                        $data = $question->where(['examtype' => $examType, 'examyear' => $input['year']])->first();
+                    }
                 } else if (isset($input['year'])) {
-                    $data = $question->where(['examyear' => $input['year']])->inRandomOrder()->first();
+                    if($random === 'true'){
+                        $data = $question->where(['examyear' => $input['year']])->inRandomOrder()->first();
+                    }else{
+                        $data = $question->where(['examyear' => $input['year']])->first();
+
+                    }
                 } else if (isset($input['type'])) {
                     $examType = strtolower($input['type']);
-                    $data = $question->where(['examtype' => $examType])->inRandomOrder()->first();
+                    if($random === 'true'){
+                        $data = $question->where(['examtype' => $examType])->inRandomOrder()->first();
+                    }else{
+                        $data = $question->where(['examtype' => $examType])->first();
+                    }
                 } else {
-                    $data = $question->inRandomOrder()->first();
+                    if($random === 'true'){
+                        $data = $question->inRandomOrder()->first();
+                    }else{
+                        $data = $question->first();
+                    }
                 }
 
                 if (empty($data)) {
@@ -282,6 +305,52 @@ class QuestionController extends Controller
         return response()->json($data, 200, [], JSON_PRETTY_PRINT);
     }
 
+    public function comprehensionYears(){
+
+        $processReq =  $this->processRequest();
+        if($processReq['shouldReturn']){
+            unset($processReq['shouldReturn']);
+            return response()->json($processReq, 406, [], JSON_PRETTY_PRINT);
+        }
+
+        $input = request()->all();
+        if (isset($input['subject']) && $input['subject'] != "") {
+
+            $subjectTable = strtolower($input['subject']);
+            if($subjectTable !== 'english'){
+                $data ['error'] = "Subject not supplied. Only english language is supported";
+                $data['status'] = 400;
+                return response()->json($data, 400, [], JSON_PRETTY_PRINT);
+            }
+
+            try {
+                $question = new QLoader;
+                $question->setTable($subjectTable);
+                $data = $question->where(['hasPassage' => true])->select(['examyear'])->groupBy('examyear')->get();
+
+
+                $res['subject'] = $subjectTable;
+                $res['status'] = 200;
+                $res['data'] = $data;
+
+                return response()->json($res, 200, [], JSON_PRETTY_PRINT);
+
+            } catch (\Exception $e) {
+                //dd($e);
+                $data = null;
+                $data ['error'] = "Something strange just happened. Check your input";
+                $data['status'] = 406;
+                return response()->json($data, 406, [], JSON_PRETTY_PRINT);
+            }
+
+        } else {
+            $data ['error'] = "Subject not supplied";
+            $data['status'] = 400;
+            return response()->json($data, 400, [], JSON_PRETTY_PRINT);
+        }
+    }
+
+
     public function manyQuestions(){
 
         $processReq =  $this->processRequest();
@@ -384,6 +453,12 @@ class QuestionController extends Controller
                 $random = strtolower($input['random']);
             }
 
+            if(!isset($input['withComprehension'])){
+                $withComprehension = 'false';
+            }else{
+                $withComprehension = strtolower($input['withComprehension']);
+            }
+
             try {
                 $question = new QLoader;
                 $question->setTable($subjectTable);
@@ -432,11 +507,21 @@ class QuestionController extends Controller
                     }
                 }
 
-                $qResult = $question::FormatQuestionsData($data, $subjectTable);
+                $qResult = $question::FormatQuestionsData($data, $subjectTable, $withComprehension);
                 $res['subject'] = $subjectTable;
                 $res['status'] = 200;
                 $res['total'] = count($qResult);
                 $res['data'] = $qResult;
+
+                if( $res['total'] == 0 && isset($input['withComprehension'])){
+                    $data = null;
+                    $data ['error'] = "Comprehension not supported for subject or year";
+                    $data['status'] = 406;
+                    $data ['hint'] = ['message-1' => 'This is the list of supported subjects.', 'Subjects' => 'english',
+                    'message-2' => 'Supported years. 2000, 2001, 2002, 2011,2012, 2013, 2014, 2015,2016, 2017, 2018, 2019,2020, 2021, 2022', 'Exams' => 'utme'];
+                    return response()->json($data, 406, [], JSON_PRETTY_PRINT);
+
+                }
 
                 $this->tokenQuestions($questionLimit, $subjectTable, $processReq['userId'], $processReq['token'] );
                 return response()->json($res, 200, [], JSON_PRETTY_PRINT);
