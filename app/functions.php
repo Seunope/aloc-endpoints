@@ -8,7 +8,7 @@ function subjectArray (){
 }
 
 function examTypeArray(){
-    return ['waec', 'jamb', 'neco', 'post-utme'];
+    return ['waec', 'utme', 'neco', 'post-utme'];
 }
 
 function querySampleArray1(){

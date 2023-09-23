@@ -16,9 +16,10 @@ class QLoader extends Model
         $this->table = $table;
     }
 
-    public static function FormatQuestionData($result)
+    public static function FormatQuestionData($result, $subject)
     {
         $data =[];
+
         $option['a'] = $result->optionA;
         $option['b'] = $result->optionB;
         $option['c'] = $result->optionC;
@@ -35,29 +36,71 @@ class QLoader extends Model
         $data['examtype'] = $result->examtype;
         $data['examyear'] = $result->examyear;
 
+
+        if($subject=== 'english'){
+            $data['questionNub'] = $result->questionNub;
+            $data['hasPassage'] = $result->hasPassage;
+            $data['category'] = $result->category;
+        }
+
         return $data;
     }
 
-    public static function FormatQuestionsData($results)
+    public static function FormatQuestionsData($results, $subject,  $withComprehension='false')
     {
         $dataAll =[];
         foreach ($results as $result){
-            $option['a'] = $result->optionA;
-            $option['b'] = $result->optionB;
-            $option['c'] = $result->optionC;
-            $option['d'] = $result->optionD;
-            $option['e'] = $result->optionD;
 
-            $data['id'] = $result->id;
-            $data['question'] = $result->question;
-            $data['option'] = $option;
-            $data['section'] = $result->section;
-            $data['image'] = $result->image;
-            $data['answer'] = $result->answer;
-            $data['solution'] = $result->solution;
-            $data['examtype'] = $result->examtype;
-            $data['examyear'] = $result->examyear;
-            $dataAll[] = $data;
+            if($subject=== 'english' && $result->hasPassage && $withComprehension !== 'true'){
+                continue;
+            }else if($subject=== 'english' && $result->hasPassage && $withComprehension == 'true'){
+                $option['a'] = $result->optionA;
+                $option['b'] = $result->optionB;
+                $option['c'] = $result->optionC;
+                $option['d'] = $result->optionD;
+                $option['e'] = $result->optionD;
+
+                $data['id'] = $result->id;
+                $data['question'] = $result->question;
+                $data['option'] = $option;
+                $data['section'] = $result->section;
+                $data['image'] = $result->image;
+                $data['answer'] = $result->answer;
+                $data['solution'] = $result->solution;
+                $data['examtype'] = $result->examtype;
+                $data['examyear'] = $result->examyear;
+
+                $data['questionNub'] = $result->questionNub;
+                $data['hasPassage'] = $result->hasPassage;
+                $data['category'] = $result->category;
+
+                $dataAll[] = $data;
+
+            }else{
+                $option['a'] = $result->optionA;
+                $option['b'] = $result->optionB;
+                $option['c'] = $result->optionC;
+                $option['d'] = $result->optionD;
+                $option['e'] = $result->optionD;
+
+                $data['id'] = $result->id;
+                $data['question'] = $result->question;
+                $data['option'] = $option;
+                $data['section'] = $result->section;
+                $data['image'] = $result->image;
+                $data['answer'] = $result->answer;
+                $data['solution'] = $result->solution;
+                $data['examtype'] = $result->examtype;
+                $data['examyear'] = $result->examyear;
+
+                if($subject=== 'english'){
+                    $data['questionNub'] = $result->questionNub;
+                    $data['hasPassage'] = $result->hasPassage;
+                    $data['category'] = $result->category;
+                }
+
+                $dataAll[] = $data;
+            }
         }
         return $dataAll;
     }

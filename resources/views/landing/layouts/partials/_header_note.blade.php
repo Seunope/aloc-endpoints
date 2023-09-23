@@ -11,7 +11,7 @@
                         <li><a href="#programs-section" class="nav-link">APIs</a></li>
                         <li><a href="#subjects-section" class="nav-link">Subjects</a></li>
                         <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
-                        <li><a href="https://github.com/Seunope/aloc-endpoints/wiki" target="_blank">Docs</a></li>
+                        <li><a href="https://documenter.getpostman.com/view/1319216/2s9YCBuA3V" target="_blank">Docs</a></li>
 
                     </ul>
                 </nav>
