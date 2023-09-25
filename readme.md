@@ -4,7 +4,7 @@
 
 ## About ALOC
 
-ALOC is an adventure based CBT practice platform with an engaging game story that unravels as students’ progresses in game levels. We use gaming concepts to increase student practice time and grade.[https://aloc.com.ng]
+ALOC is an adventure-based CBT practice platform with an engaging game story that unravels as students’ progresses in game levels. We use gaming concepts to increase student practice time and grade.[https://aloc.com.ng]
 
 - Experience CBT in game environment
 - Gain free access to unlimited past questions
@@ -16,15 +16,15 @@ Finally, boring time are over, academic practice can now be Fun for students see
 
 ## About ALOC Questions API
 
-This app gives developers and educator access to our questions via APIs call. You get free access to over 6,000 past questions for UTME, WASSCE, POST-UTME
+This app gives developers and educators access to our questions via API calls. You get free access to over 6,000 past questions for UTME, WASSCE, POST-UTME
 
-Make api calls to have access to over 6,000 Major Nigeria past questions. 100% FREE
+Make API calls to have access to over 6,000 Major Nigeria past questions. 100% FREE
 
-You can focus on building great apps for students with unlimited access to api calls for trivial questions of major exams in Nigeria
+You can focus on building great apps for students with unlimited access to API calls for trivial questions of major exams in Nigeria
 
 ## Our Goal
 
-To have the largest open source database of various past questions in Nigeria. 
+To have the largest open-source database of various past questions in Nigeria. 
 
 ## Call for Questions
 
@@ -54,7 +54,12 @@ Over <a href=https://questions.aloc.com.ng/api/metrics/subjects-call>5,534,083 A
 
  _Sign up at https://questions.aloc.com.ng to get *Acces Token* ._
 
-Visit https://github.com/Seunope/aloc-endpoints/wiki/API-Parameters for sample API call with headers and parameters  
+Visit https://github.com/Seunope/aloc-endpoints/wiki/API-Parameters for a sample API call with headers and parameters  
+
+
+## Postman APIs Doc 
+
+https://documenter.getpostman.com/view/1319216/2s9YCBuA3V
 
 ## API call Examples
 
