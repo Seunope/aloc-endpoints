@@ -4,7 +4,7 @@
 
 ## About ALOC
 
-ALOC is an adventure-based CBT practice platform with an engaging game story that unravels as students progress in-game levels. We use gaming concepts to increase student practice time and grades.[https://aloc.com.ng]
+ALOC is an adventure-based CBT practice platform with an engaging game story that unravels as students progress in the game levels. We use gaming concepts to increase student practice time and grades.[https://aloc.com.ng]
 
 - Experience CBT in the game environment
 - Gain free access to unlimited past questions
@@ -42,7 +42,7 @@ Over <a href=https://questions.aloc.com.ng/api/metrics/subjects-call>5,534,083 A
 
 - `php artisan migrate`
 
-- You can load some dummy data into database for testing `php artisan db:seed --class=LoadDummyQuestions`
+- You can load some dummy data into the database for testing `php artisan db:seed --class=LoadDummyQuestions`
 
 - Load report question types `php artisan db:seed --class=ReportQuestionType` this is optional
 
