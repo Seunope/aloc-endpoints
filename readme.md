@@ -4,15 +4,15 @@
 
 ## About ALOC
 
-ALOC is an adventure-based CBT practice platform with an engaging game story that unravels as students’ progresses in game levels. We use gaming concepts to increase student practice time and grade.[https://aloc.com.ng]
+ALOC is an adventure-based CBT practice platform with an engaging game story that unravels as students progress in the game levels. We use gaming concepts to increase student practice time and grades.[https://aloc.com.ng]
 
-- Experience CBT in game environment
+- Experience CBT in the game environment
 - Gain free access to unlimited past questions
 - Chat with students across Nigeria
 - Get paid for being smart
 - Learn for fun, play for glory
   
-Finally, boring time are over, academic practice can now be Fun for students seeking university admission.
+Finally, boring times are over, academic practice can now be Fun for students seeking university admission.
 
 ## About ALOC Questions API
 
@@ -42,7 +42,7 @@ Over <a href=https://questions.aloc.com.ng/api/metrics/subjects-call>5,534,083 A
 
 - `php artisan migrate`
 
-- You can load some dummy data into database for testing `php artisan db:seed --class=LoadDummyQuestions`
+- You can load some dummy data into the database for testing `php artisan db:seed --class=LoadDummyQuestions`
 
 - Load report question types `php artisan db:seed --class=ReportQuestionType` this is optional
 
@@ -60,6 +60,8 @@ Visit https://github.com/Seunope/aloc-endpoints/wiki/API-Parameters for a sample
 ## Postman APIs Doc 
 
 https://documenter.getpostman.com/view/1319216/2s9YCBuA3V
+
+<img src="https://res.cloudinary.com/aloc-ng/image/upload/v1695632646/ALOC-Questions/Screenshot_2023-09-25_at_09.54.01_hvf3fv.png"/>
 
 ## API call Examples
 
