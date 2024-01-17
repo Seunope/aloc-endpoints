@@ -31,30 +31,34 @@ function randomSubjects(){
 }
 
 function storeQuestionRequestByIP($subject){
-    $userIp =  request()->getClientIp(true);
+    $userIp = request()->getClientIp(true);
     $locationData = \Location::get( $userIp);
-    //dd($locationData);
+    // dd($locationData, $userIp);
 
-    $res =  ApiCallIpAddress::where(['ipAddress' => $userIp,'subject' => $subject] )->get();
-    if(!$res->isEmpty()){
-        $res = $res->first();
-        $count = $res->requestCount + 1;
-        $res::where('id','=', $res->id)->update(['requestCount'=>$count,'countryCode'=>$locationData->countryCode,
-            'countryName'=>$locationData->countryName,'regionName'=>$locationData->regionName,]);
+    if( $locationData !== false){
+        $res =  ApiCallIpAddress::where(['ipAddress' => $userIp,'subject' => $subject] )->get();
+        if(!$res->isEmpty()){
+            $res = $res->first();
+            $count = $res->requestCount + 1;
+            $res::where('id','=', $res->id)->update(['requestCount'=>$count,'countryCode'=>$locationData->countryCode,
+                'countryName'=>$locationData->countryName,'regionName'=>$locationData->regionName,]);
+        }else{
+
+            $data['countryCode'] = $locationData->countryCode;
+            $data['countryName'] = $locationData->countryName ;
+            $data['regionCode'] = $locationData->regionCode ;
+            $data['regionName'] = $locationData->regionName ;
+            $data['cityName'] = $locationData->cityName ;
+            $data['zipCode'] = $locationData->zipCode;
+            $data['latitude'] = $locationData->latitude ;
+            $data['longitude'] = $locationData->longitude;
+
+            $data['subject'] = $subject;
+            $data['ipAddress'] = $userIp;
+            ApiCallIpAddress::create($data);
+        }
     }else{
-
-        $data['countryCode'] = $locationData->countryCode;
-        $data['countryName'] = $locationData->countryName ;
-        $data['regionCode'] = $locationData->regionCode ;
-        $data['regionName'] = $locationData->regionName ;
-        $data['cityName'] = $locationData->cityName ;
-        $data['zipCode'] = $locationData->zipCode;
-        $data['latitude'] = $locationData->latitude ;
-        $data['longitude'] = $locationData->longitude;
-
-        $data['subject'] = $subject;
-        $data['ipAddress'] = $userIp;
-        ApiCallIpAddress::create($data);
+        //localhost
     }
 }
 

@@ -157,7 +157,7 @@ class QuestionController extends Controller
                 }
 
 
-                $res['subject'] = $subjectTable;
+                $res['subject'] = $subjectTable;  
                 $res['status'] = 200;
                 $res['data'] = $question::FormatQuestionsData($data, $subjectTable);
 
@@ -166,7 +166,7 @@ class QuestionController extends Controller
                 return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
             } catch (\Exception $e) {
-                //dd($e);
+                dd($e);
                 $subject = (object) subjectArray();
                 $type = (object) examTypeArray();
                 $querySample = (object) querySampleArray2();
