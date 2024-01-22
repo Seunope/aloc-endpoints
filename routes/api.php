@@ -45,6 +45,7 @@ Route::group(['namespace' => 'Api'], function () {
         Route::resource('/q', 'QuestionController');
         Route::get('/q-by-id/{id}', 'QuestionController@questionById');
         Route::get('/q-subjects', 'QuestionController@allSubjects');
+        Route::get('/q-subjects-group', 'QuestionController@groupSubjectsQuestions');
         Route::get('/q-comprehension-years', 'QuestionController@comprehensionYears');
 
 
