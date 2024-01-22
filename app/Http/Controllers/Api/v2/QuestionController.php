@@ -595,7 +595,7 @@ class QuestionController extends Controller
             return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
         } catch (\Exception $e) {
-            // print($e);
+            print($e);
             $subject = (object) subjectArray();
             $type = (object) examTypeArray();
             $querySample = (object) querySampleArray1();
@@ -738,7 +738,11 @@ class QuestionController extends Controller
                 $question = new QLoader;
                 $question->setTable($subjectTable);
  
-                $data = $question->inRandomOrder()->limit($limit)->get();
+                if($subject === 'english'){
+                    $data = $question->where(['hasPassage' => false])->inRandomOrder()->limit($limit)->get();
+                }else{
+                    $data = $question->inRandomOrder()->limit($limit)->get();
+                }
 
                 if(!env('APP_DEBUG')){
                     foreach ($data as $datum) {
