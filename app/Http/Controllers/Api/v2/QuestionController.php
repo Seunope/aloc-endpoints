@@ -11,6 +11,8 @@ use App\Models\ReportQuestion;
 use App\Models\AccessTokenCall;
 use App\Models\ApiCallIpAddress;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+
 
 class QuestionController extends Controller
 {
@@ -130,7 +132,7 @@ class QuestionController extends Controller
             try {
                 $question = new QLoader;
                 $question->setTable($subjectTable);
-
+ 
                 if (isset($input['year']) && isset($input['type'])) {
                     $examType = strtolower($input['type']);
                     $data = $question->where(['examtype' => $examType, 'examyear' => $input['year']])->inRandomOrder()->limit($limit)->get();
@@ -166,7 +168,7 @@ class QuestionController extends Controller
                 return response()->json($res, 200, [], JSON_PRETTY_PRINT);
 
             } catch (\Exception $e) {
-                dd($e);
+                // dd($e);
                 $subject = (object) subjectArray();
                 $type = (object) examTypeArray();
                 $querySample = (object) querySampleArray2();
@@ -547,6 +549,68 @@ class QuestionController extends Controller
         }
     }
 
+
+    public function groupSubjectsQuestions(Request $request)
+    {
+        $processReq =  $this->processRequest();
+        if($processReq['shouldReturn']){
+            unset($processReq['shouldReturn']);
+            return response()->json($processReq, 406, [], JSON_PRETTY_PRINT);
+        }
+
+        $input = $request->all();
+
+        $rules = array(
+            'subject1'   => 'required', 
+            'number'=> 'required|numeric');
+
+        $validator = Validator::make($input, $rules);
+
+        if (!$validator->passes()){
+            $res['status'] = 406;
+            $res['message'] = $validator->errors();
+            return response()->json($res,406);
+        }
+
+        try{
+
+            $questions['subject1'] = $this->getBySubject($input['subject1'], $input['number'],$processReq);
+
+            if (isset($input['subject2']) && $input['subject2'] != "") {
+                $questions['subject2'] = $this->getBySubject($input['subject2'], $input['number'],$processReq);
+            }
+
+            if (isset($input['subject3']) && $input['subject3'] != "") {
+                $questions['subject3'] = $this->getBySubject($input['subject3'], $input['number'],$processReq);
+            }
+
+            if (isset($input['subject4']) && $input['subject4'] != "") {
+                $questions['subject4'] = $this->getBySubject($input['subject4'], $input['number'],$processReq);
+            }
+
+            $res['status'] = 200;
+            $res['data'] = $questions;
+            $res['message'] = 'Group questions was fetched';
+
+            return response()->json($res, 200, [], JSON_PRETTY_PRINT);
+
+        } catch (\Exception $e) {
+            // print($e);
+            $subject = (object) subjectArray();
+            $type = (object) examTypeArray();
+            $querySample = (object) querySampleArray1();
+            $data = null;
+            $data ['error'] = "Something strange just happened";
+            $data['status'] = 406;
+            $data ['hint'] = ['message-1' => 'This is the list of supported subjects.', 'Subjects' => $subject,
+                                'message-2' => 'Supported exam types.', 'Exams' => $type,
+                                'message-3' => 'Query samples.', 'Queries' => $querySample,];
+
+            return response()->json($data, 406, [], JSON_PRETTY_PRINT);
+        }
+
+    }
+
     public function topQuestion(){
 
         try{
@@ -654,6 +718,53 @@ class QuestionController extends Controller
             $data['month'] = $month ;
             $data['year'] =$year;
             QBoardLog::create($data);
+        }
+    }
+
+    private function getBySubject($subject, $recordLimit, $processReq)
+    {
+      
+        $limit = $recordLimit;
+        if ($subject != "") {
+
+            if (!is_numeric($recordLimit)) {
+                $limit = 1;
+            } else if ($recordLimit > 20) {
+                $limit = 20;
+            }
+
+            $subjectTable = strtolower($subject);
+            try {
+                $question = new QLoader;
+                $question->setTable($subjectTable);
+ 
+                $data = $question->inRandomOrder()->limit($limit)->get();
+
+                if(!env('APP_DEBUG')){
+                    foreach ($data as $datum) {
+                        $count = $datum->requestCount + 1;
+                        $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
+                        storeQuestionRequestByIP($subjectTable);
+                    }
+                }
+
+
+                $res['subject'] = $subjectTable;  
+                $res['data'] = $question::FormatQuestionsData($data, $subjectTable);
+
+                $this->tokenQuestions($recordLimit, $subjectTable, $processReq['userId'], $processReq['token'] );
+
+                return $res;
+
+            } catch (\Exception $e) {
+                // dd($e);
+                $res['subject'] = $subject;  
+                $res['data'] = [];
+            }
+
+        } else {
+            $res['subject'] = $subject;  
+            $res['data'] = [];
         }
     }
 
