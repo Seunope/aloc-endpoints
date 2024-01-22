@@ -50,7 +50,6 @@ class QLoader extends Model
     {
         $dataAll =[];
         foreach ($results as $result){
-
             if($subject=== 'english' && $result->hasPassage && $withComprehension !== 'true'){
                 continue;
             }else if($subject=== 'english' && $result->hasPassage && $withComprehension == 'true'){
@@ -58,7 +57,10 @@ class QLoader extends Model
                 $option['b'] = $result->optionB;
                 $option['c'] = $result->optionC;
                 $option['d'] = $result->optionD;
-                $option['e'] = $result->optionD;
+
+                if( property_exists('optionE', $result)){
+                    $option['e'] = $result->optionE;
+                }
 
                 $data['id'] = $result->id;
                 $data['question'] = $result->question;
@@ -81,7 +83,10 @@ class QLoader extends Model
                 $option['b'] = $result->optionB;
                 $option['c'] = $result->optionC;
                 $option['d'] = $result->optionD;
-                $option['e'] = $result->optionD;
+
+                if( property_exists('optionE', $result)){
+                    $option['e'] = $result->optionE;
+                }
 
                 $data['id'] = $result->id;
                 $data['question'] = $result->question;
@@ -113,8 +118,10 @@ class QLoader extends Model
             $option['b'] = $result->optionB;
             $option['c'] = $result->optionC;
             $option['d'] = $result->optionD;
-            $option['e'] = $result->optionD;
-
+            if( property_exists('optionE', $result)){
+                $option['e'] = $result->optionE;
+            }
+            
             $data['id'] = $result->id;
             $data['subject'] = $result->subject;
             $data['question'] = $result->question;
