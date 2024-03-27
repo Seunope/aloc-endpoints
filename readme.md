@@ -123,6 +123,9 @@ We would like to extend our thanks to the following sponsors for helping fund on
 
 Thank you for considering contributing to the ALOC Questions Api end points!
 
+
+<a href="https://www.buymeacoffee.com/seunope" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within ALOC APIs, please send an e-mail to Admin via [aloc.mass@gmail.com](mailto:aloc.mass@gmail.com. All security vulnerabilities will be promptly addressed.
