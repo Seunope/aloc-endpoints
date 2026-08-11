@@ -31,7 +31,7 @@
               <span style="font-size: 14px; font-weight: 600;" class="text-white">ALOC Endpoints End-of-Life Shutdown in:</span>
             </div>
             <p class="mb-0 mt-1 small" style="color: #94a3b8; font-size: 13px;">
-              This legacy version is reaching end-of-life in 12 months (from August 1st). Switch to <a href="https://aloc.com.ng" target="_blank" style="color: #fbbf24; text-decoration: underline; font-weight: 600;">ALOC Station (aloc.com.ng)</a> for the new API infrastructure.
+              This legacy version is reaching end-of-life in 12 months (from August 1st, 2026). Switch to <a href="https://aloc.com.ng" target="_blank" style="color: #fbbf24; text-decoration: underline; font-weight: 600;">ALOC Station (aloc.com.ng)</a> for the new API infrastructure.
             </p>
           </div>
           <div class="col-lg-5 text-center text-lg-right">
