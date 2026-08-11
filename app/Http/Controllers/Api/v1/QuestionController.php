@@ -117,7 +117,7 @@ class QuestionController extends Controller
                 storeQuestionRequestByIP($subjectTable);
                 if (count($data) > 0) {
                     $datumIds = $data->pluck('id')->toArray();
-                    (new QLoader)->setTable($subjectTable)->whereIn('id', $datumIds)->increment('requestCount');
+                    \DB::table($subjectTable)->whereIn('id', $datumIds)->increment('requestCount');
                 }
 
                 $res['subject'] = $subjectTable;
@@ -303,7 +303,7 @@ class QuestionController extends Controller
                 storeQuestionRequestByIP($subjectTable);
                 if (count($data) > 0) {
                     $datumIds = $data->pluck('id')->toArray();
-                    (new QLoader)->setTable($subjectTable)->whereIn('id', $datumIds)->increment('requestCount');
+                    \DB::table($subjectTable)->whereIn('id', $datumIds)->increment('requestCount');
                 }
 
                 $res['subject'] = $subjectTable;

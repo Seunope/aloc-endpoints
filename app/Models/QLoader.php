@@ -14,6 +14,7 @@ class QLoader extends Model
     public function setTable($table)
     {
         $this->table = $table;
+        return $this;
     }
 
     public static function FormatQuestionData($result, $subject)
