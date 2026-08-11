@@ -5,8 +5,8 @@
 
 @php
     $now = \Carbon\Carbon::now();
-    $isSignupDisabled = $now->gte(\Carbon\Carbon::parse('2027-02-01 00:00:00'));
-    $isEolReached = $now->gte(\Carbon\Carbon::parse('2027-05-01 00:00:00'));
+    $isSignupDisabled = $now->gte(\Carbon\Carbon::parse('2027-03-01 00:00:00'));
+    $isEolReached = $now->gte(\Carbon\Carbon::parse('2027-06-01 00:00:00'));
 @endphp
 
 
@@ -31,13 +31,13 @@
               <span style="font-size: 14px; font-weight: 600;" class="text-white">ALOC Endpoints End-of-Life Shutdown in:</span>
             </div>
             <p class="mb-0 mt-1 small" style="color: #94a3b8; font-size: 13px;">
-              This legacy version is reaching end-of-life in 9 months (from August 1st). Switch to <a href="https://aloc.com.ng" target="_blank" style="color: #fbbf24; text-decoration: underline; font-weight: 600;">ALOC Station (aloc.com.ng)</a> for the new API infrastructure.
+              This legacy version is reaching end-of-life in 10 months (from August 1st). Switch to <a href="https://aloc.com.ng" target="_blank" style="color: #fbbf24; text-decoration: underline; font-weight: 600;">ALOC Station (aloc.com.ng)</a> for the new API infrastructure.
             </p>
           </div>
           <div class="col-lg-5 text-center text-lg-right">
             <div class="d-inline-flex align-items-center justify-content-center p-2 px-3 rounded shadow-sm" style="border: 1px solid rgba(245, 158, 11, 0.3); background: #020617 !important;">
               <div class="text-center px-2">
-                <span id="eol-days" style="font-size: 20px; font-weight: 800; color: #fbbf24; font-family: monospace; display: block; line-height: 1;">263</span>
+                <span id="eol-days" style="font-size: 20px; font-weight: 800; color: #fbbf24; font-family: monospace; display: block; line-height: 1;">294</span>
                 <span style="font-size: 9px; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.5px;">Days</span>
               </div>
               <span style="font-size: 18px; color: #f59e0b; font-weight: 700; margin-top: -8px;">:</span>
@@ -440,10 +440,10 @@
 
   <script>
     (function() {
-      // EOL date: 9 months from August 1st 2026 -> May 1st 2027 00:00:00 UTC
-      var eolDate = new Date('2027-05-01T00:00:00Z').getTime();
-      // 3 months before EOL date -> February 1st 2027 00:00:00 UTC
-      var signupDisableDate = new Date('2027-02-01T00:00:00Z').getTime();
+      // EOL date: 10 months from August 1st 2026 -> June 1st 2027 00:00:00 UTC
+      var eolDate = new Date('2027-06-01T00:00:00Z').getTime();
+      // 3 months before EOL date -> March 1st 2027 00:00:00 UTC
+      var signupDisableDate = new Date('2027-03-01T00:00:00Z').getTime();
 
       function updateCountdown() {
         var now = new Date().getTime();
@@ -468,7 +468,7 @@
         if (mEl) mEl.innerText = minutes < 10 ? '0' + minutes : minutes;
         if (sEl) sEl.innerText = seconds < 10 ? '0' + seconds : seconds;
 
-        // Rule 1: 3 months before EOL (Feb 1, 2027 onwards) -> Disable SIGN UP
+        // Rule 1: 3 months before EOL (March 1, 2027 onwards) -> Disable SIGN UP
         if (now >= signupDisableDate || now >= eolDate) {
           var signupButtons = document.querySelectorAll('.btn-signup');
           signupButtons.forEach(function(btn) {
@@ -483,7 +483,7 @@
           });
         }
 
-        // Rule 2: 9 months / EOL reached (May 1, 2027 onwards) -> Disable LOGIN & SIGN UP
+        // Rule 2: 10 months / EOL reached (June 1, 2027 onwards) -> Disable LOGIN & SIGN UP
         if (now >= eolDate) {
           var loginSubmit = document.querySelector('.btn-login-submit');
           var loginInputs = document.querySelectorAll('.form-box input');
