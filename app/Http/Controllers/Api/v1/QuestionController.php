@@ -114,10 +114,10 @@ class QuestionController extends Controller
                     $data = $question->inRandomOrder()->limit($limit)->get();
                 }
 
-                foreach ($data as $datum) {
-                    $count = $datum->requestCount + 1;
-                    $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
-                    storeQuestionRequestByIP($subjectTable);
+                storeQuestionRequestByIP($subjectTable);
+                if (count($data) > 0) {
+                    $datumIds = $data->pluck('id')->toArray();
+                    (new QLoader)->setTable($subjectTable)->whereIn('id', $datumIds)->increment('requestCount');
                 }
 
                 $res['subject'] = $subjectTable;
@@ -300,10 +300,10 @@ class QuestionController extends Controller
                     $data = $question->inRandomOrder()->take($questionLimit)->get();
                 }
 
-                foreach ($data as $datum) {
-                    $count = $datum->requestCount + 1;
-                    $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
-                    storeQuestionRequestByIP($subjectTable);
+                storeQuestionRequestByIP($subjectTable);
+                if (count($data) > 0) {
+                    $datumIds = $data->pluck('id')->toArray();
+                    (new QLoader)->setTable($subjectTable)->whereIn('id', $datumIds)->increment('requestCount');
                 }
 
                 $res['subject'] = $subjectTable;

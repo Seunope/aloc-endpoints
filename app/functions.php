@@ -35,25 +35,21 @@ function storeQuestionRequestByIP($subject){
     $locationData = \Location::get( $userIp);
     // dd($locationData, $userIp);
 
-    if( $locationData !== false){
-        $res =  ApiCallIpAddress::where(['ipAddress' => $userIp,'subject' => $subject] )->get();
-        if(!$res->isEmpty()){
-            $res = $res->first();
-            $count = $res->requestCount + 1;
-            $res::where('id','=', $res->id)->update(['requestCount'=>$count,'countryCode'=>$locationData->countryCode,
-                'countryName'=>$locationData->countryName,'regionName'=>$locationData->regionName,]);
-        }else{
-
+    if ($locationData !== false) {
+        $record = ApiCallIpAddress::where(['ipAddress' => $userIp, 'subject' => $subject])->first();
+        if ($record) {
+            $record->increment('requestCount');
+        } else {
             $data['countryCode'] = $locationData->countryCode;
-            $data['countryName'] = $locationData->countryName ;
-            $data['regionCode'] = $locationData->regionCode ;
-            $data['regionName'] = $locationData->regionName ;
-            $data['cityName'] = $locationData->cityName ;
-            $data['zipCode'] = $locationData->zipCode;
-            $data['latitude'] = $locationData->latitude ;
-            $data['longitude'] = $locationData->longitude;
+            $data['countryName'] = $locationData->countryName;
+            $data['regionCode']  = $locationData->regionCode;
+            $data['regionName']  = $locationData->regionName;
+            $data['cityName']    = $locationData->cityName;
+            $data['zipCode']     = $locationData->zipCode;
+            $data['latitude']    = $locationData->latitude;
+            $data['longitude']   = $locationData->longitude;
 
-            $data['subject'] = $subject;
+            $data['subject']   = $subject;
             $data['ipAddress'] = $userIp;
             ApiCallIpAddress::create($data);
         }

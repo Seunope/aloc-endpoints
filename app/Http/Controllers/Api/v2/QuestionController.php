@@ -151,10 +151,10 @@ class QuestionController extends Controller
                 }
 
                 if(!env('APP_DEBUG')){
-                    foreach ($data as $datum) {
-                        $count = $datum->requestCount + 1;
-                        $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
-                        storeQuestionRequestByIP($subjectTable);
+                    storeQuestionRequestByIP($subjectTable);
+                    if (count($data) > 0) {
+                        $datumIds = $data->pluck('id')->toArray();
+                        (new QLoader)->setTable($subjectTable)->whereIn('id', $datumIds)->increment('requestCount');
                     }
                 }
 
@@ -471,10 +471,10 @@ class QuestionController extends Controller
                 }
 
                 if(!env('APP_DEBUG')){
-                    foreach ($data as $datum) {
-                        $count = $datum->requestCount + 1;
-                        $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
-                        storeQuestionRequestByIP($subjectTable);
+                    storeQuestionRequestByIP($subjectTable);
+                    if (count($data) > 0) {
+                        $datumIds = $data->pluck('id')->toArray();
+                        (new QLoader)->setTable($subjectTable)->whereIn('id', $datumIds)->increment('requestCount');
                     }
                 }
 
@@ -582,10 +582,10 @@ class QuestionController extends Controller
                 }
 
                 if(!env('APP_DEBUG')){
-                    foreach ($data as $datum) {
-                        $count = $datum->requestCount + 1;
-                        $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
-                        storeQuestionRequestByIP($subjectTable);
+                    storeQuestionRequestByIP($subjectTable);
+                    if (count($data) > 0) {
+                        $datumIds = $data->pluck('id')->toArray();
+                        (new QLoader)->setTable($subjectTable)->whereIn('id', $datumIds)->increment('requestCount');
                     }
                 }
 
@@ -695,10 +695,10 @@ class QuestionController extends Controller
 
 
                 if(!env('APP_DEBUG')){
-                    foreach ($data as $datum) {
-                        $count = $datum->requestCount + 1;
-                        $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
-                        storeQuestionRequestByIP($subjectTable);
+                    storeQuestionRequestByIP($subjectTable);
+                    if (count($data) > 0) {
+                        $datumIds = $data->pluck('id')->toArray();
+                        (new QLoader)->setTable($subjectTable)->whereIn('id', $datumIds)->increment('requestCount');
                     }
                 }
                 
@@ -941,10 +941,10 @@ class QuestionController extends Controller
                 }
 
                 if(!env('APP_DEBUG')){
-                    foreach ($data as $datum) {
-                        $count = $datum->requestCount + 1;
-                        $question->where(['id' => $datum->id])->update(['requestCount' => $count]);
-                        storeQuestionRequestByIP($subjectTable);
+                    storeQuestionRequestByIP($subjectTable);
+                    if (count($data) > 0) {
+                        $datumIds = $data->pluck('id')->toArray();
+                        (new QLoader)->setTable($subjectTable)->whereIn('id', $datumIds)->increment('requestCount');
                     }
                 }
 
