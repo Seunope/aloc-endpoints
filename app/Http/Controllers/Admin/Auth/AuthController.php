@@ -17,11 +17,19 @@ class AuthController extends Controller
 {
     public function signup()
     {
+        if (\Carbon\Carbon::now()->gte(\Carbon\Carbon::parse('2027-02-01 00:00:00'))) {
+            flash('New user registrations are closed as legacy ALOC Endpoints prepares for end-of-life. Please register at aloc.com.ng')->warning();
+            return redirect('/');
+        }
         return view('landing.auth.signup');
     }
 
     public function handleSignup(Request $request)
     {
+        if (\Carbon\Carbon::now()->gte(\Carbon\Carbon::parse('2027-02-01 00:00:00'))) {
+            flash('New user registrations are closed as legacy ALOC Endpoints prepares for end-of-life. Please register at aloc.com.ng')->warning();
+            return redirect('/');
+        }
         $input = $request->except('_token');
         $rules = array(
             'name'   => 'required|min:4|max:40',
@@ -98,6 +106,10 @@ class AuthController extends Controller
 
     public function handleLogin(Request $request)
     {
+        if (\Carbon\Carbon::now()->gte(\Carbon\Carbon::parse('2027-05-01 00:00:00'))) {
+            flash('Legacy ALOC Endpoints has reached end-of-life and login is disabled. Please migrate to ALOC Station at aloc.com.ng')->warning();
+            return redirect('/');
+        }
         $credentials = $request->except('_token');
         $rules = array(
             'email'      => 'required|email',
