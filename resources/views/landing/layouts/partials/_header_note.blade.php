@@ -20,8 +20,8 @@
 
 @php
     $now = \Carbon\Carbon::now();
-    $isSignupDisabled = $now->gte(\Carbon\Carbon::parse('2027-03-01 00:00:00'));
-    $isEolReached = $now->gte(\Carbon\Carbon::parse('2027-06-01 00:00:00'));
+    $isSignupDisabled = $now->gte(\Carbon\Carbon::parse('2027-05-01 00:00:00'));
+    $isEolReached = $now->gte(\Carbon\Carbon::parse('2027-08-01 00:00:00'));
 @endphp
 
             <div class="d-none d-lg-flex align-items-center" style="gap: 12px;">
