@@ -33,7 +33,7 @@
                                     <p>Bonus units: {{formatNumber($pricing[1]['bonus_unit'])}}</p>
                                     <h3>Price: ₦{{formatNumber($pricing[1]['price'] )}}</h3>
                                     <h3/>
-                                    <p onclick="payWithPaystack({{$pricing[1]['price']}},{{$pricing[1]['id']}})" class="btn btn-sm btn-primary m-t-n-xs" type="button"><strong>Buy Now</strong></p>
+                                    <a href="https://aloc.com.ng/pricing?utm_source=legacy_billing" target="_blank" class="btn btn-sm btn-warning m-t-n-xs" style="background: #f59e0b; border: none; color: #0f172a;"><strong>Upgrade on ALOC Station →</strong></a>
 
                                 </div>
                                 <div class="clearfix"></div>
@@ -48,7 +48,7 @@
                                     <p>Bonus units: {{ formatNumber($pricing[2]['bonus_unit'])}}</p>
                                     <h3>Price: ₦{{ formatNumber($pricing[2]['price'])}}</h3>
                                     <h3/>
-                                    <p onclick="payWithPaystack({{$pricing[2]['price']}}, {{$pricing[2]['id']}})" class="btn btn-sm btn-primary m-t-n-xs" type="button"><strong>Buy Now</strong></p>
+                                    <a href="https://aloc.com.ng/pricing?utm_source=legacy_billing" target="_blank" class="btn btn-sm btn-warning m-t-n-xs" style="background: #f59e0b; border: none; color: #0f172a;"><strong>Upgrade on ALOC Station →</strong></a>
 
                                 </div>
 

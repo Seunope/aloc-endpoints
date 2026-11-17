@@ -31,7 +31,7 @@
               <span style="font-size: 14px; font-weight: 600;" class="text-white">ALOC Endpoints End-of-Life Shutdown in:</span>
             </div>
             <p class="mb-0 mt-1 small" style="color: #94a3b8; font-size: 13px;">
-              This legacy version is reaching end-of-life in 12 months (from August 1st, 2026). Switch to <a href="https://aloc.com.ng" target="_blank" style="color: #fbbf24; text-decoration: underline; font-weight: 600;">ALOC Station (aloc.com.ng)</a> for the new API infrastructure.
+              This legacy version reaches end-of-life on August 1, 2027 (new legacy signups are now closed). Switch to <a href="https://aloc.com.ng?utm_source=questions_subdomain" target="_blank" style="color: #fbbf24; text-decoration: underline; font-weight: 600;">ALOC Station (aloc.com.ng)</a> for 2026 papers, AI explanations &amp; official SDKs.
             </p>
           </div>
           <div class="col-lg-5 text-center text-lg-right">
@@ -56,7 +56,7 @@
                 <span style="font-size: 9px; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.5px;">Secs</span>
               </div>
             </div>
-            <a href="https://aloc.com.ng" target="_blank" class="btn btn-sm btn-warning ml-2 font-weight-bold" style="background: #f59e0b; border: none; color: #1e1b4b; padding: 6px 14px; font-size: 12px; border-radius: 4px;">Migrate Now →</a>
+            <a href="https://aloc.com.ng/docs/migration?utm_source=questions_subdomain" target="_blank" class="btn btn-sm btn-warning ml-2 font-weight-bold" style="background: #f59e0b; border: none; color: #1e1b4b; padding: 6px 14px; font-size: 12px; border-radius: 4px;">Migrate Now →</a>
           </div>
         </div>
       </div>
@@ -72,14 +72,14 @@
             <div class="col-12">
               <div class="row align-items-center">
                 <div class="col-lg-6 mb-4">
-                  <h1  data-aos="fade-up" data-aos-delay="100">Access 20,000 Past Questions</h1>
-                  <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">Make API calls to get major Nigeria exams past questions.</p>
-                    <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">UTME | WASSCE | POST-UTME | ALOC GAMES</p>
-                    @if($isSignupDisabled || $isEolReached)
-                      <p data-aos="fade-up" data-aos-delay="300"><button class="btn btn-secondary py-3 px-5 btn-pill btn-signup" disabled style="opacity: 0.6; cursor: not-allowed;">Sign Up Closed</button></p>
-                    @else
-                      <p data-aos="fade-up" data-aos-delay="300"><a href="{{url('secure/signup')}}" class="btn btn-primary py-3 px-5 btn-pill btn-signup">Start Now</a></p>
-                    @endif
+                  <span class="badge px-3 py-1 mb-3" style="background: rgba(245, 158, 11, 0.25); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.5); border-radius: 16px; font-size: 12px; font-weight: 700;">UPGRADED TO ALOC STATION (v1)</span>
+                  <h1 data-aos="fade-up" data-aos-delay="100">Assessment Content Infrastructure for Nigeria</h1>
+                  <p class="mb-3" data-aos="fade-up" data-aos-delay="200">New v2 token registrations on <code>questions.aloc.com.ng</code> are closed. Build new CBT platforms and AI tutors on <strong>ALOC Station v1</strong> with 13,800+ verified 1988–2026 questions, L2 topic metadata, L3 step-by-step solutions, and official Python &amp; TypeScript SDKs.</p>
+                  <p class="mb-4" data-aos="fade-up" data-aos-delay="200">JAMB / UTME (up to 2026) · WAEC · NECO · POST-UTME · MCP SERVER</p>
+                  <p data-aos="fade-up" data-aos-delay="300">
+                    <a href="https://aloc.com.ng/register?utm_source=questions_subdomain" target="_blank" class="btn py-3 px-5 btn-pill font-weight-bold text-dark mr-2 mb-2" style="background: #f59e0b; border: none;">Get Free v1 API Key →</a>
+                    <a href="https://aloc.com.ng/docs/migration?utm_source=questions_subdomain" target="_blank" class="btn py-3 px-4 btn-pill text-white mb-2" style="border: 1px solid rgba(255,255,255,0.4); background: rgba(15,23,42,0.5);">5-Min Migration Guide</a>
+                  </p>
 
                 </div>
 
@@ -156,7 +156,7 @@
           <div class="col-md-6 col-lg-3 mb-4 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
             <div class="p-4 rounded-lg w-100 d-flex flex-column justify-content-between" style="background: #111827; border: 1px solid #1f2937; border-radius: 12px;">
               <div>
-                <div class="mb-3 d-inline-block px-2 py-1 rounded" style="background: rgba(16, 185, 129, 0.2); color: #34d399; font-family: monospace; font-weight: 700; font-size: 12px;">1988 - 2025</div>
+                <div class="mb-3 d-inline-block px-2 py-1 rounded" style="background: rgba(16, 185, 129, 0.2); color: #34d399; font-family: monospace; font-weight: 700; font-size: 12px;">1988 - 2026</div>
                 <h4 class="text-white font-weight-bold h5 mb-2">Expanded Exam Coverage</h4>
                 <p style="color: #94a3b8; font-size: 13.5px; line-height: 1.6;">
                   Comprehensive syllabus-aligned data across UTME / JAMB, WAEC, NECO, and POST-UTME institution screening papers.
@@ -202,8 +202,8 @@
         </div>
 
         <div class="text-center mt-4">
-          <a href="https://aloc.com.ng" target="_blank" class="btn btn-pill py-3 px-5 font-weight-bold text-dark mr-3 mb-2" style="background: #f59e0b; border: none; font-size: 15px; box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);">Visit ALOC Station at aloc.com.ng 🚀</a>
-          <a href="https://aloc.com.ng/register" target="_blank" class="btn btn-pill py-3 px-4 text-white mb-2" style="border: 1px solid #374151; background: transparent; font-size: 15px;">Get Free API Key →</a>
+          <a href="https://aloc.com.ng?utm_source=questions_subdomain" target="_blank" class="btn btn-pill py-3 px-5 font-weight-bold text-dark mr-3 mb-2" style="background: #f59e0b; border: none; font-size: 15px; box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);">Visit ALOC Station at aloc.com.ng 🚀</a>
+          <a href="https://aloc.com.ng/register?utm_source=questions_subdomain" target="_blank" class="btn btn-pill py-3 px-4 text-white mb-2" style="border: 1px solid #374151; background: transparent; font-size: 15px;">Get Free API Key →</a>
         </div>
       </div>
     </div>
@@ -221,10 +221,10 @@
             <img src="{{url('landing/images/api_question_sample.png')}}" alt="Image" class="img-fluid">
           </div>
           <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
-            <h2 class="text-black mb-4">How to get started</h2>
-            <p class="mb-4">Create a free account today and an Access Token will be generated for you to communicate with our REST APIs.</p>
+            <h2 class="text-black mb-4">How to migrate</h2>
+            <p class="mb-4">Generate an <code>aloc_live_...</code> key in 60 seconds at <a href="https://aloc.com.ng/register?utm_source=questions_subdomain" target="_blank">aloc.com.ng/register</a> (includes 1,000 free monthly credits) and install <code>pip install aloc-sdk</code> or <code>npm install @massteck/aloc-sdk</code>.</p>
 
-              <p class="mb-4">Add the access token as header when calling our APIs. <a href="https://github.com/Seunope/aloc-endpoints" target="_blank">API endpoints documentation is here.</a></p>
+              <p class="mb-4">Existing v2 integrations only need ~15 lines updated. <a href="https://aloc.com.ng/docs/migration?utm_source=questions_subdomain" target="_blank">Read the 5-Minute v2 → v1 Migration Guide →</a></p>
 
           </div>
         </div>
@@ -272,52 +272,11 @@
     <div class="site-section" id="pricing-section">
       <div class="container">
 
-        <div class="row mb-5 justify-content-center">
-          <div class="col-lg-7 mb-5 text-center"  data-aos="fade-up" data-aos-delay="">
-            <h2 class="section-title">Our Pricing</h2>
-            <p class="mb-5">Create a free account and get authorization token to talk to our past questions endpoints remotely</p>
-          </div>
-        </div>
-
-        <div class="row">
-
-          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="teacher text-center">
-{{--              <img src="{{url('landing/images/person_1.jpg')}}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">--}}
-              <div class="py-2">
-                <h3 class="text-black">Access Plan</h3>
-                <p class="position">7,000 free API calls</p>
-                <p>Default units: 5,000 </p>
-                  <p>Bonus units: 2,000 </p>
-                  <p>Price: FREE </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="teacher text-center">
-{{--              <img src="{{url('landing/images/person_2.jpg')}}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">--}}
-              <div class="py-2">
-                <h3 class="text-black">Basic Plan</h3>
-                <p class="position">10,0000 free API calls</p>
-                  <p>Default units: 10,000 </p>
-                  <p>Bonus units: 10,000 </p>
-                  <p>Price: ₦2,000 </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="teacher text-center">
-{{--              <img src="{{url('landing/images/person_3.jpg')}}" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">--}}
-              <div class="py-2">
-                <h3 class="text-black">Huge Plan</h3>
-                <p class="position">Unlimited API calls</p>
-                  <p>Default units: 70,000 </p>
-                  <p>Bonus units: 50,000 </p>
-                  <p>Price: ₦5,000 </p>
-              </div>
-            </div>
+        <div class="row mb-4 justify-content-center">
+          <div class="col-lg-8 text-center" data-aos="fade-up">
+            <h2 class="section-title">Pricing Moved to ALOC Station</h2>
+            <p class="mb-4">Legacy v2 unit plans are retired ahead of the August 1, 2027 sunset. Start free with <strong>1,000 monthly credits</strong> on ALOC Station v1, upgrade to <strong>Developer (₦5,000 / $4)</strong>, <strong>Growth (₦20,000 / $14)</strong>, or <strong>Scale (₦75,000 / $50)</strong>, or top up non-expiring credit packs starting at <strong>₦2,000 ($2)</strong>.</p>
+            <a href="https://aloc.com.ng/pricing?utm_source=questions_subdomain" target="_blank" class="btn py-3 px-5 btn-pill font-weight-bold text-dark" style="background: #f59e0b; border: none;">View Current ALOC Station Pricing →</a>
           </div>
         </div>
       </div>

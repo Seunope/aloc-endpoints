@@ -124,5 +124,15 @@
         </ul>
 
     </nav>
+    <div style="background: #0f172a; border-bottom: 2px solid #f59e0b; color: #f8fafc; padding: 12px 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;">
+        <div style="font-size: 13px;">
+            <strong style="color: #fbbf24;">⚠️ Legacy Dashboard Sunset (August 1, 2027):</strong>
+            <code>questions.aloc.com.ng</code> is frozen in maintenance mode. Migrate your app to <strong>ALOC Station v1</strong> for 2026 JAMB papers, L2 curriculum metadata, L3 AI explanations, and official Python &amp; TypeScript SDKs.
+        </div>
+        <div>
+            <a href="https://aloc.com.ng/docs/migration?utm_source=legacy_dashboard" target="_blank" class="btn btn-xs btn-warning" style="background: #f59e0b; border: none; color: #0f172a; font-weight: 700; padding: 5px 12px; margin-right: 6px;">5-Min Migration Guide →</a>
+            <a href="https://aloc.com.ng/register?utm_source=legacy_dashboard" target="_blank" class="btn btn-xs btn-default" style="background: transparent; border: 1px solid #475569; color: #f8fafc; font-weight: 600; padding: 5px 12px;">Get Free v1 Key</a>
+        </div>
+    </div>
     @include('flash::message')
 </div>

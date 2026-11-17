@@ -1,135 +1,164 @@
-<p align="center"><img src="https://aloc.com.ng/asset/images/slide/aloc-shield.png"></p>
+<div align="center">
 
-<p align="center"><i>Get Inspired to Practice</i></p>
+# ALOC — Assessment Content Infrastructure for African EdTech
 
-## About ALOC
+[![ALOC Station v1](https://img.shields.io/badge/ALOC_Station_v1-Live_Platform-f59e0b?style=for-the-badge)](https://aloc.com.ng?utm_source=github_aloc_endpoints)
+[![PyPI version](https://img.shields.io/pypi/v/aloc-sdk?style=for-the-badge&label=PyPI%20%7C%20aloc-sdk&color=10b981)](https://pypi.org/project/aloc-sdk/)
+[![npm version](https://img.shields.io/npm/v/@massteck/aloc-sdk?style=for-the-badge&label=npm%20%7C%20%40massteck%2Faloc-sdk&color=cb3837)](https://www.npmjs.com/package/@massteck/aloc-sdk)
+[![MCP Server](https://img.shields.io/npm/v/@massteck/aloc-mcp-server?style=for-the-badge&label=MCP%20%7C%20%40massteck%2Faloc-mcp-server&color=6366f1)](https://aloc.com.ng/docs/mcp?utm_source=github_aloc_endpoints)
 
-ALOC is an adventure-based CBT practice platform with an engaging game story that unravels as students progress in the game levels. We use gaming concepts to increase student practice time and grades.[https://aloc.com.ng]
+**Verified WAEC, JAMB/UTME (1997–2026), NECO & Post-UTME Questions · L2 Topic & Difficulty Metadata · L3 Step-by-Step Explanations · L4 Vector Similarity**
 
-- Experience CBT in the game environment
-- Gain free access to unlimited past questions
-- Chat with students across Nigeria
-- Get paid for being smart
-- Learn for fun, play for glory
-  
-Finally, boring times are over, academic practice can now be Fun for students seeking university admission.
+[**🚀 Get Free API Key (1,000 Credits/mo)**](https://aloc.com.ng/register?utm_source=github_aloc_endpoints) · [**🎮 Live API Playground**](https://aloc.com.ng/playground?utm_source=github_aloc_endpoints) · [**📖 Documentation**](https://aloc.com.ng/docs/getting-started?utm_source=github_aloc_endpoints) · [**🔄 5-Minute Migration Guide**](https://aloc.com.ng/docs/migration?utm_source=github_aloc_endpoints)
 
-## About ALOC Questions API
+</div>
 
-This app gives developers and educators access to our questions via API calls. You get free access to over 6,000 past questions for UTME, WASSCE, POST-UTME
+---
 
-Make API calls to have access to over 6,000 Major Nigeria past questions. 100% FREE
+> ### ⚠️ Legacy Repository Notice (`questions.aloc.com.ng` Sunset: August 1, 2027)
+> **`Seunope/aloc-endpoints` (`questions.aloc.com.ng/api/v2`) is our legacy v0/v2 codebase and has been superseded by [ALOC Station (`aloc.com.ng`)](https://aloc.com.ng?utm_source=github_aloc_endpoints).**
+>
+> - **Building a new CBT platform, EdTech app, or AI tutor?** Start directly on **[ALOC Station v1](https://aloc.com.ng/register?utm_source=github_aloc_endpoints)** (new legacy v2 token registrations are closed).
+> - **Already running on `questions.aloc.com.ng`?** Existing `AccessToken` integrations remain operational until **August 1, 2027**. Follow the **[5-Minute Migration Guide](https://aloc.com.ng/docs/migration?utm_source=github_aloc_endpoints)** to upgrade before sunset.
 
-You can focus on building great apps for students with unlimited access to API calls for trivial questions of major exams in Nigeria
+---
 
-## Our Goal
+## Why Upgrade to ALOC Station (v1)?
 
-To have the largest open-source database of various past questions in Nigeria. 
+Over **16.9 million+ API requests** later, we rebuilt ALOC from the ground up into production-grade assessment infrastructure for EdTech startups, schools, software agencies, and AI builders across Africa:
 
-## Call for Questions
+| Capability | Legacy `aloc-endpoints` (v2) | **ALOC Station (`aloc.com.ng` v1)** |
+| :--- | :--- | :--- |
+| **Base Endpoint** | `questions.aloc.com.ng/api/v2/q` *(Deprecated)* | **`dev.aloc.com.ng/api/v1`** |
+| **Verified Dataset** | ~6,000 unverified items (frozen pre-2024) | **13,819+ SHA-256 deduplicated items (`1988–2026`, incl. 2025 & 2026 JAMB)** |
+| **Filter Integrity** | Silently returns random fallback questions when a year/exam misses | **Strict `examType` & `year` isolation + actionable coverage hints** |
+| **L2 Curriculum Metadata** | ❌ None | **✅ 100% mapped (`topic`, `subtopic`, `difficultyScore` 1–5, `curriculumAlignment`)** |
+| **L3 Worked Explanations** | ❌ Sparse raw text | **✅ 95.5% coverage with step-by-step reasoning, simplified summaries & student pitfalls** |
+| **L4 Vector Intelligence** | ❌ None | **✅ `pgvector` semantic similar-question retrieval & longitudinal syllabus trends** |
+| **Assessment Engine** | ❌ Manual client-side state | **✅ Server-side balanced papers (`jamb_standard_40`, `waec_standard_50`), seeds & option shuffling** |
+| **Official SDKs & AI Agents** | ❌ Raw HTTP / cURL only | **✅ Python (`aloc-sdk`), TypeScript (`@massteck/aloc-sdk`), & MCP Server (`@massteck/aloc-mcp-server`)** |
+| **Pricing & Currencies** | Legacy static units | **1,000 Free credits/mo · NGN & USD plans · Non-expiring add-on packs from ₦2,000 ($2)** |
 
-Over <a href=https://questions.aloc.com.ng/api/metrics/subjects-call>5,534,083 API questions</a> request has been made to this library. Do you have questions you want to add to this database? We are excited to receive your mail at aloc.mass@gmail.com
+📊 **Inspect real-time subject & year counts anytime (0 credits):** [https://aloc.com.ng/coverage](https://aloc.com.ng/coverage?utm_source=github_aloc_endpoints)
 
-## Setup
+---
 
-- `php artisan composer update`
+## Quickstart on ALOC Station (v1)
 
-- In the project root directory create another copy of .env.example and rename it to .env
+Create a free developer account at **[aloc.com.ng/register](https://aloc.com.ng/register?utm_source=github_aloc_endpoints)** to grab your `aloc_live_...` API key (**1,000 free monthly credits**, no card required).
 
-- Generate application key `php artisan key:generate`
+### 1. Python SDK (`pip install aloc-sdk`)
 
-- In .env file, supply values to DB_DATABASE, DB_USERNAME, DB_PASSWORD
+```bash
+pip install aloc-sdk
+```
 
-- `php artisan migrate`
+```python
+from aloc_sdk import AlocClient, GenerateAssessmentRequest
 
-- You can load some dummy data into the database for testing `php artisan db:seed --class=LoadDummyQuestions`
+client = AlocClient(api_key="aloc_live_your_key_here")
 
-- Load report question types `php artisan db:seed --class=ReportQuestionType` this is optional
+# Fetch enriched 2026 JAMB Mathematics questions (L1 + L2 metadata)
+res = client.questions.list_questions(
+    subject="mathematics",
+    exam_type="jamb",
+    year=2026,
+    limit=10,
+)
 
-- `php artisan server` to load app. You Got it!
+for q in res.data:
+    print(f"[{q.exam_type.upper()} {q.year}] {q.text}")
+    print(f"Answer: {q.correct_answer} | Topic: {q.metadata.topic if q.metadata else None}")
 
+# Assemble a syllabus-balanced 40-question UTME mock paper
+paper = client.assessments.generate_assessment(
+    generate_assessment_request=GenerateAssessmentRequest(
+        subject="mathematics",
+        examType="jamb",
+        preset="jamb_standard_40",
+        shuffleOptions=True,
+    )
+)
+```
 
+### 2. TypeScript / Node.js SDK (`npm install @massteck/aloc-sdk`)
 
-## Sample API call 
+```bash
+npm install @massteck/aloc-sdk
+```
 
- _Sign up at https://questions.aloc.com.ng to get *Acces Token* ._
+```typescript
+import { AssessmentsApi, Configuration, QuestionsApi } from "@massteck/aloc-sdk";
 
-Visit https://github.com/Seunope/aloc-endpoints/wiki/API-Parameters for a sample API call with headers and parameters  
+const config = new Configuration({
+  apiKey: process.env.ALOC_API_KEY || "aloc_live_your_key_here",
+});
 
+const questionsApi = new QuestionsApi(config);
+const { data } = await questionsApi.listQuestions({
+  subject: "chemistry",
+  examType: "jamb",
+  year: 2026,
+  limit: 10,
+});
+```
 
-## Postman APIs Doc 
+### 3. Direct REST API (`cURL`)
 
-https://documenter.getpostman.com/view/1319216/2s9YCBuA3V
+```bash
+curl "https://dev.aloc.com.ng/api/v1/questions?subject=physics&examType=jamb&year=2026&limit=10" \
+  -H "X-API-Key: aloc_live_your_key_here"
+```
 
-<img src="https://res.cloudinary.com/aloc-ng/image/upload/v1695632646/ALOC-Questions/Screenshot_2023-09-25_at_09.54.01_hvf3fv.png"/>
+### 4. AI Coding Agents & Tutors (Claude Desktop, Cursor, Windsurf — MCP)
 
-## API call Examples
+```bash
+npx -y @massteck/aloc-mcp-server
+```
 
-Get a question
+Full MCP setup guide: **[aloc.com.ng/docs/mcp](https://aloc.com.ng/docs/mcp?utm_source=github_aloc_endpoints)**
 
-https://questions.aloc.com.ng/api/v2/q?subject=chemistry
+---
 
-<img src="https://aloc.com.ng/asset/images/others/aloc-api-sample.png">
+## Official Links & Support
 
-Get many questions (returns 40 questions)
+- 🌐 **Developer Portal**: [https://aloc.com.ng](https://aloc.com.ng?utm_source=github_aloc_endpoints)
+- 📖 **API & SDK Documentation**: [https://aloc.com.ng/docs/sdks](https://aloc.com.ng/docs/sdks?utm_source=github_aloc_endpoints)
+- 🎮 **Interactive API Playground**: [https://aloc.com.ng/playground](https://aloc.com.ng/playground?utm_source=github_aloc_endpoints)
+- 📈 **Live Dataset Coverage & Quality Telemetry**: [https://aloc.com.ng/data-quality](https://aloc.com.ng/data-quality?utm_source=github_aloc_endpoints)
+- 🔄 **Legacy v2 → v1 Migration Guide**: [https://aloc.com.ng/docs/migration](https://aloc.com.ng/docs/migration?utm_source=github_aloc_endpoints)
+- 📧 **Engineering & Enterprise Licensing**: [aloc.mass@gmail.com](mailto:aloc.mass@gmail.com)
 
-https://questions.aloc.com.ng/api/v2/m?subject=chemistry
+---
 
-Get several questions (limit 40)
+<details>
+<summary><strong>📜 Archive: Legacy v2 Endpoint Reference & Self-Host Setup (Deprecated — Sunset August 1, 2027)</strong></summary>
 
-https://questions.aloc.com.ng/api/v2/q/7?subject=chemistry
+<br>
 
-eg.
+> **Deprecation Warning:** The `/api/v2/*` endpoints below are frozen in maintenance mode and will shut down permanently on **August 1, 2027**. Do not use these endpoints for new projects — integrate **[ALOC Station v1](https://aloc.com.ng/docs/getting-started?utm_source=github_aloc_endpoints)** instead.
 
-`https://questions.aloc.com.ng/api/v2/q/23?subject=chemistry`
-`https://questions.aloc.com.ng/api/v2/q/30?subject=chemistry`
-`https://questions.aloc.com.ng/api/v2/q/4?subject=chemistry`
+### Legacy v2 Endpoints (`questions.aloc.com.ng`)
 
+- Single random question: `GET https://questions.aloc.com.ng/api/v2/q?subject=chemistry`
+- Multiple questions: `GET https://questions.aloc.com.ng/api/v2/q/10?subject=chemistry&year=2010&type=utme`
+- Batch questions: `GET https://questions.aloc.com.ng/api/v2/m?subject=chemistry`
+- Question by legacy ID: `GET https://questions.aloc.com.ng/api/v2/q-by-id/1?subject=chemistry`
+- Header required: `AccessToken: ALOC-...`
 
-Get a question by year
+### Local Archive Setup
 
-https://questions.aloc.com.ng/api/v2/q?subject=chemistry&year=2005
+1. Run `composer install`
+2. Copy `.env.example` to `.env` and configure `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`
+3. Run `php artisan key:generate`
+4. Run `php artisan migrate`
+5. Optional test seed: `php artisan db:seed --class=LoadDummyQuestions`
+6. Start local server: `php artisan serve`
 
-Get a question by exam type
+</details>
 
-https://questions.aloc.com.ng/api/v2/q?subject=chemistry&type=utme
-
-Get a question by type and year
-
-https://questions.aloc.com.ng/api/v2/q?subject=chemistry&year=2010&type=utme
-
-Get question by id and subject
-
-https://questions.aloc.com.ng/api/v2/q-by-id/1?subject=chemistry
-
-For more detailed examples visit https://questions.aloc.com.ng
-## API Documentation
-
-Vist the <a href='https://github.com/Seunope/aloc-endpoints/wiki'>lib wiki</a> to get access to some special features.<a href='https://github.com/Seunope/aloc-endpoints/wiki'>API Documentation</a>
-
- 
-- Subject Metrics
-- API Parameters
-- Sample APIs
-- Subject & Year
-  
-## ALOC Sponsors
-
-We would like to extend our thanks to the following sponsors for helping fund on-going ALOC development. If you are interested in becoming a sponsor, please send a mail to Admin [aloc.mass@gmail.com]:
-
-- **[MaSSiveTeck](https://magbodo.com/)**
-
-## Contributing
-
-Thank you for considering contributing to the ALOC Questions Api end points!
-
-
-<a href="https://www.buymeacoffee.com/seunope" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within ALOC APIs, please send an e-mail to Admin via [aloc.mass@gmail.com](mailto:aloc.mass@gmail.com. All security vulnerabilities will be promptly addressed.
+---
 
 ## License
 
-The ALOC API is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This legacy archive repository is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). Modern ALOC Station v1 SDKs and API services are governed by the [ALOC Terms of Service](https://aloc.com.ng/terms).
